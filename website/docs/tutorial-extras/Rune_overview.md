@@ -1,55 +1,31 @@
 ---
 sidebar_position: 1
 ---
+URL: https://docs.rosetta-technology.io/rosetta/rune-dsl/
+---
 
-# Test Version 1
+# Rune DSL documentation
+All you need to know to understand and use the Rune domain-specific language for modelling operational processes in financial and other markets.
 
-Docusaurus can manage multiple versions of your docs.
 
-## Create a docs version
+## Quick start
 
-Release a version 1.0 of your project:
 
-```bash
-npm run docusaurus docs:version 1.0
-```
+## [Rune DSL overview](https://docs.rosetta-technology.io/rosetta/rune-dsl/overview/)
+High level purpose and concepts of the language.
 
-The `docs` folder is copied into `versioned_docs/version-1.0` and `versions.json` is created.
 
-Your docs now have 2 versions:
+## [Modelling components](https://docs.rosetta-technology.io/rosetta/rune-dsl/rune-modelling-component/)
+What components exist, how they relate, and examples from a ‘vehicle’ demo model to show each feature.
 
-- `1.0` at `http://localhost:3000/docs/` for the version 1.0 docs
-- `current` at `http://localhost:3000/docs/next/` for the **upcoming, unreleased docs**
 
-## Add a Version Dropdown
 
-To navigate seamlessly across versions, add a version dropdown.
 
-Modify the `docusaurus.config.js` file:
+# *Developers*
+## [Java documentation](https://docs.rosetta-technology.io/rosetta/rune-dsl/rune-java-documentation/)
+How the Java classes generated from Rune models are structured and used.
 
-```js title="docusaurus.config.js"
-export default {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: 'docsVersionDropdown',
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
-```
 
-The docs version dropdown appears in your navbar:
+## [Code generators](https://docs.rosetta-technology.io/rosetta/rune-dsl/rosetta-code-generators/)
+How to build code generators in languages other than Java. 
 
-![Docs Version Dropdown](./img/docsVersionDropdown.png)
-
-## Update an existing version
-
-It is possible to edit versioned docs in their respective folder:
-
-- `versioned_docs/version-1.0/hello.md` updates `http://localhost:3000/docs/hello`
-- `docs/hello.md` updates `http://localhost:3000/docs/next/hello`
