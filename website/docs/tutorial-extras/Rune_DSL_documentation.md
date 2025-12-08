@@ -9,6 +9,7 @@ All you need to know to understand and use the Rune domain-specific language for
 
 
 ## Quick start
+Use keywords to find the functions you're looking for, fast. 
 
 
 ## [Rune DSL overview](https://docs.rosetta-technology.io/rosetta/rune-dsl/overview/)
