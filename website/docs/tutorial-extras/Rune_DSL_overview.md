@@ -1,11 +1,11 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
-URL: https://docs.rosetta-technology.io/rosetta/rune-dsl/
+URL: https://docs.rosetta-technology.io/rosetta/rune-dsl/overview/
 ---
 
-# Rune DSL documentation
-All you need to know to understand and use the Rune domain-specific language for modelling operational processes in financial and other markets.
+# Rune DSL overview
+Rune DSL is an open-source, Domain-Specific Language (DSL) designed to make financial market processes consistent, interoperable and easier to implement. It separates business logic from technical code, generates executable programs automatically, and empowers both developers and non-technical experts (like compliance teams) to contribute directly. Rosetta provides the tools and environment to build test, and adopt Rune models across the industry.
 
 
 ## Quick start
