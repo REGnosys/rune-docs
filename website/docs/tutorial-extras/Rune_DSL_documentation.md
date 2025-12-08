@@ -8,7 +8,7 @@ URL: https://docs.rosetta-technology.io/rosetta/rune-dsl/
 All you need to know to understand and use the Rune domain-specific language for modelling operational processes in financial and other markets.
 
 
-## Quick start
+## [Quick start](https://docs.rosetta-technology.io/rosetta/rune-dsl/quick-start/)
 Use keywords to find the functions you're looking for, fast. 
 
 
