@@ -30,3 +30,10 @@ How the Java classes generated from Rune models are structured and used.
 ### [Code generators](https://docs.rosetta-technology.io/rosetta/rune-dsl/rosetta-code-generators/)
 How to build code generators in languages other than Java. 
 
+
+### License ¶
+Copyright 2019 REGnosys
+
+Distributed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+
+SPDX-License-Identifier: [Apache-2.0](https://spdx.org/licenses/Apache-2.0)
