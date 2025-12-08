@@ -12,7 +12,7 @@ All you need to know to understand and use the Rune domain-specific language for
 
 
 ## [Rune DSL overview](https://docs.rosetta-technology.io/rosetta/rune-dsl/overview/)
-High level purpose and concepts of the language.
+High-level purpose and concepts of the Rune language.
 
 
 ## [Modelling components](https://docs.rosetta-technology.io/rosetta/rune-dsl/rune-modelling-component/)
