@@ -1,0 +1,36 @@
+
+---
+sidebar_position: 3
+---
+
+# Rune DSL - Quick start
+
+For quick access to documentation for a Rune type, function, expression or annotation, choose a keyword to link to the relevant documentation. 
+
+
+
+
+### [Rune DSL overview](https://docs.rosetta-technology.io/rosetta/rune-dsl/overview/)
+High-level purpose and concepts of the Rune language.
+
+
+### [Quick start](https://docs.rosetta-technology.io/rosetta/rune-dsl/quick-start/)
+Use keywords to find the functions you're looking for, fast. 
+
+
+### [Modelling components](https://docs.rosetta-technology.io/rosetta/rune-dsl/rune-modelling-component/)
+What components exist, how they relate, and examples from a ‘vehicle’ demo model to show each feature.
+
+
+<br />
+<br />
+<br />
+
+## *Developers*
+### [Java documentation](https://docs.rosetta-technology.io/rosetta/rune-dsl/rune-java-documentation/)
+How the Java classes generated from Rune models are structured and used.
+
+
+### [Code generators](https://docs.rosetta-technology.io/rosetta/rune-dsl/rosetta-code-generators/)
+How to build code generators in languages other than Java. 
+
