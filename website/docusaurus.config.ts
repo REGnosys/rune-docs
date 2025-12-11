@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Rune DSL',
   tagline: 'Rune is a Domain-Specific Language (DSL) that supports the modelling of operational processes for the financial markets\' industry. Its purpose is to promote consistency and inter-operability between the various implementations of these processes.',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/img/rune/Icon/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
