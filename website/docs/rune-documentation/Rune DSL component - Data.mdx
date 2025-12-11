@@ -52,46 +52,57 @@ Built-in data types come in three flavours:
 
 <div class="two-column">
   <div>
-    <p>
-      You can customize the number and string types by adding constraints or specific formatting.<br />
-      <strong>Example: Parameterized number</strong><br />
-      This defines a positive decimal number with a maximum value of 5000. Note that the simple <code>int</code> type is
-      just a shorthand for a number with no fractional digits, such as <code>number(fractionalDigits: 0)</code>.
-    </p>
-    <p><code>1 number(digits: 18, fractionalDigits: 17, min: 0, max: 5000)</code></p>
+    You can customize the number and string types by adding constraints or specific formatting.
+    **Example: Parameterized number**
+    This defines a positive decimal number with a maximum value of 5000. Note that the simple `int` type is just a
+    shorthand for a number with no fractional digits, such as `number(fractionalDigits: 0)`.
+
+    ```
+    1 number(
+    digits: 18,
+    fractionalDigits: 17,
+    min: 0, max: 5000
+    )
+    ```
   </div>
   <div>
-    <p>
-      <strong>Example: Parameterized string</strong><br />
-      This example limits the string to between 3 and 5 characters and ensures it's alphanumeric.
-    </p>
-    <p><code>1 string(minLength: 3, maxLength: 5, pattern: "[a-zA-Z0-9]*")</code></p>
-    <p>
-      <strong>Type aliases</strong><br />
-      You can give a name (an alias) to any parameterized type to keep your model readable and avoid long, verbose
-      declarations.
-      Instead of typing the complex string definition, you can just use <code>AlphaNumericText</code>.
-    </p>
-    <p>
-      <code>
-1 typeAlias PositiveInteger: number(fractionalDigits: 0, min: 0)  
-1 typeAlias AlphaNumericText: string(minLength: 1, pattern: "[a-zA-Z0-9]{1,4}")
-      </code>
-    </p>
-    <p>
-      Type aliases <code>PositiveInteger</code> and <code>AlphaNumericText</code> are both used in this example.
-    </p>
-    <p>
-  ```
-  type DrivingLicence extends Person: &lt;"Driving licence authorisation granted by a jurisdiction"&gt;  
-  countryofIssuance string (1..1) [metadata scheme]  
-  licenceNumber AlphaNumericText (1..1)  
-  dateofIssuance date (1..1)  
-  dateOfRenewal date (0..1)  
-  vehicleEntitlement VehicleClassificationEnum (0..*)  
-  penaltyPoints PositiveInteger (1..1)
-  ```
-    </p>
+    **Example: Parameterized string**
+    This example limits the string to between 3 and 5 characters and ensures it's alphanumeric.
+
+    ```
+    1 string(
+    minLength: 3,
+    maxLength: 5,
+    pattern: "[a-zA-Z0-9]*"
+    )
+    ```
+
+    **Type aliases**
+    You can give a name (an alias) to any parameterized type to keep your model readable and avoid long, verbose
+    declarations. Instead of typing the complex string definition, you can just use `AlphaNumericText`.
+
+    ```
+    1 typeAlias PositiveInteger: number(
+    fractionalDigits: 0,
+    min: 0
+    )
+    1 typeAlias AlphaNumericText: string(
+    minLength: 1,
+    pattern: "[a-zA-Z0-9]{1,4}")
+    ```
+
+    Type aliases `PositiveInteger` and `AlphaNumericText` are both used in this example.
+
+    ```
+    type DrivingLicence extends Person:
+    <"Driving licence authorisation granted by a jurisdiction">
+      countryofIssuance string (1..1) [metadata scheme]
+      licenceNumber AlphaNumericText (1..1)
+      dateofIssuance date (1..1)
+      dateOfRenewal date (0..1)
+      vehicleEntitlement VehicleClassificationEnum (0..*)
+      penaltyPoints PositiveInteger (1..1)
+      ```
   </div>
 </div>
 
@@ -101,10 +112,8 @@ Built-in data types come in three flavours:
 
 <div class="two-column">
   <div>
-    <p>
-      These are simple composite built-in types, essentially grouping basic types together. Record types are
-      straightforward; they’re pure data definitions and don't allow for custom validation logic.
-    </p>
+    These are simple composite built-in types, essentially grouping basic types together. Record types are
+    straightforward; they’re pure data definitions and don't allow for custom validation logic.
   </div>
   <div>
     <ul>
@@ -118,10 +127,10 @@ Built-in data types come in three flavours:
 
 ## 2. Data type (complex type)
 
-Data types define the core **business concepts** in your model (like an 'entity' or 'object'). They’re sometimes called
-**complex types** because they’re composed of multiple elements called **attributes** (or 'fields').
-A data type describes a logical concept in your business domain and is defined by the collection of attributes that make
-up that concept.
+Data types are how you define the core **business concepts** in your model (like an 'entity' or 'object'). They’re
+sometimes called **complex types** because they’re composed of multiple elements called **attributes** (or 'fields'). It
+describes a logical concept in your business domain and is defined by the collection of attributes that make up that
+concept.
 
 ### Syntax
 
@@ -130,32 +139,32 @@ up that concept.
     <ul>
       <li><strong>Name (required):</strong> Written in PascalCase (e.g. VehicleOwnership). Must be unique in its
         namespace.</li>
-      <li><strong>Description (optional, but recommended):</strong> A plain-text definition inside angle brackets
-        <code>&lt;"…"&gt;</code>.</li>
-      <li><strong>Annotations (optional):</strong> Metadata enclosed in square brackets <code>[ ... ]</code>.</li>
+      <li><strong>Description (optional, but recommended):</strong> A plain-text definition inside angle brackets `<"…">
+          `.</li>
+      <li><strong>Annotations (optional):</strong> Metadata enclosed in square brackets `[ ... ]`.</li>
     </ul>
   </div>
   <div>
-    <p>
-      <strong>Syntax:</strong>
-    </p>
-    <pre><code>
-type &lt;TypeName&gt;: &lt;"Description"&gt;
-[&lt;annotation1&gt;]
-[&lt;annotation2&gt;]
-[...]
-&lt;attribute1&gt;
-&lt;attribute2&gt;
-&lt;...&gt;
-    </code></pre>
-    <p>
-      <strong>Example:</strong>
-    </p>
-    <pre><code>
-type VehicleOwnership: &lt;"Representative record of vehicle ownership"&gt;
-  [metadata key]
-  [rootType]
-    </code></pre>
+    **Syntax:**
+
+    ```
+    type <TypeName>: <"Description">
+        [<annotation1>]
+          [<annotation2>]
+            [...]
+            <attribute1>
+              <attribute2>
+                <...>
+                  ```
+
+                  **Example:**
+
+                  ```
+                  type VehicleOwnership:
+                  <"Representative record of vehicle ownership">
+                    [metadata key]
+                    [rootType]
+                    ```
   </div>
 </div>
 
