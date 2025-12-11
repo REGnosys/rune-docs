@@ -12,8 +12,8 @@ Within a Rune DSL data component there may be up to four types of data. Think of
 3.	**Enumeration (Enum):** A list of specific, controlled values (like PeriodEnum).
 4.	**Meta-type:** (Not explicitly detailed in the provided text, but mentioned as one of the four components).
 
-<br/>
-<br/>
+<br>
+<br>
 
 ## 1. Built-in type
 Built-in types are defined at the language level and are fundamental to any model – they provide the most basic way to represent information. They help to ensure consistency across all models and provide a shared vocabulary for numbers, text, time and logic. They form the foundation on which more complex types (like data types or choice types) are built.
@@ -29,15 +29,16 @@ These are your standard, non-composite data types:
 </p>
     </div>
     <div>
+<ul>
   <li> <strong>int:</strong> Integer numbers </li>
   <li> <strong>number:</strong> Decimal numbers </li>
   <li> <strong>boolean:</strong> True or false values </li>
   <li> <strong>string:</strong> Text values </li>
   <li> <strong>time:</strong> Simple time values (e.g. "05:00:00")</li>
+</ul>
     </div>
-  </div>
-
-<br/>
+   </div>
+<br>
 
 #### b. Parameterized basic types
 
@@ -52,6 +53,7 @@ This defines a positive decimal number with a maximum value of 5000. Note that t
       <code>1 number(digits: 18, fractionalDigits: 17, min: 0, max: 5000)</code>
       </p>
 </div>
+ </div>
  <div class="two-column">
     <div>
 <p>
@@ -63,7 +65,7 @@ This example limits the string to between 3 and 5 characters and ensures it's al
 <code>1 string(minLength: 3, maxLength: 5, pattern: "[a-zA-Z0-9]*")</code>
 </p>
  </div>
-
+ </div>
 <div class="two-column">
     <div>
 <p>
@@ -78,6 +80,7 @@ So instead of typing the complex string definition, you can just use <code>Alpha
 1 typeAlias AlphaNumericText: string(minLength: 1, pattern: "[a-zA-Z0-9]{1,4}")</code>
 </p>
 </div>
+ </div>
  <div class="two-column">
     <div>
 <p>
@@ -96,8 +99,8 @@ Type aliases <code>PositiveInteger</code> and <code>AlphaNumericText</code> are 
     penaltyPoints PositiveInteger (1..1)</code>
 </p>
     </div>
-
-<br/>
+ </div>
+<br>
 
 #### c. Record types
 
@@ -109,25 +112,44 @@ Record types are straightforward; they’re pure data definitions and don't allo
    </p>
 </div>
     <div>
+<ul>
 <li><strong>date:</strong> Combines a day, month, and year.</li>
 <li><strong>dateTime:</strong> Combines a date and a simple time.</li>
 <li><strong>zonedDateTime:</strong> Combines date, time, and a time-zone specification for an unambiguous moment in time.</li>
-    </div>
+   </ul>
+</div>
   </div>
 
+## 2. Data type (complex type)
+Data types are how you define the core **business concepts** in your model (like an 'entity' or 'object'). They’re sometimes called **complex types** because they’re composed of multiple elements called **attributes** (or 'fields'). It describes a logical concept in your business domain and is defined by the collection of attributes that make up that concept.
+
+### Syntax
+You define a data type with the keyword type. It can include:
 
  <div class="two-column">
     <div>
-    <h3>Steps:</h3>
       <ul>
-        <li>Step 1</li>
-        <li>Step 2</li>
-        <li>Step 3</li>
+        <li><strong>Name (required):</strong> Written in PascalCase (e.g. VehicleOwnership). Must be unique in its namespace.</li>
+        <li><strong>Description (optional, but recommended):</strong> A plain-text definition inside angle brackets <code><"…"></code>.</li>
+        <li><strong>Annotations (optional):</strong> Metadata enclosed in square brackets <code>[ ... ]</code>.</li>
       </ul>
     </div>
     <div>
       <p>
-        <img src="/img/docusaurus-social-card.jpg" alt="Social Card" />
+       <strong>Syntax:</strong><br>
+<code>type <TypeName>: <"Description"></code>
+ <code>[<annotation1>]</code>
+  [<annotation2>]
+  [...]
+  <attribute1>
+  <attribute2>
+  <...></code>
+</p>
+<p>
+<strong>Example:</strong><br>
+<code>type VehicleOwnership: <"Representative record of vehicle ownership">
+  [metadata key]
+  [rootType]</code>
       </p>
     </div>
   </div>
