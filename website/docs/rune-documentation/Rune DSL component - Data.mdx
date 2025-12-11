@@ -1,149 +1,129 @@
 ---
 sidebar_position: 5
---- 
-# Rune DSL component - Data 
-
-Data components are the types and structures that define how information is stored, validated and used in code. They give shape to raw data so it can be processed logically and `consistently`.
-
+---
+# Rune DSL component - Data
+Data components are the types and structures that define how information is stored, validated and used in code. They
+give shape to raw data so it can be processed logically and `consistently`.
 ## Data component types
-Within a Rune DSL data component there may be up to four types of data. Think of these as the building blocks for your data structures:
-1.	**Built-in type:** The most fundamental types, like numbers and text.
-2.	**Data type (complex type):** Used to describe complex business concepts (like an Engine or VehicleOwnership).
-3.	**Enumeration (Enum):** A list of specific, controlled values (like PeriodEnum).
-4.	**Meta-type:** (Not explicitly detailed in the provided text, but mentioned as one of the four components).
-
-<br/>
-<br/>
-
+Within a Rune DSL data component there may be up to four types of data. Think of these as the building blocks for your
+data structures:
+1. **Built-in type:** The most fundamental types, like numbers and text.
+2. **Data type (complex type):** Used to describe complex business concepts (like an Engine or VehicleOwnership).
+3. **Enumeration (Enum):** A list of specific, controlled values (like PeriodEnum).
+4. **Meta-type:** (Not explicitly detailed in the provided text, but mentioned as one of the four components).
+<br />
+<br />
 ## 1. Built-in type
-Built-in types are defined at the language level and are fundamental to any model – they provide the most basic way to represent information. They help to ensure consistency across all models and provide a shared vocabulary for numbers, text, time and logic. They form the foundation on which more complex types (like data types or choice types) are built.
-
+Built-in types are defined at the language level and are fundamental to any model – they provide the most basic way to
+represent information. They help to ensure consistency across all models and provide a shared vocabulary for numbers,
+text, time and logic. They form the foundation on which more complex types (like data types or choice types) are built.
 ### Syntax
 Built-in data types come in three flavours:
-
-  #### a. Basic types
-  <div class="two-column">
-    <div>
-     <p>     
-These are your standard, non-composite data types:
-</p>
-    </div>
-    <div>
-  <li> <strong>int:</strong> Integer numbers </li>
-  <li> <strong>number:</strong> Decimal numbers </li>
-  <li> <strong>boolean:</strong> True or false values </li>
-  <li> <strong>string:</strong> Text values </li>
-  <li> <strong>time:</strong> Simple time values (e.g. "05:00:00")</li>
-    </div>
-  </div>
-
-<br/>
-
-#### b. Parameterized basic types
-
- <div class="two-column">
-    <div>
-<p>
-You can customize the number and string types by adding constraints or specific formatting.<br>  
-<strong>Example: Parameterized number</strong><br>
-This defines a positive decimal number with a maximum value of 5000. Note that the simple <code>int</code> type is just a shorthand for a number with no fractional digits, such as <code>number(fractionalDigits: 0)</code>.
-     </p> 
-      <p>
-      <code>1 number(digits: 18, fractionalDigits: 17, min: 0, max: 5000)</code>
-      </p>
-</div>
- <div class="two-column">
-    <div>
-<p>
-<strong>Example: Parameterized string</strong><br>
-This example limits the string to between 3 and 5 characters and ensures it's alphanumeric.
-</p>
-<div>
-<p>
-<code>1 string(minLength: 3, maxLength: 5, pattern: "[a-zA-Z0-9]*")</code>
-</p>
- </div>
-
+#### a. Basic types
 <div class="two-column">
-    <div>
-<p>
-<strong>Type aliases</strong>
-You can give a name (an alias) to any parameterized type to keep your model readable and avoid long, verbose declarations.
-So instead of typing the complex string definition, you can just use <code>AlphaNumericText</code>.
-</p>
+  <div>
+    <p>
+      These are your standard, non-composite data types:
+    </p>
+  </div>
+  <div>
+    <li> **int:** Integer numbers </li>
+    <li> **number:** Decimal numbers </li>
+    <li> **boolean:** True or false values </li>
+    <li> **string:** Text values </li>
+    <li> **time:** Simple time values (e.g. "05:00:00")</li>
+  </div>
 </div>
- <div>
-<p>
-<code>1 typeAlias PositiveInteger: number(fractionalDigits: 0, min: 0)
-1 typeAlias AlphaNumericText: string(minLength: 1, pattern: "[a-zA-Z0-9]{1,4}")</code>
-</p>
+<br />
+#### b. Parameterized basic types
+<div class="two-column">
+  <div>
+    <p>
+      You can customize the number and string types by adding constraints or specific formatting.<br />
+      <strong>Example: Parameterized number</strong><br />
+      This defines a positive decimal number with a maximum value of 5000. Note that the simple int type is just a
+      shorthand for a number with no fractional digits, such as number(fractionalDigits: 0).
+    </p>
+    <p>
+      <strong>Example: Parameterized string</strong><br />
+      This example limits the string to between 3 and 5 characters and ensures it's alphanumeric.
+    </p>
+    <p>
+      **Type aliases**
+      You can give a name (an alias) to any parameterized type to keep your model readable and avoid long, verbose
+      declarations.
+      So instead of typing the complex string definition, you can just use AlphaNumericText.
+    </p>
+    <p>
+      Type aliases PositiveInteger and AlphaNumericText are both used in this example.
+    </p>
+  </div>
+  <div>
+    <p>
+      1 number(digits: 18, fractionalDigits: 17, min: 0, max: 5000)
+    </p>
+    <p>
+      1 string(minLength: 3, maxLength: 5, pattern: "[a-zA-Z0-9]*")
+    </p>
+    <p>
+      1 typeAlias PositiveInteger: number(fractionalDigits: 0, min: 0)
+      1 typeAlias AlphaNumericText: string(minLength: 1, pattern: "[a-zA-Z0-9]{1,4}")
+    </p>
+    <p>
+      <code>
+    type DrivingLicence extends Person: &lt;"Driving licence authorisation granted by a jurisdiction"&gt;
+        countryofIssuance string (1..1) [metadata scheme]
+        licenceNumber AlphaNumericText (1..1)
+        dateofIssuance date (1..1)
+        dateOfRenewal date (0..1)
+        vehicleEntitlement VehicleClassificationEnum (0..*)
+        penaltyPoints PositiveInteger (1..1)
+    </code>
+    </p>
+  </div>
 </div>
- <div class="two-column">
-    <div>
-<p>
-Type aliases <code>PositiveInteger</code> and <code>AlphaNumericText</code> are both used in this example.
-</p>
-    </div>
-<div>
-<p>
-<code>type DrivingLicence extends Person: <"Driving licence authorisation granted by a jurisdiction">
-    countryofIssuance string (1..1)
-        [metadata scheme]
-    licenceNumber AlphaNumericText (1..1)
-    dateofIssuance date (1..1)
-    dateOfRenewal date (0..1)
-    vehicleEntitlement VehicleClassificationEnum (0..*)
-    penaltyPoints PositiveInteger (1..1)</code>
-</p>
-    </div>
-
-<br/>
-
+<br />
 #### c. Record types
-
- <div class="two-column">
-    <div>
-  <p>
-These are simple composite built-in types, essentially grouping basic types together.
-Record types are straightforward; they’re pure data definitions and don't allow for custom validation logic.
-   </p>
+<div class="two-column">
+  <div>
+    <p>
+      These are simple composite built-in types, essentially grouping basic types together.
+      Record types are straightforward; they’re pure data definitions and don't allow for custom validation logic.
+    </p>
+  </div>
+  <div>
+    <li>**date:** Combines a day, month, and year.</li>
+    <li>**dateTime:** Combines a date and a simple time.</li>
+    <li>**zonedDateTime:** Combines date, time, and a time-zone specification for an unambiguous moment in time.</li>
+  </div>
 </div>
-    <div>
-<li><strong>date:</strong> Combines a day, month, and year.</li>
-<li><strong>dateTime:</strong> Combines a date and a simple time.</li>
-<li><strong>zonedDateTime:</strong> Combines date, time, and a time-zone specification for an unambiguous moment in time.</li>
-    </div>
-  </div>
-
-
- <div class="two-column">
-    <div>
+<div class="two-column">
+  <div>
     <h3>Steps:</h3>
-      <ul>
-        <li>Step 1</li>
-        <li>Step 2</li>
-        <li>Step 3</li>
-      </ul>
-    </div>
-    <div>
-      <p>
-        <img src="/img/docusaurus-social-card.jpg" alt="Social Card" />
-      </p>
-    </div>
+    <ul>
+      <li>Step 1</li>
+      <li>Step 2</li>
+      <li>Step 3</li>
+    </ul>
   </div>
-
- <div class="two-column">
-    <div>
+  <div>
+    <p>
+      <img src="/img/docusaurus-social-card.jpg" alt="Social Card" />
+    </p>
+  </div>
+</div>
+<div class="two-column">
+  <div>
     <h3>Steps:</h3>
-      <ul>
-        <li>Step 1</li>
-        <li>Step 2</li>
-        <li>Step 3</li>
-      </ul>
-    </div>
-    <div>
-      <p>
-        <img src="/img/docusaurus-social-card.jpg" alt="Social Card" />
-      </p>
-    </div>
+    <ul>
+      <li>Step 1</li>
+      <li>Step 2</li>
+      <li>Step 3</li>
+    </ul>
   </div>
+  <div>
+    <p>
+      <img src="/img/docusaurus-social-card.jpg" alt="Social Card" />
+    </p>
+  </div>
+</div>
