@@ -29,11 +29,11 @@ These are your standard, non-composite data types:
 </p>
     </div>
     <div>
-  <li> **int:** Integer numbers </li>
-  <li> **number:** Decimal numbers </li>
-  <li> **boolean:** True or false values </li>
-  <li> **string:** Text values </li>
-  <li> **time:** Simple time values (e.g. "05:00:00")</li>
+  <li> <strong>int:</strong> Integer numbers </li>
+  <li> <strong>number:</strong> Decimal numbers </li>
+  <li> <strong>boolean:</strong> True or false values </li>
+  <li> <strong>string:</strong> Text values </li>
+  <li> <strong>time:</strong> Simple time values (e.g. "05:00:00")</li>
     </div>
   </div>
 
@@ -45,46 +45,57 @@ These are your standard, non-composite data types:
     <div>
 <p>
 You can customize the number and string types by adding constraints or specific formatting.<br>  
-**Example: Parameterized number**<br>
-This defines a positive decimal number with a maximum value of 5000. Note that the simple int type is just a shorthand for a number with no fractional digits, such as number(fractionalDigits: 0).
+<strong>Example: Parameterized number</strong><br>
+This defines a positive decimal number with a maximum value of 5000. Note that the simple <code>int</code> type is just a shorthand for a number with no fractional digits, such as <code>number(fractionalDigits: 0)</code>.
      </p> 
+      <p>
+      <code>1 number(digits: 18, fractionalDigits: 17, min: 0, max: 5000)</code>
+      </p>
+</div>
+ <div class="two-column">
+    <div>
 <p>
-**Example: Parameterized string**<br>
+<strong>Example: Parameterized string</strong><br>
 This example limits the string to between 3 and 5 characters and ensures it's alphanumeric.
 </p>
+<div>
 <p>
-**Type aliases**
-You can give a name (an alias) to any parameterized type to keep your model readable and avoid long, verbose declarations.
-So instead of typing the complex string definition, you can just use AlphaNumericText.
+<code>1 string(minLength: 3, maxLength: 5, pattern: "[a-zA-Z0-9]*")</code>
 </p>
+ </div>
+
+<div class="two-column">
+    <div>
 <p>
-Type aliases PositiveInteger and AlphaNumericText are both used in this example.
+<strong>Type aliases</strong>
+You can give a name (an alias) to any parameterized type to keep your model readable and avoid long, verbose declarations.
+So instead of typing the complex string definition, you can just use <code>AlphaNumericText</code>.
+</p>
+</div>
+ <div>
+<p>
+<code>1 typeAlias PositiveInteger: number(fractionalDigits: 0, min: 0)
+1 typeAlias AlphaNumericText: string(minLength: 1, pattern: "[a-zA-Z0-9]{1,4}")</code>
+</p>
+</div>
+ <div class="two-column">
+    <div>
+<p>
+Type aliases <code>PositiveInteger</code> and <code>AlphaNumericText</code> are both used in this example.
 </p>
     </div>
-
-    <div>
-      <p>
-       1 number(digits: 18, fractionalDigits: 17, min: 0, max: 5000)
-      </p>
+<div>
 <p>
-1 string(minLength: 3, maxLength: 5, pattern: "[a-zA-Z0-9]*")
-</p>
-<p>
-1 typeAlias PositiveInteger: number(fractionalDigits: 0, min: 0)
-1 typeAlias AlphaNumericText: string(minLength: 1, pattern: "[a-zA-Z0-9]{1,4}")
-</p>
-<p>
-type DrivingLicence extends Person: <"Driving licence authorisation granted by a jurisdiction">
+<code>type DrivingLicence extends Person: <"Driving licence authorisation granted by a jurisdiction">
     countryofIssuance string (1..1)
         [metadata scheme]
     licenceNumber AlphaNumericText (1..1)
     dateofIssuance date (1..1)
     dateOfRenewal date (0..1)
     vehicleEntitlement VehicleClassificationEnum (0..*)
-    penaltyPoints PositiveInteger (1..1)
+    penaltyPoints PositiveInteger (1..1)</code>
 </p>
     </div>
-  </div>
 
 <br/>
 
@@ -98,9 +109,9 @@ Record types are straightforward; they’re pure data definitions and don't allo
    </p>
 </div>
     <div>
-<li>**date:** Combines a day, month, and year.</li>
-<li>**dateTime:** Combines a date and a simple time.</li>
-<li>**zonedDateTime:** Combines date, time, and a time-zone specification for an unambiguous moment in time.</li>
+<li><strong>date:</strong> Combines a day, month, and year.</li>
+<li><strong>dateTime:</strong> Combines a date and a simple time.</li>
+<li><strong>zonedDateTime:</strong> Combines date, time, and a time-zone specification for an unambiguous moment in time.</li>
     </div>
   </div>
 
