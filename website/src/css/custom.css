@@ -85,16 +85,22 @@ button--secondary:hover {
 
 /* Footer */
 .footer {
-  background-color: #414141;
-  color: #ffffff;
+  background-color: #3D3D3D;
+  color: #FFFFFF;
+}
+
+.footer h4,
+.footer .footer__title {
+  color: var(--ifm-color-primary-dark);
 }
 
 .footer a {
-  color: #E94591;
+  color: #FFFFFF;
 }
 
 .footer a:hover {
-  color: #C4297D;
+  color: var(--ifm-color-secondary-dark);
+  text-decoration-color: var(--ifm-color-secondary-dark);
 }
 
 
