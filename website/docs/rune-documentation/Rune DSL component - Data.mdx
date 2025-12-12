@@ -59,14 +59,11 @@ Built-in data types come in three flavours:
 </div>
 <div>
     ```
-    1 number(
-    digits: 18,
-    fractionalDigits: 17,
-    min: 0, max: 5000
-    )
+    1 number(digits: 18,fractionalDigits: 17,min: 0, max: 5000)
     ```
   </div>
 </div>
+
 <div class="two-column">
   <div>
     **Example: Parameterized string**
@@ -82,6 +79,7 @@ Built-in data types come in three flavours:
     ```
 </div>
 </div>
+
 <div class="two-column">
 <div>
     **Type aliases**
@@ -100,6 +98,7 @@ Built-in data types come in three flavours:
     ```
 </div>
 </div>
+
 <div class="two-column">
 <div>
     Type aliases `PositiveInteger` and `AlphaNumericText` are both used in this example.
@@ -160,7 +159,6 @@ concept.
   </div>
   <div>
     <strong>Syntax:</strong>
-
     ```
     type <TypeName>: <"Description">
         [<annotation1>]
@@ -172,7 +170,6 @@ concept.
                   ```
 
                   <strong>Example:</strong>
-
                   ```
                   type VehicleOwnership:
                   <"Representative record of vehicle ownership">
@@ -200,7 +197,6 @@ A data type is made up of **attributes** (its fields). Attributes are optional, 
   </div>
   <div>
     <strong>Syntax:</strong>
-
     ```
     <attributeName> <AttributeType> (x..y) <"Description">
   [<annotation1>]
@@ -209,14 +205,12 @@ A data type is made up of **attributes** (its fields). Attributes are optional, 
                   ```
 
                   <strong>Example:</strong>
-
                   ```
                 type Engine: <"Description of the engine.">
   engineType EngineTypeEnum (1..1) <"Type of engine.">
   power number (1..1) <"Break horse power.">
   mpg number (1..1) <"Miles per gallon.">
   emissionMetrics EmissionMetrics (1..1) <"List of emission metrics in grams per km.">
-
                     ```
   </div>
 </div>
@@ -232,20 +226,16 @@ Inheritance is supported by the <code>extends</code> keyword.
   </div>
   <div>
     <strong>Syntax:</strong>
-
     ```
    type <SubType> extends <SuperType>
-
                   ```
                   <strong>Example:</strong>
-
                   ```
                 type Vehicle extends VehicleFeature:
    specification Specification (1..1)
    registrationID string (1..1)
    vehicleTaxBand VehicleTaxBandEnum (1..1)
    vehicleClassification VehicleClassificationEnum (1..1)
-
                     ```
   </div>
 </div>
@@ -254,21 +244,16 @@ Inheritance is supported by the <code>extends</code> keyword.
   <div>
 <p>
 You can also use the override keyword to restrict the type or cardinality, or to add annotations to a definition.<br />
-
 <strong>Note:</strong> For clarity, our documentation snippets leave out annotations and type details, unless the snippet is meant to show them.
 </p>
   </div>
   <div>
     <strong>Syntax:</strong>
-
     ```
    type <SubType> extends <SuperType>
    override
-
-
                   ```
                   <strong>Example:</strong>
-
                   ```
                type VehicleReport:
     vehicleRegistrationID string (1..1)
@@ -287,7 +272,6 @@ type EuropeanParliamentReport extends VehicleReport:
         [ruleReference VehicleClassificationType]
     euroEmissionStandard string (1..1)
         [ruleReference EuroEmissionStandard]
-
                     ```
   </div>
 </div>
@@ -306,7 +290,6 @@ A description for your choice type is optional but recommended.
   </div>
   <div>
     <strong>Syntax:</strong>
-
     ```
    choice <TypeName>: <"Description">
   [<annotation1>]
@@ -315,17 +298,14 @@ A description for your choice type is optional but recommended.
   <Type1>
   <Type2>
   <...>
-
                   ```
                   <strong>Example:</strong>
-
                   ```
              choice Vehicle:
   [metadata key]
   Car
   Bicycle
   Motorcycle
-
                     ```
   </div>
 </div>
@@ -346,23 +326,19 @@ The definition contains a plain-text description of the enumeration and the list
   </div>
   <div>
     <strong>Syntax:</strong>
-
     ```
    enum <EnumerationName>: <"Description">
   <Value1> (optional: displayName <"DisplayName">) <"Description">
   <Value2> <"Description">
   <...>
-
                   ```
                   <strong>Example:</strong>
-
                   ```
              enum PeriodEnum: <"The enumerated values to specify the period, e.g. day, week.">
   D <"Day">
   W <"Week">
   M <"Month">
   Y <"Year">
-
                     ```
   </div>
 </div>
@@ -379,14 +355,11 @@ For example, the day count fraction scheme for interest rate calculation include
   </div>
   <div>
     <strong>Syntax:</strong>
-
     ```
    enum <EnumerationName>: <"Description">
   <Value_1> <"DisplayName">) <"Value/1">
-
                   ```
                   <strong>Example:</strong>
-
                   ```
            enum DayCountFractionEnum:
   ACT_360 displayName "ACT/360"
@@ -401,7 +374,6 @@ For example, the day count fraction scheme for interest rate calculation include
   _30E_360 displayName "30E/360"
   _30E_360_ISDA displayName "30E/360.ISDA"
   _30_360 displayName "30/360"
-
                     ```
   </div>
 </div>
@@ -412,18 +384,14 @@ For example, the day count fraction scheme for interest rate calculation include
 <strong>External reference data </strong><br />
 To avoid duplicating data, you can link an enumeration to an external source (like a URL) using 
 [<code>docReference ... schemeLocation ...</code>], which instructs the model processor to import the values from that source.
-
 </p>
   </div>
   <div>
     <strong>Syntax:</strong>
-
     ```
    [docReference <Body> <Corpus> schemeLocation <"URL">]
-
                   ```
                   <strong>Example:</strong>
-
                   ```
            enum FloatingRateIndexEnum: <"The enumerated values to specify the list of floating rate index.">
     [docReference ISDA FpML_Coding_Scheme schemeLocation "http://www.fpml.org/coding-scheme/floating-rate-index-3-2"]
@@ -431,23 +399,8 @@ To avoid duplicating data, you can link an enumeration to an external source (li
     // Those enumeration values are imported from the source scheme
     AED_EBOR_Reuters displayName "AED-EBOR-Reuters"
     <...>
-
                     ```
   </div>
 </div>
 
 
-
-<div class="two-column">
-  <div>
-    <h3>Steps:</h3>
-    <ul>
-      <li>Step 1</li>
-      <li>Step 2</li>
-      <li>Step 3</li>
-    </ul>
-  </div>
-  <div>
-    <p><img src="/img/docusaurus-social-card.jpg" alt="Social Card" /></p>
-  </div>
-</div>
