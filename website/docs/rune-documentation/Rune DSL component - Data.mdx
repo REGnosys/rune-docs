@@ -4,90 +4,68 @@ sidebar_position: 5
 
 # Rune DSL component - Data
 
-Data components are the types and structures that define how information is stored, validated and used in code. They
-give shape to raw data so it can be processed logically and `consistently`.
+Data components are the types and structures that define how information is stored, validated and used in code. They give shape to raw data so it can be processed logically and `consistently`.
 
 ## Data component types
 
-Within a Rune DSL data component there may be up to four types of data. Think of these as the building blocks for your
-data structures:
+Within a Rune DSL data component there may be up to four types of data. Think of these as the building blocks for your data structures:
 
 1. **Built-in type:** The most fundamental types, like numbers and text.
 2. **Data type (complex type):** Used to describe complex business concepts (like an Engine or VehicleOwnership).
 3. **Enumeration (Enum):** A list of specific, controlled values (like PeriodEnum).
 4. **Meta-type:** (Not explicitly detailed in the provided text, but mentioned as one of the four components).
 
-<br /><br />
 
 ## 1. Built-in type
 
-Built-in types are defined at the language level and are fundamental to any model – they provide the most basic way to
-represent information. They help to ensure consistency across all models and provide a shared vocabulary for numbers,
-text, time and logic. They form the foundation on which more complex types (like data types or choice types) are built.
+Built-in types are defined at the language level and are fundamental to any model – they provide the most basic way to represent information. They help to ensure consistency across all models and provide a shared vocabulary for numbers, text, time and logic. They form the foundation on which more complex types (like data types or choice types) are built.
+
 
 ### Syntax
 
 Built-in data types come in three flavours:
 
+
 #### a. Basic types
 
-<div class="two-column">
-  <div>
-    <p>These are your standard, non-composite data types:</p>
-  </div>
-  <div>
-    <ul>
-      <li><strong>int:</strong> Integer numbers</li>
-      <li><strong>number:</strong> Decimal numbers</li>
-      <li><strong>boolean:</strong> True or false values</li>
-      <li><strong>string:</strong> Text values</li>
-      <li><strong>time:</strong> Simple time values (e.g. "05:00:00")</li>
-    </ul>
-  </div>
-</div>
+These are your standard, non-composite data types:
 
-<br />
+- **int:** Integer numbers
+- **number:** Decimal numbers
+- **boolean:** True or false values
+- **string:** Text values
+- **time:** Simple time values (e.g. "05:00:00")
+
 
 #### b. Parameterized basic types
 
-<div class="two-column">
-  <div>
-    You can customize the number and string types by adding constraints or specific formatting.<br />
-    <strong>Example: Parameterized number</strong><br />
-    This defines a positive decimal number with a maximum value of 5000. Note that the simple `int` type is just a
-    shorthand for a number with no fractional digits, such as `number(fractionalDigits: 0)`.
-</div>
-<div>
-    ```
-    1 number(digits: 18,fractionalDigits: 17,min: 0, max: 5000)
-    ```
-  </div>
-</div>
+You can customize the number and string types by adding constraints or specific formatting.
 
-<div class="two-column">
-  <div>
-    **Example: Parameterized string**
-    This example limits the string to between 3 and 5 characters and ensures it's alphanumeric.
-</div>
-<div>
-    ```
+##### **Example: Parameterized number**
+
+This defines a positive decimal number with a maximum value of 5000. Note that the simple `int` type is just a shorthand for a number with no fractional digits, such as `number(fractionalDigits: 0)`.
+
+```
+    1 number(digits: 18,fractionalDigits: 17,min: 0, max: 5000)
+```
+
+##### **Example: Parameterized string**
+
+This example limits the string to between 3 and 5 characters and ensures it's alphanumeric.
+
+```
     1 string(
     minLength: 3,
     maxLength: 5,
     pattern: "[a-zA-Z0-9]*"
     )
-    ```
-</div>
-</div>
+```
 
-<div class="two-column">
-<div>
-    **Type aliases**
-    You can give a name (an alias) to any parameterized type to keep your model readable and avoid long, verbose
-    declarations. Instead of typing the complex string definition, you can just use `AlphaNumericText`.
-</div>
-<div>
-    ```
+##### **Type aliases**
+
+You can give a name (an alias) to any parameterized type to keep your model readable and avoid long, verbose declarations. Instead of typing the complex string definition, you can just use `AlphaNumericText`.
+
+```
     1 typeAlias PositiveInteger: number(
     fractionalDigits: 0,
     min: 0
@@ -95,222 +73,181 @@ Built-in data types come in three flavours:
     1 typeAlias AlphaNumericText: string(
     minLength: 1,
     pattern: "[a-zA-Z0-9]{1,4}")
-    ```
-</div>
-</div>
+```
 
-<div class="two-column">
-<div>
-    Type aliases `PositiveInteger` and `AlphaNumericText` are both used in this example.
-</div>
-<div>
-    ```
-    type DrivingLicence extends Person:
-    <"Driving licence authorisation granted by a jurisdiction">
-      countryofIssuance string (1..1) [metadata scheme]
-      licenceNumber AlphaNumericText (1..1)
-      dateofIssuance date (1..1)
-      dateOfRenewal date (0..1)
-      vehicleEntitlement VehicleClassificationEnum (0..*)
-      penaltyPoints PositiveInteger (1..1)
-      ```
-  </div>
-</div>
+Type aliases `PositiveInteger` and `AlphaNumericText` are both used in this example.
 
-<br />
+
+```
+type DrivingLicence extends Person:
+<"Driving licence authorisation granted by a jurisdiction">
+    countryofIssuance string (1..1) [metadata scheme]
+    licenceNumber AlphaNumericText (1..1)
+    dateofIssuance date (1..1)
+    dateOfRenewal date (0..1)
+    vehicleEntitlement VehicleClassificationEnum (0..*)
+    penaltyPoints PositiveInteger (1..1)
+```
+
 
 #### c. Record types
 
-<div class="two-column">
-  <div>
-    These are simple composite built-in types, essentially grouping basic types together. Record types are
-    straightforward; they’re pure data definitions and don't allow for custom validation logic.
-  </div>
-  <div>
-    <ul>
-      <li><strong>date:</strong> Combines a day, month, and year.</li>
-      <li><strong>dateTime:</strong> Combines a date and a simple time.</li>
-      <li><strong>zonedDateTime:</strong> Combines date, time, and a time-zone specification for an unambiguous moment
-        in time.</li>
-    </ul>
-  </div>
-</div>
+These are simple composite built-in types, essentially grouping basic types together. Record types are straightforward; they’re pure data definitions and don't allow for custom validation logic.
+    
 
-<br />
+- **date:** Combines a day, month, and year.
+- **dateTime:** Combines a date and a simple time.
+- **zonedDateTime:** Combines date, time, and a time-zone specification for an unambiguous moment in time.
+
 
 ## 2. Data type (complex type)
 
-Data types are how you define the core **business concepts** in your model (like an 'entity' or 'object'). They’re
-sometimes called **complex types** because they’re composed of multiple elements called **attributes** (or 'fields'). It
-describes a logical concept in your business domain and is defined by the collection of attributes that make up that
-concept.
+Data types are how you define the core **business concepts** in your model (like an 'entity' or 'object'). They’re sometimes called **complex types** because they’re composed of multiple elements called **attributes** (or 'fields'). It describes a logical concept in your business domain and is defined by the collection of attributes that make up that concept.
 
 ### Syntax
 
-<div class="two-column">
-  <div>
-    <ul>
-      <li><strong>Name (required):</strong> Written in PascalCase (e.g. VehicleOwnership). Must be unique in its
-        namespace.</li>
-      <li><strong>Description (optional, but recommended):</strong> A plain-text definition inside angle brackets `<"…">
-          `.</li>
-      <li><strong>Annotations (optional):</strong> Metadata enclosed in square brackets `[ ... ]`.</li>
-    </ul>
-  </div>
-  <div>
-    <strong>Syntax:</strong>
-    ```
-    type <TypeName>: <"Description">
-        [<annotation1>]
-          [<annotation2>]
-            [...]
-            <attribute1>
-              <attribute2>
-                <...>
-                  ```
+- **Name (required):** Written in PascalCase (e.g. VehicleOwnership). Must be unique in its namespace.
+- **Description (optional, but recommended):** A plain-text definition inside angle brackets `<"...">`.
+- **Annotations (optional):** Metadata enclosed in square brackets `[ ... ]`.
 
-                  <strong>Example:</strong>
-                  ```
-                  type VehicleOwnership:
-                  <"Representative record of vehicle ownership">
-                    [metadata key]
-                    [rootType]
-                    ```
-  </div>
-</div>
+
+#### **Syntax:**
+
+```
+type <TypeName>: <"Description">
+[
+<annotation1>]
+    [
+    <annotation2>]
+        [...]
+        <attribute1>
+            <attribute2>
+                <
+                ...>
+```
+
+##### **Example:**
+```
+type VehicleOwnership:
+<"Representative record of vehicle ownership">
+[metadata key]
+[rootType]
+```
+
 
 ### Attributes
 A data type is made up of **attributes** (its fields). Attributes are optional, so a data type can even be empty. When present, each attribute has five parts:
 
-<div class="two-column">
-  <div>
-<ul>
-<li><strong>Name (required):</strong> Written in camelCase (starts lowercase). Must be unique within the data type.</li>
-<li><strong>Type (required):</strong> Defined using one of the available data component types.</li>
-<li><strong>Cardinality (required):</strong> Sets the minimum and maximum number of times the attribute can appear.</li>
-<li><strong>Description (optional, recommended):</strong> Plain-text explanation of the attribute’s role.</li>
-<li><strong>Annotations (optional):</strong> Extra metadata, such as synonyms or tags.</li>
-</ul>
-<p>
-<strong>Note:</strong> Rune DSL doesn’t use special symbols to end definitions. Each new definition begins with a keyword like type, which automatically closes the previous one. This keeps code cleaner by avoiding common delimiters like <code>{ }</code> or <code>;</code>.
-</p>
-  </div>
-  <div>
-    <strong>Syntax:</strong>
-    ```
-    <attributeName> <AttributeType> (x..y) <"Description">
-  [<annotation1>]
-  [<annotation2>]
-  [...]
-                  ```
+- **Name (required):** Written in camelCase (starts lowercase). Must be unique within the data type.
+- **Type (required):** Defined using one of the available data component types.
+- **Cardinality (required):** Sets the minimum and maximum number of times the attribute can appear.
+- **Description (optional, recommended):** Plain-text explanation of the attribute’s role.
+- **Annotations (optional):** Extra metadata, such as synonyms or tags.
 
-                  <strong>Example:</strong>
-                  ```
-                type Engine: <"Description of the engine.">
-  engineType EngineTypeEnum (1..1) <"Type of engine.">
-  power number (1..1) <"Break horse power.">
-  mpg number (1..1) <"Miles per gallon.">
-  emissionMetrics EmissionMetrics (1..1) <"List of emission metrics in grams per km.">
-                    ```
-  </div>
-</div>
+
+**Note:** Rune DSL doesn’t use special symbols to end definitions. Each new definition begins with a keyword like type, which automatically closes the previous one. This keeps code cleaner by avoiding common delimiters like `{}` or `;`.
+
+
+#### **Syntax:**
+```
+<attributeName><AttributeType> (x..y) <"Description">
+    [
+    <annotation1>]
+        [
+        <annotation2>]
+            [...]
+```
+
+##### **Example:**
+```
+    type Engine: <"Description of the engine.">
+    engineType EngineTypeEnum (1..1) <"Type of engine.">
+    power number (1..1) <"Break horse power.">
+    mpg number (1..1) <"Miles per gallon.">
+    emissionMetrics EmissionMetrics (1..1) <"List of emission metrics in grams per km.">
+```
 
 ### Inheritance
-You can enhance definitions via an inheritance mechanism. If you add a sub-type it inherits all its behaviour and attributes from a super-type and adds its own behaviour and set of attributes on top. 
+You can enhance definitions via an inheritance mechanism. If you add a sub-type it inherits all its behaviour and attributes from a super-type and adds its own behaviour and set of attributes on top.
 
-<div class="two-column">
-  <div>
-<p>
-Inheritance is supported by the <code>extends</code> keyword.
-</p>
-  </div>
-  <div>
-    <strong>Syntax:</strong>
-    ```
-   type <SubType> extends <SuperType>
-                  ```
-                  <strong>Example:</strong>
-                  ```
-                type Vehicle extends VehicleFeature:
-   specification Specification (1..1)
-   registrationID string (1..1)
-   vehicleTaxBand VehicleTaxBandEnum (1..1)
-   vehicleClassification VehicleClassificationEnum (1..1)
-                    ```
-  </div>
-</div>
+Inheritance is supported by the `extends` keyword.
 
-<div class="two-column">
-  <div>
-<p>
-You can also use the override keyword to restrict the type or cardinality, or to add annotations to a definition.<br />
-<strong>Note:</strong> For clarity, our documentation snippets leave out annotations and type details, unless the snippet is meant to show them.
-</p>
-  </div>
-  <div>
-    <strong>Syntax:</strong>
-    ```
-   type <SubType> extends <SuperType>
-   override
-                  ```
-                  <strong>Example:</strong>
-                  ```
-               type VehicleReport:
-    vehicleRegistrationID string (1..1)
-    firstRegistrationDate date (0..1)
-    engineType EngineTypeEnum (0..1)
+#### **Syntax:**
+```
+type <SubType> extends <SuperType>
+```
+
+##### **Example:**
+```
+type Vehicle extends VehicleFeature:
+specification Specification (1..1)
+registrationID string (1..1)
+vehicleTaxBand VehicleTaxBandEnum (1..1)
+vehicleClassification VehicleClassificationEnum (1..1)
+```
+    
+You can also use the override keyword to restrict the type or cardinality, or to add annotations to a definition.
+
+**Note:** For clarity, our documentation snippets leave out annotations and type details, unless the snippet is meant to show them.
+
+#### **Syntax:**
+```
+type <SubType> extends <SuperType>
+override
+```
+
+##### **Example:**
+```
+type VehicleReport:
+vehicleRegistrationID string (1..1)
+firstRegistrationDate date (0..1)
+engineType EngineTypeEnum (0..1)
 
 type EuropeanParliamentReport extends VehicleReport:
-    override vehicleRegistrationID Max40Text (1..1) // Change type to compatible string type limited to 40 characters
-        [ruleReference VehicleRegistrationID] // Add rule reference
-    override firstRegistrationDate date (1..1) // Change cardinality to be required
-        [ruleReference FirstRegistrationDate] // Add rule reference
-    override engineType EngineTypeEnum (1..1) // Change cardinality to be required
-        [ruleReference EngineType] // Add rule reference
-    // New attributes can be a added after all overrides
-    vehicleClassificationType VehicleClassificationEnum (1..1)
-        [ruleReference VehicleClassificationType]
-    euroEmissionStandard string (1..1)
-        [ruleReference EuroEmissionStandard]
-                    ```
-  </div>
-</div>
+override vehicleRegistrationID Max40Text (1..1) // Change type to compatible string type limited to 40 characters
+[ruleReference VehicleRegistrationID] // Add rule reference
+override firstRegistrationDate date (1..1) // Change cardinality to be required
+[ruleReference FirstRegistrationDate] // Add rule reference
+override engineType EngineTypeEnum (1..1) // Change cardinality to be required
+[ruleReference EngineType] // Add rule reference
+// New attributes can be a added after all overrides
+vehicleClassificationType VehicleClassificationEnum (1..1)
+[ruleReference VehicleClassificationType]
+euroEmissionStandard string (1..1)
+[ruleReference EuroEmissionStandard]
+```
 
 ### Choice type (union type)
 A choice type component is a user interface element that lets you select values from a predefined list, which may be shown as a dropdown menu, radio buttons or checkboxes. It allows you to define a group of related types where a value can be one of the listed options. It's often called a union type in other languages.
 
-### Syntax
+#### Syntax
 You define a choice type using the choice keyword, followed by a name and a list of the possible types.
 
-<div class="two-column">
-  <div>
-<p>
 A description for your choice type is optional but recommended.
-</p>
-  </div>
-  <div>
-    <strong>Syntax:</strong>
-    ```
-   choice <TypeName>: <"Description">
-  [<annotation1>]
-  [<annotation2>]
-  [...]
-  <Type1>
-  <Type2>
-  <...>
-                  ```
-                  <strong>Example:</strong>
-                  ```
-             choice Vehicle:
-  [metadata key]
-  Car
-  Bicycle
-  Motorcycle
-                    ```
-  </div>
-</div>
 
-<br />
+#### **Syntax:**
+```
+choice <TypeName>: <"Description">
+[
+<annotation1>]
+    [
+    <annotation2>]
+        [...]
+        <Type1>
+            <Type2>
+                <
+                ...>
+```
+
+##### **Example:**
+```
+choice Vehicle:
+[metadata key]
+Car
+Bicycle
+Motorcycle
+```
+
 
 ## 3. Enumeration (Enum)
 An enumeration ensures a type can only take on a specific, controlled set of values. It’s basically a named container for a list of valid values (sometimes called a scheme).
@@ -318,89 +255,77 @@ An enumeration ensures a type can only take on a specific, controlled set of val
 ### Syntax
 Enumeration is defined using the `enum` keyword. The name should use PascalCase and be unique to a namespace. It should end with the suffix `Enum`.
 
-<div class="two-column">
-  <div>
-<p>
 The definition contains a plain-text description of the enumeration and the list of enumeration values.
-</p>
-  </div>
-  <div>
-    <strong>Syntax:</strong>
-    ```
-   enum <EnumerationName>: <"Description">
-  <Value1> (optional: displayName <"DisplayName">) <"Description">
-  <Value2> <"Description">
-  <...>
-                  ```
-                  <strong>Example:</strong>
-                  ```
-             enum PeriodEnum: <"The enumerated values to specify the period, e.g. day, week.">
-  D <"Day">
-  W <"Week">
-  M <"Month">
-  Y <"Year">
-                    ```
-  </div>
-</div>
-
-<div class="two-column">
-  <div>
-<p>
-<strong>Display names and special characters </strong><br />
-Enumeration values can't start with digits or use special characters (except underscore <code>_</code>). <br />
-If you need to integrate scheme values with special characters you can use a <code>displayName</code> and replace special characters with <code>_</code> while the <code>displayName</code> entry corresponds to the actual value.
-For example, the day count fraction scheme for interest rate calculation includes values such as <code>ACT/365.FIXED</code> and <code>30/360</code>. These are associated as <code>displayName</code> to the ACT_365_FIXED and _30_360 enumeration values, respectively.
-
-</p>
-  </div>
-  <div>
-    <strong>Syntax:</strong>
-    ```
-   enum <EnumerationName>: <"Description">
-  <Value_1> <"DisplayName">) <"Value/1">
-                  ```
-                  <strong>Example:</strong>
-                  ```
-           enum DayCountFractionEnum:
-  ACT_360 displayName "ACT/360"
-  ACT_365L displayName "ACT/365L"
-  ACT_365_FIXED displayName "ACT/365.FIXED"
-  ACT_ACT_AFB displayName "ACT/ACT.AFB"
-  ACT_ACT_ICMA displayName "ACT/ACT.ICMA"
-  ACT_ACT_ISDA displayName "ACT/ACT.ISDA"
-  ACT_ACT_ISMA displayName "ACT/ACT.ISMA"
-  BUS_252 displayName "BUS/252"
-  _1_1 displayName "1/1"
-  _30E_360 displayName "30E/360"
-  _30E_360_ISDA displayName "30E/360.ISDA"
-  _30_360 displayName "30/360"
-                    ```
-  </div>
-</div>
-
-<div class="two-column">
-  <div>
-<p>
-<strong>External reference data </strong><br />
-To avoid duplicating data, you can link an enumeration to an external source (like a URL) using 
-[<code>docReference ... schemeLocation ...</code>], which instructs the model processor to import the values from that source.
-</p>
-  </div>
-  <div>
-    <strong>Syntax:</strong>
-    ```
-   [docReference <Body> <Corpus> schemeLocation <"URL">]
-                  ```
-                  <strong>Example:</strong>
-                  ```
-           enum FloatingRateIndexEnum: <"The enumerated values to specify the list of floating rate index.">
-    [docReference ISDA FpML_Coding_Scheme schemeLocation "http://www.fpml.org/coding-scheme/floating-rate-index-3-2"]
-
-    // Those enumeration values are imported from the source scheme
-    AED_EBOR_Reuters displayName "AED-EBOR-Reuters"
-    <...>
-                    ```
-  </div>
-</div>
 
 
+#### **Syntax:**
+```
+enum <EnumerationName>: <"Description">
+<Value1> (optional: displayName <"DisplayName">) <"Description">
+    <Value2>
+        <
+        "Description">
+        <...>
+```
+
+##### **Example:**
+```
+        enum PeriodEnum: <"The enumerated values to specify the period, e.g. day, week.">
+        D <"Day">
+        W <"Week">
+        M <"Month">
+        Y <"Year">
+```
+
+### **Display names and special characters **
+
+Enumeration values can't start with digits or use special characters (except underscore `_`). 
+
+If you need to integrate scheme values with special characters you can use a `displayName` and replace special characters with `_` while the `displayName` entry corresponds to the actual value. For example, the day count fraction scheme for interest rate calculation includes values such as `ACT/365.FIXED` and `30/360`. These are associated as `displayName` to the ACT_365_FIXED and _30_360 enumeration values, respectively.
+
+#### **Syntax:**
+```
+enum <EnumerationName>: <"Description">
+<Value_1>
+    <
+    "DisplayName">) <"Value/1">
+```
+
+##### **Example:**
+```
+enum DayCountFractionEnum:
+ACT_360 displayName "ACT/360"
+ACT_365L displayName "ACT/365L"
+ACT_365_FIXED displayName "ACT/365.FIXED"
+ACT_ACT_AFB displayName "ACT/ACT.AFB"
+ACT_ACT_ICMA displayName "ACT/ACT.ICMA"
+ACT_ACT_ISDA displayName "ACT/ACT.ISDA"
+ACT_ACT_ISMA displayName "ACT/ACT.ISMA"
+BUS_252 displayName "BUS/252"
+_1_1 displayName "1/1"
+_30E_360 displayName "30E/360"
+_30E_360_ISDA displayName "30E/360.ISDA"
+_30_360 displayName "30/360"
+```
+
+### **External reference data **
+
+To avoid duplicating data, you can link an enumeration to an external source (like a URL) using [`docReference ... schemeLocation ...`], which instructs the model processor to import the values from that source.
+
+
+#### **Syntax:**
+```
+[docReference <Body> <Corpus> schemeLocation <"URL">]
+```
+
+##### **Example:**
+```
+enum FloatingRateIndexEnum: <"The enumerated values to specify the list of floating rate index.">
+[docReference ISDA FpML_Coding_Scheme schemeLocation
+"http://www.fpml.org/coding-scheme/floating-rate-index-3-2"]
+
+// Those enumeration values are imported from the source scheme
+AED_EBOR_Reuters displayName "AED-EBOR-Reuters"
+<...>
+```
+    
