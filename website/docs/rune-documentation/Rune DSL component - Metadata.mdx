@@ -11,7 +11,7 @@ Most components can include a plain‑text description. These descriptions don't
 To add a text description to a model component, place the text in double quote marks inside angle brackets: `<"…">`.
 
 
-| You can attach descriptions to almost any component, including: | Data types<br> Attributes<br> Conditions<br> Functions<br> Inputs and outputs<br> Business logic<br> Reporting rules<br> Namespaces |
+| You can attach descriptions to almost any component, including: | Data types Attributes Conditions Functions Inputs and outputs Business logic Reporting rules Namespaces |
 | --- | --- |
 
 
@@ -36,11 +36,11 @@ Annotations add extra metadata to model components beyond plain descriptions. Th
 | Annotations are defined with the `annotation` keyword: | `annotation <annotationName>: <"Description"> <attribute1> <attribute2> <"…">` |
 | --- | --- |
 | Annotation names use **lower camelCase** and must be unique within a model. Attributes are optional - many annotations won't need any. | `annotation rootType: <"Mark a type as a root of the rune model">` |
-| Rune DSL includes some built‑in annotations, but you can define your own as needed.<br>Once defined, you can apply an annotation to any model component using its name and any chosen attributes. | `[<annotationName> (optional:<annotationAttribute>)]` |
+| Rune DSL includes some built‑in annotations, but you can define your own as needed. Once defined, you can apply an annotation to any model component using its name and any chosen attributes. | `[<annotationName> (optional:<annotationAttribute>)]` |
 
 ### Annotation: `codeimplementation`
 
-| The `codeImplementation` annotation tells users that a function's logic is implemented elsewhere in the codebase - for example, in a static, handwritten Java class.<br>Functions marked with this annotation should not include any Rune implementation - their behavior is provided by the external code. | **Example** `func MyFunc: [codeImplementation] inputs: myInput string 1..1; output: myOutput string 1..1` |
+| The `codeImplementation` annotation tells users that a function's logic is implemented elsewhere in the codebase - for example, in a static, handwritten Java class. Functions marked with this annotation should not include any Rune implementation - their behavior is provided by the external code. | **Example** `func MyFunc: [codeImplementation] inputs: myInput string 1..1; output: myOutput string 1..1` |
 | --- | --- |
 
 
@@ -88,7 +88,7 @@ Document hierarchy uses three keywords to structure document references:
 | --- | --- |
 | **Bodies** may include regulatory authorities or trade associations. | `body Authority EuropeanCommission <"European Commission <;ec.europa.eu).">` |
 | --- | --- |
-| **Corpuses** represent document sets such as directives, laws, regulatory texts, technical standards, or best‑practice guidance.<br><br>A corpus may also include an **alias**, which provides an alternative identifier such as an official document number. | `corpus Directive "93/59/EC" StandardEmissionsEuro1<br><br>&lt;"COUNCIL DIRECTIVE 93 /59/EEC of 28 June 1993 amending Directive 70/220/EEC on the approximation of the laws of the Member States relating to measures to be taken against air pollution by emissions from motor vehicles <https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A31993L0059>">` |
+| **Corpuses** represent document sets such as directives, laws, regulatory texts, technical standards, or best‑practice guidance. A corpus may also include an **alias**, which provides an alternative identifier such as an official document number. | `corpus Directive "93/59/EC" StandardEmissionsEuro1 <"COUNCIL DIRECTIVE 93 /59/EEC of 28 June 1993 amending Directive 70/220/EEC on the approximation of the laws of the Member States relating to measures to be taken against air pollution by emissions from motor vehicles <https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A31993L0059>">` |
 | --- | --- |
 | **Segments** refer to a specific section in a document &#40;as opposed to corpuses, which are typically large document sets with many provisions, clauses etc&#41;. | `**segment** article **segment** whereas **segment** annex **segment** table` |
 | --- | --- |
@@ -177,5 +177,5 @@ Rune supports this pattern using an `address / location` cross‑reference.
 - **address** marks the placeholder where the variable value belongs (the target).
 - **location** marks where the actual value is defined (the source).
 
-| The syntax uses the address and location metadata pair as shown below.<br><br>**Note:** The global referencing mechanism doesn't work here because a global key is tied to an object's full set of attribute values. Here, however, the same key &#40;the variable's address&#41; must stay the same no matter what value the variable takes. | `<targetAttribute> [metadata address "pointsTo"=<sourceAttribute>] <sourceAttribute> [metadata location]` |
+| The syntax uses the address and location metadata pair as shown below. **Note:** The global referencing mechanism doesn't work here because a global key is tied to an object's full set of attribute values. Here, however, the same key &#40;the variable's address&#41; must stay the same no matter what value the variable takes. | `<targetAttribute> [metadata address "pointsTo"=<sourceAttribute>] <sourceAttribute> [metadata location]` |
 | --- | --- |
