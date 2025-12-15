@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 **Rune DSL component - Metadata component**
 
 Metadata components add extra information to model elements like data types, attributes, and functions.
