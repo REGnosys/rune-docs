@@ -117,6 +117,18 @@ button--secondary:hover {
   display: none !important;
 }
 
+@media (min-width: 997px) {
+  /* Force full width for the content column, overriding the theme's 75% limit */
+  @layer docusaurus.theme-classic {
+    html [class*='docItemCol'],
+    html .docItemCol_VOVn {
+      max-width: 100% !important;
+      width: 100% !important;
+      flex: 1 0 auto !important;
+    }
+  }
+}
+
 /* 
 
 Dark Pink: #C4297D
