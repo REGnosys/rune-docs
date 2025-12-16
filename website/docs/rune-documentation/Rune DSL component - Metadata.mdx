@@ -34,14 +34,14 @@ Annotations add extra metadata to model components beyond plain descriptions. Th
 **Syntax**
 
 | Annotations are defined with the `annotation` keyword: | `annotation <annotationName>: <"Description"> <attribute1> <attribute2> <"…">` |
-| --- | --- |
+| :--- | :--- |
 | Annotation names use **lower camelCase** and must be unique within a model. Attributes are optional - many annotations won't need any. | `annotation rootType: <"Mark a type as a root of the rune model">` |
 | Rune DSL includes some built‑in annotations, but you can define your own as needed. Once defined, you can apply an annotation to any model component using its name and any chosen attributes. | `[<annotationName> (optional:<annotationAttribute>)]` |
 
 ### Annotation: `codeimplementation`
 
-| The `codeImplementation` annotation tells users that a function's logic is implemented elsewhere in the codebase - for example, in a static, handwritten Java class. Functions marked with this annotation should not include any Rune implementation - their behavior is provided by the external code. | **Example** `func MyFunc: [codeImplementation] inputs: myInput string 1..1; output: myOutput string 1..1` |
-| --- | --- |
+| The `codeImplementation` annotation tells users that a function's logic is implemented elsewhere in the codebase - for example, in a static, handwritten Java class. Functions marked with this annotation should not include any Rune implementation - their behavior is provided by the external code. | **Example** ```func MyFunc: [codeImplementation] inputs: myInput string 1..1; output: myOutput string 1..1``` |
+| :--- | :--- |
 
 
 ### Annotation: `metadata`
