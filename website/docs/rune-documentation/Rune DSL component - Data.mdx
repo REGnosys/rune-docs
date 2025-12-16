@@ -18,7 +18,9 @@ Within a Rune DSL data component there may be up to four types of data. Think of
 [^1]: Can we make these anchor links?
 No text for 'Meta-type' - or is this the Metadata component?
 [^2]: PeriodEnum is not currently included in our keywords - should it be? Or should we use a different example of a controlled value?
-
+ 
+[^3]
+[^3]: Can we add a line break here?
 ## 1. Built-in type
 
 Built-in types are defined at the language level and are fundamental to any model – they provide the most basic way to represent information. They help to ensure consistency across all models and provide a shared vocabulary for numbers, text, time and logic. They form the foundation on which more complex types (like data types or choice types) are built.
@@ -30,16 +32,13 @@ Built-in data types come in three flavors:
 
 #### a. Basic types
 
-| These are your standard, non-composite data types: | 
+These are your standard, non-composite data types: 
 
 - **int:** Integer numbers
 - **number:** Decimal numbers
 - **boolean:** True or false values
 - **string:** Text values
 - **time:** Simple time values (e.g. "05:00:00")
-| --- | --- |
-[^2]
-[^2]: Make this a table, ranged top left
 
 #### b. Parameterized basic types
 
@@ -52,8 +51,8 @@ This defines a positive decimal number with a maximum value of 5000. Note that t
 ```
     1 number(digits: 18,fractionalDigits: 17,min: 0, max: 5000)
 ```
-[^3]
-[^3]: Make these tables, or two-column layout, ranged top left
+[^4]
+[^4]: Make these tables, or two-column layout, ranged top left
 ##### **Example: Parameterized string**
 
 This example limits the string to between 3 and 5 characters and ensures it's alphanumeric.
@@ -104,7 +103,8 @@ These are simple composite built-in types, essentially grouping basic types toge
 - **dateTime:** Combines a date and a simple time.
 - **zonedDateTime:** Combines date, time, and a time-zone specification for an unambiguous moment in time.
 
-
+[^3]
+[^3]: Can we add a line break here?
 ## 2. Data type (complex type)
 
 Data types are how you define the core **business concepts** in your model (like an 'entity' or 'object'). They’re sometimes called **complex types** because they’re composed of multiple elements called **attributes** (or 'fields'). It describes a logical concept in your business domain and is defined by the collection of attributes that make up that concept.
@@ -253,7 +253,8 @@ Bicycle
 Motorcycle
 ```
 
-
+[^3]
+[^3]: Can we add a line break here?
 ## 3. Enumeration (Enum)
 An enumeration ensures a type can only take on a specific, controlled set of values. It’s basically a named container for a list of valid values (sometimes called a scheme).
 
