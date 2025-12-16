@@ -28,7 +28,6 @@ Built-in types are defined at the language level and are fundamental to any mode
 
 Built-in data types come in three flavors:
 
-
 #### a. Basic types
 
 | These are your standard, non-composite data types: | 
@@ -39,6 +38,8 @@ Built-in data types come in three flavors:
 - **string:** Text values
 - **time:** Simple time values (e.g. "05:00:00")
 | --- | --- |
+[^2]
+[^2]: Make this a table, ranged top left
 
 #### b. Parameterized basic types
 
@@ -51,7 +52,8 @@ This defines a positive decimal number with a maximum value of 5000. Note that t
 ```
     1 number(digits: 18,fractionalDigits: 17,min: 0, max: 5000)
 ```
-
+[^3]
+[^3]: Make these tables, or two-column layout, ranged top left
 ##### **Example: Parameterized string**
 
 This example limits the string to between 3 and 5 characters and ensures it's alphanumeric.
@@ -280,7 +282,7 @@ enum <EnumerationName>: <"Description">
         Y <"Year">
 ```
 
-### **Display names and special characters **
+### Display names and special characters 
 
 Enumeration values can't start with digits or use special characters (except underscore `_`). 
 
@@ -311,7 +313,7 @@ _30E_360_ISDA displayName "30E/360.ISDA"
 _30_360 displayName "30/360"
 ```
 
-### **External reference data **
+### External reference data 
 
 To avoid duplicating data, you can link an enumeration to an external source (like a URL) using [`docReference ... schemeLocation ...`], which instructs the model processor to import the values from that source.
 
