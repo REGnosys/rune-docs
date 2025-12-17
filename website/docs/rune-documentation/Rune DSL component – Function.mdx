@@ -17,7 +17,7 @@ Just like spreadsheets let you create formulas and reuse them, Rune DSL lets you
 
 **2. Flexibility:** You don’t need to define every process from scratch. You can assemble new processes by reusing existing building blocks.
 
-## When to reuse existing industry processes
+### When to reuse existing industry processes
 If a process is already well defined and widely used, it should be reused rather than recreated. Examples include:
 - **Mathematical functions** such as sum, absolute value, or average.
 - **Reference data lookups**, which are typically provided by industry-standard utilities.
@@ -111,7 +111,7 @@ Conditions restrict what values are allowed for inputs and outputs. They ensure 
 1. Pre conditions – `condition`
  - Apply to inputs only
  - Checked before the function runs
-2. Post conditions – post-condition
+2. Post conditions – `post-condition`
  - Apply to inputs and output
  - Checked after the function runs
 
@@ -180,11 +180,12 @@ func Create_VehicleOwnership: <"Creation of a vehicle ownership record file">
 ```
 
 **Working with lists: set vs add**
+
 `set`
-•	Replaces the entire list.
-•	The expression must return a list.
+- Replaces the entire list.
+- The expression must return a list.
 `add`
-•	Appends a single element or a list to an existing list.
+- Appends a single element or a list to an existing list.
 
 Example:
 ```
