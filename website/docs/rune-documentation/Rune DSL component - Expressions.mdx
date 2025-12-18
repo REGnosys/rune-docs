@@ -19,7 +19,7 @@ The type of an expression is simply the type of the value it produces – for ex
 2. [Path expressions](#2-path-expressions)
 3. [Operators](#3-operators)
 4. [Operator precedence](#4-operator-precedence)
-5.[ Lists](#5-lists)
+5. [Lists](#5-lists)
 6. [List comparison](#6-list-comparison)
 
 
@@ -575,7 +575,7 @@ owners
         ]
 ```
 
-#### Extract
+#### `Extract`
 The keyword `extract` transforms each item in a list using an expression.
 - The expression runs once per list item.
 - The output is a new list containing the transformed items.
@@ -596,7 +596,7 @@ drivingLicences
 ```
 
 
-#### Reduce
+#### `Reduce`
 The `reduce` keyword is an operation that takes a list and returns a **single value**.
 
 #### Built in reduction operators
@@ -646,10 +646,12 @@ If a single value expression is used with `contains` or `disjoint`, Rune treats 
 - List vs list – true if same length and all items match
 - List vs single (all) – all items equal the value
 - List vs single (any) – at least one item equals the value
+
 `<>`
 - List vs list – true if lengths differ or any item differs
 - List vs single (any) – any item differs
 - List vs single (all) – all items differ
+
 `<, <=, >=, >`
 - List vs list – lists must be same length; comparison must hold pairwise
 - List vs single (all) – comparison must hold for all items
@@ -679,13 +681,11 @@ owner -> drivingLicense -> countryofIssuance distinct count = 1
 
 ### 6.5 Conversion operators
 Rune provides five conversion operators:
-```
-- to-enum
-- to-string
-- to-number
-- to-int
-- to-time
-```
+- `to-enum`
+- `to-string`
+- `to-number`
+- `to-int`
+- `to-time`
 
 **Examples**
 
