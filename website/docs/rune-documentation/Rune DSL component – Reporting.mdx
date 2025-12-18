@@ -7,6 +7,17 @@ Rune DSL supports financial institutions’ regulatory reporting requirements by
 
 [^1]: Can we add line breaks before each of the headers?
 
+
+
+1. Regulatory hierarchy
+2. Report definition
+3. Report rules
+4. Function overriding
+[^1]
+
+[^1]: Can we make these anchor links?
+
+
 ## 1. Regulatory hierarchy
 Before defining reporting rules, the regulatory content itself must be organised.
 Financial regulations:
@@ -97,7 +108,7 @@ To ensure the reporting model is valid, all of these must already exist in the r
 A report simply assembles these components into a **complete recipe** that firms can implement directly to meet regulatory reporting obligations.
 
 
-## 4. Rule definition
+## 3. Report rules
 Rune DSL takes a **functional approach** to regulatory reporting. A reporting rule is simply a function: **y=f(x)**, where:
 - x = business data (input)
 - y = reported data (output)
@@ -288,7 +299,7 @@ type Report extends CommonReport:
 ```
 
 
-## 5. Function overriding 
+## 4. Function overriding 
 Function overriding lets you **customize** existing functions without rewriting them. It enables:
 - **Flexibility** – adapt logic for specific use cases
 - **Reusability** – keep most of the original function
