@@ -203,7 +203,9 @@ In general, the path must start with the keyword `for`, followed by one of these
 - An attribute name e.g. `payerReceiver`
 - A path to an attribute e.g. `payerReceiver -> payer`
 - The keyword `item` to refer to the attribute itself
-- A deep path in a choice type e.g. `item ->> dayCountConvention`. See the [deep path operator.](/Rune%20DSL%20component%20-%20Expressions.mdx)
+- A deep path in a choice type e.g. `item ->> dayCountConvention`. See the [deep path operator.](/Rune%20DSL%20component%20-%20Expressions.mdx) 
+[^2]
+[^2]: Link to deep path operator - Expressions component
 
 ### 2.4 Data template
 When a data type is marked as a **template**, it can reference a separate template object. Both the template and any object that uses it are usually incomplete and should not be validated on their own. After resolving the template reference, the template data must be merged into the object to create a fully populated object. Validation should only happen after this merge.
