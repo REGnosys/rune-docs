@@ -2,6 +2,11 @@
 sidebar_position: 8
 ---
 
+### Sections
+1. [Cardinality](#1-cardinality) 
+2. [Condition statements](#2-condition-statements)
+
+
 In Rune DSL, data validation ensures that your model stays consistent and accurate. Think of these components as a built-in ‘health check’ for your data objects.
 When you define validation rules, Rune generates executable code that can scan your data and report exactly which rules passed and which were broken.
 
@@ -13,6 +18,7 @@ There are two types of validation components:
 Cardinality is the simplest form of validation. It controls how many instances of an attribute are allowed. It defines the ‘lower bound’ (minimum – x) and ‘upper bound’ (maximum – y) for an attribute. This prevents missing data or prevents an object from having too many entries where only one is expected.
 
 **Syntax**
+
 Rune uses the standard (x..y) notation:
 - `(0..1)`: Optional. The attribute can be missing or appear once.
 - `(1..1)`: Mandatory. There must be exactly one.
@@ -20,7 +26,7 @@ Rune uses the standard (x..y) notation:
 - `(0..*)`: Optional list. Any number (including zero) is allowed.
 
 **Example**
-```
+``` Haskell
 type Address:
   street string (1..*)
   city string (1..1)
@@ -33,20 +39,22 @@ type Address:
 
 ## 2. Condition statements
 Conditions are custom logic rules you can use to check if the data within an object makes sense. Conditions evaluate to True or False. If a condition is False, the object is considered invalid. Because conditions are written inside a data type, they can reference attributes directly.
+
 Conditions are usually placed at the end of a type definition and include:
 - a name
 - a plain-text description - optional
 - an operator that applies to the type's attributes and returns a boolean
 
 **Syntax**
-```
+
+``` Haskell
 condition <ConditionName>: 
     <logic_expression>
 ```
 **Example**
 
 Checking if a percentage is within a valid range:
-```
+``` Haskell
 type ConstituentWeight:
    basketPercentage number (0..1)
    condition BasketPercentage:
@@ -55,29 +63,32 @@ type ConstituentWeight:
 ```
 
 
-### Choice conditions
+### 2.1 Choice conditions
 Sometimes, the validity of one attribute depends on another. Rune DSL provides ‘choice’ rules to handle these relationships without writing complex boolean logic.
 A choice rule defines a **mutual exclusion** constraint between attributes. There are two main types:
 - **Optional choice:** At most one attribute can be present (0 or 1).
 - **Required choice:** Exactly one attribute must be present (1 only).
 
 **Syntax**
-```
+
+``` Haskell
 <choiceType> choice <attribute1>, <attribute2>, ...
 ```
-Note: All attributes in a choice rule must have a lower cardinality of 0.
+**Note:** All attributes in a choice rule must have a lower cardinality of 0.
 
 **Example**
+
 In a `NaturalPerson` type, you might have an optional choice between a `middleName` or an initial:
-```
+``` Haskell
 condition NameChoice:
     optional choice middleName, initial
 ```
-### The ‘one-of’ shortcut
+
+### 2.2 The ‘one-of’ shortcut
 If you want a rule where **exactly one** attribute from the entire list must be present, you can use the one-of shorthand. This is much faster than listing every single attribute in a choice rule.
 
 **Example**
-```
+``` Haskell
 type PeriodRange:
   lowerBound PeriodBound (0..1)
   upperBound PeriodBound (0..1)
