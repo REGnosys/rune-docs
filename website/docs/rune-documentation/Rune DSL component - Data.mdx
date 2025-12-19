@@ -51,8 +51,8 @@ This defines a positive decimal number with a maximum value of 5000. Note that t
 
 This example limits the string to between 3 and 5 characters and ensures it's alphanumeric.
 
-```
-    1 string(
+``` Haskell
+    string(
     minLength: 3,
     maxLength: 5,
     pattern: "[a-zA-Z0-9]*"
@@ -63,8 +63,8 @@ This example limits the string to between 3 and 5 characters and ensures it's al
 
 You can give a name (an alias) to any parameterized type to keep your model readable and avoid long, verbose declarations. Instead of typing the complex string definition, you can just use `AlphaNumericText`.
 
-```haskell
-    1 typeAlias PositiveInteger: number(
+``` Haskell
+    typeAlias PositiveInteger: number(
     fractionalDigits: 0,
     min: 0
     )
@@ -76,7 +76,7 @@ You can give a name (an alias) to any parameterized type to keep your model read
 Type aliases `PositiveInteger` and `AlphaNumericText` are both used in this example.
 
 
-```
+``` Haskell
 type DrivingLicence extends Person:
 <"Driving licence authorisation granted by a jurisdiction">
     countryofIssuance string (1..1) [metadata scheme]
@@ -110,7 +110,7 @@ Data types are how you define the core **business concepts** in your model (like
 
 
 **Syntax:**
-```
+``` Haskell
 type <TypeName>: <"Description">
 [
 <annotation1>]
@@ -124,7 +124,7 @@ type <TypeName>: <"Description">
 ```
 
 **Example:**
-```
+``` Haskell
 type VehicleOwnership:
 <"Representative record of vehicle ownership">
 [metadata key]
@@ -146,7 +146,7 @@ A data type is made up of **attributes** (its fields). Attributes are optional, 
 
 
 **Syntax:**
-```
+``` Haskell
 <attributeName><AttributeType> (x..y) <"Description">
     [
     <annotation1>]
@@ -156,7 +156,7 @@ A data type is made up of **attributes** (its fields). Attributes are optional, 
 ```
 
 **Example:**
-```
+``` Haskell
     type Engine: <"Description of the engine.">
     engineType EngineTypeEnum (1..1) <"Type of engine.">
     power number (1..1) <"Break horse power.">
@@ -170,12 +170,12 @@ You can enhance definitions via an inheritance mechanism. If you add a sub-type 
 Inheritance is supported by the `extends` keyword.
 
 **Syntax:**
-```
+``` Haskell
 type <SubType> extends <SuperType>
 ```
 
 **Example:**
-```
+``` Haskell
 type Vehicle extends VehicleFeature:
 specification Specification (1..1)
 registrationID string (1..1)
@@ -188,13 +188,13 @@ You can also use the override keyword to restrict the type or cardinality, or to
 **Note:** For clarity, our documentation snippets leave out annotations and type details, unless the snippet is meant to show them.
 
 **Syntax:**
-```
+``` Haskell
 type <SubType> extends <SuperType>
 override
 ```
 
 **Example:**
-```
+``` Haskell
 type VehicleReport:
 vehicleRegistrationID string (1..1)
 firstRegistrationDate date (0..1)
@@ -224,7 +224,7 @@ You define a choice type using the choice keyword, followed by a name and a list
 A description for your choice type is optional but recommended.
 
 **Syntax:**
-```
+``` Haskell
 choice <TypeName>: <"Description">
 [
 <annotation1>]
@@ -238,7 +238,7 @@ choice <TypeName>: <"Description">
 ```
 
 **Example:**
-```
+``` Haskell
 choice Vehicle:
 [metadata key]
 Car
@@ -260,7 +260,7 @@ The definition contains a plain-text description of the enumeration and the list
 
 
 **Syntax:**
-```
+``` Haskell
 enum <EnumerationName>: <"Description">
 <Value1> (optional: displayName <"DisplayName">) <"Description">
     <Value2>
@@ -270,7 +270,7 @@ enum <EnumerationName>: <"Description">
 ```
 
 **Example:**
-```
+``` Haskell
         enum PeriodEnum: <"The enumerated values to specify the period, e.g. day, week.">
         D <"Day">
         W <"Week">
@@ -285,7 +285,7 @@ Enumeration values can't start with digits or use special characters (except und
 If you need to integrate scheme values with special characters you can use a `displayName` and replace special characters with `_` while the `displayName` entry corresponds to the actual value. For example, the day count fraction scheme for interest rate calculation includes values such as `ACT/365.FIXED` and `30/360`. These are associated as `displayName` to the ACT_365_FIXED and _30_360 enumeration values, respectively.
 
 **Syntax:**
-```
+``` Haskell
 enum <EnumerationName>: <"Description">
 <Value_1>
     <
@@ -293,7 +293,7 @@ enum <EnumerationName>: <"Description">
 ```
 
 **Example:**
-```
+``` Haskell
 enum DayCountFractionEnum:
 ACT_360 displayName "ACT/360"
 ACT_365L displayName "ACT/365L"
@@ -315,12 +315,12 @@ To avoid duplicating data, you can link an enumeration to an external source (li
 
 
 **Syntax:**
-```
+``` Haskell
 [docReference <Body> <Corpus> schemeLocation <"URL">]
 ```
 
 **Example:**
-```
+``` Haskell
 enum FloatingRateIndexEnum: <"The enumerated values to specify the list of floating rate index.">
 [docReference ISDA FpML_Coding_Scheme schemeLocation
 "http://www.fpml.org/coding-scheme/floating-rate-index-3-2"]
