@@ -2,19 +2,25 @@
 sidebar_position: 9
 ---
 
+Rune DSL component – Function
+
+### Sections
+1. [Function specification](#1-function-specification)
+2. [Function definition](#2-function-definition)
+3. [Function call](#3-function-call)
+
 A function is a set of instructions that takes inputs (called arguments) and produces an output. When you call a function, you provide the input values and the function runs its instructions to generate a result.
-In Rune DSL, all such components are represented using a single unified function construct.
+In Rune, all such components are represented using a single unified function construct.
 
 ### Using functions to build complex processes
 Functions are essential for automation. You can run the same instructions repeatedly with different inputs and always get a predictable result. This makes functions powerful building blocks for modelling processes.
-Just like spreadsheets let you create formulas and reuse them, Rune DSL lets you build complex processes by combining smaller, reusable function components.
+Just like spreadsheets let you create formulas and reuse them, Rune lets you build complex processes by combining smaller, reusable function components.
  - A large process is usually made up of smaller sub processes.
  - Each sub process is represented as a function.
  - Functions can call other functions, allowing you to build multi layered logic (process → sub process → sub sub process, etc).
 
 ### Benefits of reusing small, modular functions
 **1. Consistency:** If a sub process changes, every process that uses it automatically benefits from the update.
-
 **2. Flexibility:** You don’t need to define every process from scratch. You can assemble new processes by reusing existing building blocks.
 
 ### When to reuse existing industry processes
@@ -25,28 +31,30 @@ If a process is already well defined and widely used, it should be reused rather
 
 The concept of building systems from small, reusable components fits naturally with a modular modelling approach. It keeps models clean, maintainable, and scalable.
 
-## Function specification
-Function specifications define the processes used in a Rune DSL domain model. They describe:
+## 1. Function specification
+Function specifications define the processes used in a Rune domain model. They describe:
 - What inputs a function takes
 - What output it must produce
 - The types associated with those inputs and outputs
 
 In practice, this amounts to specifying the API you need to follow when building the function. Standardising these specifications ensures:
-- Integrity – functions behave as expected
-- Interoperability – components work together
-- Consistency – processes follow the same rules across the model
+- **Integrity** – functions behave as expected
+- **Interoperability** – components work together
+- **Consistency** – processes follow the same rules across the model
 
-### Syntax
-A function in Rune DSL includes:
- - A name
- - A plain text description (optional)
- - Inputs (optional)
- - Output (mandatory)
- - Conditions (optional)
- - Output construction statements (optional)
+**Syntax**
 
-### Example
-```
+A function in Rune includes:
+ - A **name**
+ - A **plain text description** (optional)
+ - **Inputs** (optional)
+ - **Output** (mandatory)
+ - **Conditions** (optional)
+ - **Output construction statements** (optional)
+
+**Example**
+
+``` Haskell
 func <FunctionName>: (optional: <"Description">)
   inputs:
     <attribute1>
@@ -56,12 +64,12 @@ func <FunctionName>: (optional: <"Description">)
     <returnAttribute>
 ```
 
-### Naming rules
+### 1.1 Naming rules
  - Function names use **PascalCase** (UpperCamelCase).
  - Names must be **unique** across the entire model.
  - Syntax mirrors type definitions for consistency.
 
-### Descriptions
+### 1.2 Descriptions
 Descriptions help you to understand the purpose and behaviour of a function. This improves clarity and communication.
 You can add descriptions to:
  - The function itself
@@ -69,7 +77,7 @@ You can add descriptions to:
  - The output
  - Any statement block (e.g. conditions)
 
-### Inputs and output
+### 1.3 Inputs and output
 Inputs and output behave like attributes in type definitions. Each has:
  - A name
  - A type
@@ -79,14 +87,14 @@ Inputs and output behave like attributes in type definitions. Each has:
 
 **Example: Output only**
 
-```
+``` Haskell
 func GetBusinessDate: <"Provides the business date from the underlying system implementation.">
    output:
      businessDate date (1..1) <"The provided business date.">
 ```
 
 **Example: Inputs and output**
-```
+``` Haskell
 func UpdateAmountForEachQuantity:
   inputs:
      priceQuantity PriceQuantity (0..*)
@@ -97,7 +105,7 @@ func UpdateAmountForEachQuantity:
 
 **Example: multiple cardinality**
 Inputs and outputs may be lists:
-```
+``` Haskell
 func UpdateAmountForEachQuantity:
   inputs:
      priceQuantity PriceQuantity (0..*)
@@ -106,16 +114,16 @@ func UpdateAmountForEachQuantity:
      updatedPriceQuantity PriceQuantity (0..*)
 ```
 
-### Conditions
+### 1.4 Conditions
 Conditions restrict what values are allowed for inputs and outputs. They ensure the function is used safely and correctly and define the rules you need to satisfy. There are two types:
 1. Pre conditions – `condition`
- - Apply to inputs only
- - Checked before the function runs
-2. Post conditions – `post-condition`
- - Apply to inputs and output
- - Checked after the function runs
+ - Apply to **inputs only**
+ - Checked **before** the function runs
+2. Post conditions – post-condition
+ - Apply to **inputs and output**
+ - Checked **after** the function runs
 
-```
+``` Haskell
 func Create_VehicleOwnership: <"Creation of a vehicle ownership record file">
     inputs:
         drivingLicence DrivingLicence (0..*)
@@ -133,33 +141,36 @@ func Create_VehicleOwnership: <"Creation of a vehicle ownership record file">
         vehicleOwnership -> drivingLicence contains drivingLicence
 ```
 
-## Function definition
-In Rune DSL, you can do more than just declare a function’s inputs and output – you can also define how the output is built.
-However, because Rune DSL has limited language features, not all logic can always be fully expressed. This leads to two types of functions:
-**Fully defined function**
+## 2. Function definition
+In Rune, you can do more than just declare a function’s inputs and output – you can also define **how the output is built**.
+
+However, because Rune has limited language features, not all logic can always be fully expressed. This leads to two types of functions:
+
+#### Fully defined function
  - All validation rules for the output are satisfied within the DSL.
  - The generated code is complete and ready to use.
  - No extra coding is required.
-**Partially defined function**
+
+#### Partially defined function
  - Only some validation rules are satisfied in the DSL.
  - You must extend the generated code (e.g. in Java) to finish building the output.
  - The output must still be fully valid when the function is executed.
 
 **Note:** Whether a function is fully or partially defined depends on the specific use case. 
 
-## Output construction
+### 2.1. Output construction
 Sometimes a function only checks the output (using `post condition`) but does not actually build it. In that case, you’ll need to construct the output manually. A `post condition` checks that the output contains the driving licenses, but the function does not populate them.
 This means the function is only specified but **not fully defined**.
 
 You can fully define a function by assigning values to the output using the `set` keyword:
-```
+``` Haskell
 set <PathExpression>: <Expression>
 ```
 
-•	Left side: which attribute of the output to set
-•	Right side: how to compute the value from inputs
+- **Left side:** which attribute of the output to set
+- **Right side:** how to compute the value from inputs
 
-```
+``` Haskell
 func Create_VehicleOwnership: <"Creation of a vehicle ownership record file">
     inputs:
         drivingLicence DrivingLicence (0..*)
@@ -179,16 +190,15 @@ func Create_VehicleOwnership: <"Creation of a vehicle ownership record file">
         isFirstHand
 ```
 
-**Working with lists: set vs add**
-
+#### Working with lists: set vs add
 `set`
 - Replaces the entire list.
 - The expression must return a list.
 `add`
 - Appends a single element or a list to an existing list.
 
-Example:
-```
+**Example**
+``` Haskell
 func AddDrivingLicenceToVehicleOwnership: <"Add new driving licence to vehicle owner.">
     inputs:
         vehicleOwnership VehicleOwnership (1..1)
@@ -202,7 +212,7 @@ func AddDrivingLicenceToVehicleOwnership: <"Add new driving licence to vehicle o
         newDrivingLicence
 ```
 Another example using filtering and mapping:
-```
+``` Haskell
 func GetDrivingLicenceNames: <"Get driver's names from given list of licences.">
     inputs:
         drivingLicences DrivingLicence (0..*)
@@ -214,17 +224,18 @@ func GetDrivingLicenceNames: <"Get driver's names from given list of licences.">
             filter firstName exists and surname exists
             then extract firstName + " " + surname
 ```
-Rune DSL supports two function cases where the output is fully defined:
-1.	Object qualification functions
-2.	Short hand functions
+Rune supports two function cases where the output is fully defined:
+1. Object qualification functions
+2. Short hand functions
 These often use annotations to guide code generation.
 
-### Object qualification functions
+### 2.2 Object qualification functions
 These functions classify an object based on a set of rules.
 - They return **true** if the object meets all criteria for a specific classification.
 - They use a **qualification name** (a string from that classification) to specify what type of object is being classified (e.g. `Product, BusinessEvent`) and returns a boolean.
-Example:
-```
+
+**Example**
+``` Haskell
 annotation qualification: <"Annotation that describes a func that is used for event and product Qualification">
   [prefix Qualify]
   Product boolean (0..1)
@@ -232,10 +243,11 @@ annotation qualification: <"Annotation that describes a func that is used for ev
 ```
 Naming convention: `Qualify_(QualificationName` uses PascalCase; spaces/colons become underscores.)
 
-### Short hand functions
+### 2.3 Short hand functions
 Short hand functions provide a compact way to express frequently used or long path expressions.
-Example:
-```
+
+**Example**
+``` Haskell
 func PaymentDate:
   inputs: economicTerms EconomicTerms (1..1)
   output: result date (0..1)
@@ -244,10 +256,11 @@ func PaymentDate:
 Instead of writing the long path for the `EconomicTerms` object repeatedly, you can simply call:
 `PaymentDate( EconomicTerms )`
 
-### Aliases
+### 2.4 Aliases
 Aliases act like temporary variables inside a function. They make complex logic easier to read and maintain.
-Example:
-```
+
+**Example**
+``` Haskell
 func FixedAmount:
   inputs:
     interestRatePayout InterestRatePayout (1..1)
@@ -265,8 +278,8 @@ func FixedAmount:
     calculationAmount * fixedRateAmount * dayCountFraction
 ```
 
-## Function call 
-A function call in Rune DSL lets you **execute a function** and use the **output it returns**.
+## 3. Function call 
+A function call in Rune lets you **execute a function** and use the **output it returns**.
 
 ### Syntax
 A function call uses consists of the function name, followed by a comma-separated list of arguments enclosed within round brackets `(...)`:
@@ -280,9 +293,11 @@ A function call uses consists of the function name, followed by a comma-separate
  - The syntax validator ensures correct usage.
 
 **Example**
-Function 1: `Max`
+
+**Function 1:** `Max`
+
 This function returns the larger of two numbers.
-```
+``` Haskell
 func Max:
     inputs:
         a number (1..1)
@@ -294,13 +309,14 @@ func Max:
         else b
 ```
 
-Function 2: `WhichIsBigger`
+**Function 2:** `WhichIsBigger`
+
 This function uses Max(a, b) to determine which input is larger and returns "A" or "B". 
  - Max(a, b) is called inside `WhichIsBigger`.
  - The result is compared to a.
  - If a is the larger number, the function returns "A".
  - Otherwise, it returns "B".
-```
+``` Haskell
 func WhichIsBigger:
     inputs:
         a number (1..1)
