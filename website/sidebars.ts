@@ -37,7 +37,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'rune-documentation/overview/overview',
             'rune-documentation/overview/Quick start',
-            'rune-documentation/overview/documentation hub',
+
           ],
         },
         {
