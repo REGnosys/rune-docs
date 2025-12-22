@@ -33,7 +33,7 @@ Important details:
 - If you need components from deeper nested namespaces, you must import each one individually.
 
 Example – importing multiple namespaces. This brings in all components from the various layers under `cdm.base`:
-```
+```haskell
 import cdm.base.math.*
 import cdm.base.datetime.*
 import cdm.base.staticdata.party.*
@@ -49,7 +49,7 @@ You can assign an alias to an imported namespace to make references shorter and 
 `import cdm.base.staticdata.party.* as cdmParty`
 
 Now you can reference types from that namespace using the alias:
-```
+```haskell
 type MyContainer:
   party cdmParty.Party (1..1)
 ```
