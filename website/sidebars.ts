@@ -44,8 +44,8 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Projects',
           items: [
-            'rune-documentation/projects/projects',
-            'rune-documentation/projects/projects - CDM',
+            'rune-documentation/projects/Projects',
+            'rune-documentation/projects/Projects - CDM',
           ],
         },
         {
