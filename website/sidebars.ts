@@ -36,7 +36,7 @@ const sidebars: SidebarsConfig = {
           collapsed: false,
           items: [
             'rune-documentation/overview/overview',
-            'rune-documentation/overview/Quick start',
+            'rune-documentation/overview/quick-start',
 
           ],
         },
@@ -44,8 +44,8 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Projects',
           items: [
-            'rune-documentation/projects/Projects',
-            'rune-documentation/projects/Projects - CDM',
+            'rune-documentation/projects/projects',
+            'rune-documentation/projects/projects-cdm',
           ],
         },
         {
@@ -53,17 +53,17 @@ const sidebars: SidebarsConfig = {
           label: 'Modelling Components',
           link: {
             type: 'doc',
-            id: 'rune-documentation/Rune DSL Modelling components',
+            id: 'rune-documentation/rune-dsl-modelling-components',
           },
           items: [
-            'rune-documentation/modelling-components/Data',
-            'rune-documentation/modelling-components/Metadata',
-            'rune-documentation/modelling-components/Expressions',
-            'rune-documentation/modelling-components/Data validation',
-            'rune-documentation/modelling-components/Function',
-            'rune-documentation/modelling-components/Mapping',
-            'rune-documentation/modelling-components/Namespace',
-            'rune-documentation/modelling-components/Reporting',
+            'rune-documentation/modelling-components/data',
+            'rune-documentation/modelling-components/metadata',
+            'rune-documentation/modelling-components/expressions',
+            'rune-documentation/modelling-components/data-validation',
+            'rune-documentation/modelling-components/function',
+            'rune-documentation/modelling-components/mapping',
+            'rune-documentation/modelling-components/namespace',
+            'rune-documentation/modelling-components/reporting',
           ],
         },
         {
@@ -71,21 +71,21 @@ const sidebars: SidebarsConfig = {
           label: 'Developers',
           link: {
             type: 'doc',
-            id: 'rune-documentation/developers/Developers',
+            id: 'rune-documentation/developers/developers',
           },
           items: [
-            'rune-documentation/developers/Rune and Java',
-            'rune-documentation/developers/Code generator',
-            'rune-documentation/developers/Contribute to Rune',
+            'rune-documentation/developers/rune-and-java',
+            'rune-documentation/developers/code-generator',
+            'rune-documentation/developers/contribute-to-rune',
           ],
         },
         {
           type: 'category',
           label: 'Resources',
           items: [
-            'rune-documentation/resources/FAQs',
-            'rune-documentation/resources/Glossary',
-            'rune-documentation/resources/Contact us',
+            'rune-documentation/resources/faqs',
+            'rune-documentation/resources/glossary',
+            'rune-documentation/resources/contact-us',
           ],
         },
       ],
