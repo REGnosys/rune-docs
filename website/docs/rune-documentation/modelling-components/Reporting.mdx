@@ -10,10 +10,6 @@ sidebar_position: 12
 
 
 Rune DSL supports financial institutions’ regulatory reporting requirements by allowing reporting rules to be written as **functional components** in the same language used to model the business domain – a **domain model**. Code generators can then turn these rules into executable code that all firms can use consistently.
-[^1]
-
-[^1]: Can we add line breaks before each of the headers?
-
 
 ## 1. Regulatory hierarchy
 Before defining reporting rules, the regulatory content itself must be organised.
@@ -46,7 +42,7 @@ These rules correspond to the regulatory expectations of:
 
 ### Report syntax
 A report is defined as:
-```
+```haskell
 report <Authority> <Corpus1> <Corpus2> <...> in <TimingRule>
   from <InputType>
   when <EligibilityRule1> and <EligibilityRule2> and <...>
@@ -59,7 +55,7 @@ Each field may include:
 - `ruleReference` – the rule that extracts or calculates the field
 - `label` – the column name used in the generated report
 
-```
+```haskell
 type <ReportType>:
   <field1> <Type1> (x..y)
     [ruleReference <optional path> <RuleName1>]
@@ -68,14 +64,14 @@ type <ReportType>:
 ```
 
 **Example**
-```
+```haskell
 report EuropeanParliament EmissionPerformanceStandardsEU in real-time
     from ReportableEvent
     when EuroStandardsCoverage
     with type EmissionPerformanceStandardsReport
 ```
 
-```
+```haskell
 type EuropeanParliamentReport:
     vehicleRegistrationID string (1..1)
         [label "Vehicle Registration ID"]
@@ -112,8 +108,8 @@ Rune DSL takes a **functional approach** to regulatory reporting. A reporting ru
 Using this idea, reported data is simply a **projection** of business data.
 
 ### Types of rules
-•	Field rules – output is the data to be reported
-•	Eligibility rules – output is a boolean that indicates `True` when something must be reported
+- Field rules – output is the data to be reported
+- Eligibility rules – output is a boolean that indicates `True` when something must be reported
 
 Rune DSL reporting rules are important because they’re:
 - **Human readable** – so they’re clear for regulatory analysts
@@ -123,7 +119,7 @@ This ensures reporting logic is transparent, consistent, and traceable back to a
 
 ### Rule syntax
 A rule is defined as:
-```
+```haskell
 <ruleType> rule <RuleName> from <InputType>:
   [ regulatoryReference <Body> <Corpus>
     <Segment1>
@@ -134,11 +130,11 @@ A rule is defined as:
 ```
 
 The `ruleType` can be either `reporting` (returns a value) or `eligibility` (returns a boolean).
-`regulatoryReference` links the rule to the exact regulatory text that justifies it and uses the same syntax as `docReference`. In the document reference section of the [Metadata component](https://rune-docs.netlify.app/docs/rune-documentation/Rune%20DSL%20component%20-%20Metadata). 
+`regulatoryReference` links the rule to the exact regulatory text that justifies it and uses the same syntax as `docReference`. In the document reference section of the [Metadata component](./Metadata#2document-reference). 
 
 Functional expressions are composable, so a rule can also call another rule, as shown here. Both `Euro1Standard`, and `Euro6Standard` are themselves reporting rules.
 
-```
+```haskell
 reporting rule EuroEmissionStandard from ReportableEvent:
   [regulatoryReference EuropeanCommission StandardEmissionsEuro6 article "1"  
     provision "Regulation (EC) No 715/2007 is amended as follows:..."]
@@ -154,7 +150,7 @@ The expressions may use any type of [Expression component](https://rune-docs.net
 
 
 **Example: conditional extraction**
-```
+```haskell
 extract
     if vehicle -> vehicleClassification = VehicleClassificationEnum -> M1_Passengers
       or vehicle -> vehicleClassification = VehicleClassificationEnum -> M2_Passengers
@@ -169,10 +165,10 @@ extract
 The keyword `then` continues extraction from the previous result. Rune DSL enforces type safety: the output type of one step must match the input type of the next.
 
 **Example**
-```
+```haskell
 reporting rule VehicleForOwner from VehicleOwnership:
     extract vehicle
-```
+```haskell
 Is equivalent to:
 ```
 reporting rule VehicleClassification from VehicleOwnership:
@@ -184,13 +180,13 @@ reporting rule VehicleClassification from VehicleOwnership:
 
 ### Filtering
 The example above can be rewritten as:
-```
+```haskell
 extract vehicle
 filter VehicleIsM
 extract specification -> dateOfFirstRegistration
 ```
 Where, for example, the filtering rule is defined as:
-```
+```haskell
 reporting rule VehicleIsM:
   extract vehicleClassification = VehicleClassificationEnum -> M1_Passengers
       or vehicleClassification = VehicleClassificationEnum -> M2_Passengers
@@ -201,13 +197,13 @@ reporting rule VehicleIsM:
 ### Repeat instruction (repeatable fields)
 Some regulations require reporting with **lists** of values (also known as schedules), for example in the CFTC Part 45 regulations (fields 33-35).
 Rune supports this using a constructor inside an `extract`:
-```
+```haskell
 <...>
 then extract <type name> { attribute1: <...>, attribute2: <...>, <etc> }
 ```
 
 **Example**
-```
+```haskell
 reporting rule NotionalAmountScheduleLeg1 from ReportableEvent: <"Notional Amount Schedule">
 	[regulatoryReference CFTC Part45 appendix "1" dataElement "33-35" field "Notional Amount Schedule"
 		rationale "Model only applicable for back-to-back schedules. Repeatable field 35 (endDate) not applicable and therefore removed"
@@ -222,7 +218,7 @@ reporting rule NotionalAmountScheduleLeg1 from ReportableEvent: <"Notional Amoun
 ```
 
 Each attribute of the repeating type has its own rule:
-```
+```haskell
 reporting rule NotionalAmountScheduleLeg1EffectiveDate from DatedValue: <"Effective date of the notional amount of leg 1">
   [regulatoryReference CFTC Part45 appendix "1" dataElement "34" field "Effective date of the notional amount of leg 1"
     provision "For each leg of the transaction, where applicable: for OTC derivative transactions negotiated in monetary amounts with a notional amount schedule:     Unadjusted date on which the associated notional amount becomes effective This data element is not applicable to OTC derivative transactions with notional amounts that are condition- or event-dependent. The currency of the varying notional amounts in the schedule is reported in Notional currency."]
@@ -235,7 +231,7 @@ The `repeatable` keyword (used in the full example) tells Rune DSL that the outp
 ### Rule references and labels for nested attributes 
 #### Simple attributes
 You can attach a `label` and a `ruleReference` directly to a report attribute when the attribute is simple (string, number, date, etc):
-```
+```haskell
 type EuropeanParliamentReport:
     vehicleRegistrationID string (1..1)
         [label "Vehicle Registration ID"]
@@ -245,7 +241,7 @@ type EuropeanParliamentReport:
 
 #### Complex attributes
 But if the report attribute is a **complex type**, you may need to label or reference a **nested** attribute instead. To do this, you can use a path:
-```
+```haskell
 [label for subattribute -> subsubattribute -> ... "Nested attribute label"]
 [ruleReference subattribute -> subsubattribute -> ... NestedRule]
 ```
@@ -259,7 +255,7 @@ If an attribute is a **list of complex types**, you can include an index in the 
 If you **don’t** include $, Rune automatically adds the index at the end:
 
 **Example**
-```
+```haskell
 type Report:
     components ReportComponent (0..*)
         // label the id as "Component ID nr 0", "Component ID nr 1", "Component ID nr 2", ...
@@ -282,7 +278,7 @@ You can:
 **Example**
 
 In this example, the `Report -> component` attribute inherits the rule reference for `componentID`, overrides the rule reference for `componentValue` and removes the rule reference for `componentUnit`.
-```
+```haskell
 type CommonReport:
     component ReportComponent (1..1)
         [ruleReference for componentID ReportComponentID]
@@ -311,13 +307,13 @@ Function overriding happens inside a **scope**, which defines where extensions a
 - Scopes must be enabled in the project configuration
 
 **Syntax**
-```
+```haskell
 namespace <namespace>
 scope <ScopeName>
 version "<version>"
 ```
 **Example**
-```
+```haskell
 namespace cdm.product.asset
 scope CustomizedDerivatives
 version "1.0"
@@ -333,7 +329,7 @@ A function extension:
 **Syntax**
 
 A function is extended using the `extends` keyword.
-```
+```haskell
 func <ExtendedFunctionName> extends <OriginalFunctionName>:
   inputs:
     <same inputs as original>
@@ -350,7 +346,7 @@ Requirements:
 **Example**
 
 Base function:
-```
+```haskell
 namespace cdm.base.math
 version "1.0"
 
@@ -366,7 +362,7 @@ func CalculateNotional:
 ```
 
 Extended function:
-```
+```haskell
 namespace cdm.base.math
 scope AdjustedCalculations
 version "1.0"
@@ -395,7 +391,7 @@ The `super’ call returns the base function’s output, which you can use in yo
 **Example**
 
 In this example, the extending function explicitly passes the `transfer` input to the original function via `super(transfer)`.
-```
+```haskell
 namespace cdm.event.common
 scope EnhancedEvents
 version "1.0"
@@ -422,8 +418,8 @@ func ExtendedProcessTransfer extends ProcessTransfer:
 ### Calling extended functions 
 When a function is extended inside a **scope**, that extended version becomes available throughout the entire model – not just inside the scope where it was defined.
 This gives calling code a choice:
-•	Use the original function
-•	Use the extended function (the version defined in a scope)
+- Use the original function
+- Use the extended function (the version defined in a scope)
 Which one is used depends on the execution context and how the model is configured.
 
 **Example**
@@ -432,7 +428,7 @@ In this example:
 - `ExtendedCalculateNotional` is an extended version of a base function.
 - Even though it was defined inside a scope, it can be called here like any other function.
 - The model will use the extended implementation instead of the original one.
-```
+```haskell
 namespace cdm.product.asset
 version "1.0"
 
