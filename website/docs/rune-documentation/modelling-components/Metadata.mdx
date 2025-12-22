@@ -22,7 +22,7 @@ You can attach descriptions to almost any component, including:
 - Reporting rules
 - Namespaces
 [^1]
-[^1]: Should we also include: Expressions; Synonyms (mapping)
+[^1]: Should this list of component match our components? Do we need to add any to this list (eg metadata, expressions, data validation, mapping)? Or do we need to remove some (eg attributes, conditions, inputs/outputs, business logic). Or do we simply need to rename some so that they match?
 
 
 ## 1. Annotations
@@ -34,7 +34,7 @@ Annotations add extra metadata to model components beyond plain descriptions. Th
 **Syntax**
 
 Annotations are defined with the `annotation` keyword:
-``` Haskell
+```haskell
 annotation <annotationName>: <"Description">
     <attribute1>
     <attribute2>
@@ -42,13 +42,13 @@ annotation <annotationName>: <"Description">
 ```
 
 Annotation names use **lower camelCase** and must be unique within a model. Attributes are optional – many annotations won’t need any.
-``` Haskell
+```haskell
 annotation rootType: <"Mark a type as a root of the rune model">
 ```
 
 Rune DSL includes some built in annotations, but you can define your own as needed. 
 Once defined, you can apply an annotation to any model component using its name and any chosen attributes.
-``` Haskell
+```haskell
 [<annotationName> (optional: <annotationAttribute>)]
 ```
 
@@ -57,7 +57,7 @@ The `codeImplementation` annotation tells users that a function’s logic is imp
 Functions marked with this annotation should not include any Rune implementation – their behavior is provided by the external code.
 
 **Example**
-``` Haskell
+```haskell
 func MyFunc:
   [codeImplementation]
   inputs:
@@ -70,7 +70,7 @@ func MyFunc:
 The `metadata` annotation defines qualifiers that can be applied to a data type or attribute. 
 
 Rune provides several built in metadata fields:
-``` Haskell
+```haskell
 annotation metadata:
   id string (0..1)
   key string (0..1)
@@ -90,7 +90,7 @@ Each `metadata` field represents a different qualifier:
 You can access metadata values through function inputs or expression outputs that have metadata annotations. 
 
 How a function can use metadata passed into it.
-``` Haskell
+```haskell
 func MyFunc:
     inputs:
         myInput string (1..1)
@@ -102,7 +102,7 @@ func MyFunc:
 ```
 
 How to work with metadata that is the output of an expression:
-``` Haskell
+```haskell
 func MyFunc:
     inputs:
         myInput string (1..*)
@@ -126,26 +126,26 @@ Document hierarchy uses three keywords to structure document references:
 - `segment` – the specific section within a document
 
 The syntax to define a body, corpus and segment:
-``` Haskell
+```haskell
 body <BodyType> <BodyName> (optional: <"Description">)
 corpus <CorpusType> (optional: <Body>) (optional: <"Alias">) <CorpusName> (optional: <"Description">)
 segment <segmentType>
 ```
 
 **Bodies** may include regulatory authorities or trade associations.
-``` Haskell
+```haskell
 body Authority EuropeanCommission <"European Commission (ec.europa.eu).">
 ```
 
 **Corpuses** represent document sets such as directives, laws, regulatory texts, technical standards, or best practice guidance. 
 A corpus may also include an **alias**, which provides an alternative identifier such as an official document number.
-``` Haskell
+```haskell
 corpus Directive "93/59/EC" StandardEmissionsEuro1
     <"COUNCIL DIRECTIVE 93 /59/EEC of 28 June 1993 amending Directive 70/220/EEC on the approximation of the laws of the Member States relating to measures to be taken against air pollution by emissions from motor vehicles https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A31993L0059">
 ```
 
 **Segments** refer to a specific section in a document (as opposed to corpuses, which are typically large document sets with many provisions, clauses etc).
-``` Haskell
+```haskell
 segment article
 segment whereas
 segment annex
@@ -153,12 +153,12 @@ segment table
 ```
 
 A segment is referenced by giving it a free text name or number.
-``` Haskell
+```haskell
 <segmentType> <"SegmentID">
 ```
 
 Multiple segments can be chained to point to an exact location in a document.
-``` Haskell
+```haskell
 article "26" paragraph "2"
 ```
 
@@ -166,7 +166,7 @@ article "26" paragraph "2"
 **Document content** is referenced using the `docReference` keyword. Each reference must point to a **corpus** and one or more **segments** defined in the document hierarchy. Document references can be attached to any type, attribute, function, or rule.
 
 You can use the `provision` keyword to include the specific text being referenced.
-``` Haskell
+```haskell
 [docReference <Body> <Corpus>
   <segment1> <segment2> <...>
   provision <"ProvisionText">]
@@ -174,7 +174,7 @@ You can use the `provision` keyword to include the specific text being reference
 
 Sometimes a data type may use a different name depending on context – for example, a legal definition may refer to the same concept using another term. 
 You can define a special segment such as `namingConvention`:
-``` Haskell
+```haskell
 segment namingConvention
 
 type PayerReceiver: <"Specifies the parties responsible for making and receiving payments defined by this structure.">
@@ -190,7 +190,7 @@ type PayerReceiver: <"Specifies the parties responsible for making and receiving
 You cannot attach a document reference directly to an attribute. Instead, you’ll need to define it on a root type using an annotation path. 
 
 For example, the `payer` attribute under `Report -> leg1 -> payerReceiver` can be annotated like this:
-``` Haskell
+```haskell
 type Report:
   leg1 Leg (1..1)
     [docReference for payerReceiver -> payer ICMA GMRA
@@ -203,7 +203,7 @@ In general, the path must start with the keyword `for`, followed by one of these
 - An attribute name e.g. `payerReceiver`
 - A path to an attribute e.g. `payerReceiver -> payer`
 - The keyword `item` to refer to the attribute itself
-- A deep path in a choice type e.g. `item ->> dayCountConvention`. See the [deep path operator.](./Expressions.mdx) 
+- A deep path in a choice type e.g. `item ->> dayCountConvention`. See the [deep path operator](./Expressions.mdx). 
 [^2]
 [^2]: Link to deep path operator - Expressions component
 
@@ -215,7 +215,7 @@ Aside from the annotation itself, templates do not change the model – they do 
 Template designation also applies to all encapsulated types within the annotated type. 
 
 In this example, marking `ContractualProduct` as a template also makes `EconomicTerms` (and all types inside it) eligible for the template:
-``` Haskell
+```haskell
 type ContractualProduct:
   [metadata key]
   [metadata template]
@@ -236,7 +236,7 @@ Cross referencing uses the `key` (or `id`) and `reference` metadata pair.
 
 An attribute annotated with reference metadata can either hold a normal value or a key that points to the source. 
 Any attribute marked as a reference must refer to a type annotated with a key.
-``` Haskell
+```haskell
 <SourceType>
   [metadata key]
 
@@ -249,7 +249,7 @@ Any attribute marked as a reference must refer to a type annotated with a key.
 ```
 
 `Party` and `Identifier` types show how cross reference annotations work. Marking `Party` with a key makes it referenceable. In `Identifier`, the reference annotation on `issuerReference` means this attribute can point to a `Party` using its key instead of duplicating the full object.
-``` Haskell
+```haskell
 type Party:
   [metadata key]
   partyId string (1..*)
@@ -280,7 +280,7 @@ In Rune’s default implementation, these fields are named `globalKey` and `glob
 Objects annotated with `key` or `id` can also carry an identifier taken from an external source – for example, an FpML `id`. Attributes marked with `reference` can then store these external identifiers. A reference resolver process can link the external reference back to the correct object.
 
 In this example, the party object has both a `globalKey` (its internal unique identifier) and an `externalKey` taken from another system. It also includes a `globalReference` that would resolve to that same party.
-``` Haskell
+```haskell
 "party" : {
   "meta" : {
     "globalKey" : "3fa8e998",
@@ -312,7 +312,7 @@ Rune supports this pattern using an `address` / `location` cross reference.
 The syntax uses the address and location metadata pair as shown below.
 
 **Note:** The global referencing mechanism doesn’t work here because a global key is tied to an object’s full set of attribute values. Here, however, the same key (the variable’s address) must stay the same no matter what value the variable takes.
-``` Haskell
+```haskell
 <targetAttribute>
   [metadata address "pointsTo"=<sourceAttribute>]
 
