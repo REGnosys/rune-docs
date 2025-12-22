@@ -2,15 +2,15 @@
 sidebar_position: 11
 ---
 
-### Sections
-1. [Basic mapping](#1-basic-mapping)
-2. [Advanced mapping](#2-advanced-mapping)
-
 Mapping in Rune defines **how external documents** (such as FpML or ISDACreate) are **converted into Rune documents**.
 This is done using **synonyms**, which are annotations placed on:
 - Attributes of data types
 - Values of enum types
 All synonyms across the model work together to map the structure of the input document into the final Rune document. These mappings can be used to generate an **Ingestion Environment** – a Java library that reads an input document and produces the corresponding Rune document.
+
+There are two types of mapping:
+1. [Basic mapping](#1-basic-mapping)
+2. [Advanced mapping](#2-advanced-mapping)
 
 ## 1. Basic mapping
 Basic mappings describe how a value in the input document maps directly to a value in the Rune document.
