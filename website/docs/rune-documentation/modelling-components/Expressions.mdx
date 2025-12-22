@@ -2,17 +2,6 @@
 sidebar_position: 7
 ---
 
-### Sections
-1. [Constant expressions](#1-constant-expressions)
-2. [Path expressions](#2-path-expressions)
-3. [Operators](#3-operators)
-4. [Operator precedence](#4-operator-precedence)
-5. [Lists](#5-lists)
-6. [List comparison](#6-list-comparison)
-[^1]
-[^1]: Do we need one-line descriptions for these?
-
-
 The Rune DSL provides a small, controlled set of features for expressing simple logic – basic operations, comparisons and combinations of these into larger expressions. It’s intentionally limited so domain experts can read it easily and avoid unintended behaviour. Rune is **not** a Turing complete language: it has no looping constructs, no concurrency and no built in I/O operations.
 
 Logical expressions appear in:
@@ -26,6 +15,13 @@ Expressions are evaluated against a Rune object and return either:
 - a **list of values** of the same type
 The type of an expression is simply the type of the value it produces – for example, a boolean expression returns a `boolean`, and an expression that produces a `Party` is of type `Party`.
 
+There are six main types of expressions:
+1. [Constant expressions](#1-constant-expressions)
+2. [Path expressions](#2-path-expressions)
+3. [Operators](#3-operators)
+4. [Operator precedence](#4-operator-precedence)
+5. [Lists](#5-lists)
+6. [List comparison](#6-list-comparison)
 
 
 ## 1. Constant expressions 
