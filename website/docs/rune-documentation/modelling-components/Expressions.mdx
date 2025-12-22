@@ -180,11 +180,14 @@ In this example, when `drivingLicense` is null, the final `penaltyPoints` attrib
 ```haskell 
 owner -> drivingLicence -> penaltyPoints
 ```
+[^1]
+[^1]: Fuller code example required?
 
 ### 2.2 Deep paths for choice types
 Use deep path operator `->>` to access common attributes across all options of a choice type. 
 With a choice type called `Vehicle`, each of its options exposing an attribute `vehicleId`, this identifier can be accessed directly using `vehicle ->> vehicleId`.
-
+[^2]
+[^2]: Fuller code example required?
 
 ## 3. Operators
 Rune provides a set of operators that let you combine expressions into more complex logic. These operators mirror the basics found in most programming languages:
@@ -471,7 +474,8 @@ Rune evaluates expressions in a fixed order, from highest to lowest priority:
 10. Equality operators: `=, <>`
 11. and - e.g. `5>6 and true`
 12. or - e.g. `5>6 or true`
-
+[^3]
+[^3]: Here and elsewhere, should 'true' have a capital 'T', as per our keywords?
 
 ## 5. Lists
 A list is an ordered collection of items of the same type (basic, complex, or enumeration).
@@ -626,7 +630,8 @@ vehicles
 
 For `join`, the operator can specify a delimiter expression in-between each string element. This example concatenates a list of strings, separating each element with the given delimiter:
 ` strings join ", "`
-
+[^4]
+[^4]: Do we need an example of code here?
 Reduction works by repeatedly combining two list elements into one until only a single result remains. All built in reduction operators are just shortcuts for this generic reduce process. 
 When using `reduce`, you must provide an expression that defines how to merge two items. The earlier example that finds the vehicle with the highest engine power can be rewritten.
 ```haskell
