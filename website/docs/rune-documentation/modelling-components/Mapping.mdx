@@ -1,5 +1,3 @@
-Rune component – Mapping 
-
 ---
 sidebar_position: 11
 ---
@@ -50,7 +48,7 @@ External synonyms are defined inside a synonym source block:
 **Example**
 
 This removes all existing synonyms on fuel and adds a new one.
-``` Haskell
+```haskell
 synonym source EXTERNAL_SYNONYM_EXAMPLE_8 extends EXTERNAL_SYNONYM_EXAMPLE_8_BASE_2
 {
 	EngineSpecification:
@@ -84,7 +82,7 @@ Normally, one input value must map to one Rune value. If the same input value sh
 The `meta` keyword inside a synonym is used to map metadata. 
 
 **Example**
-``` Haskell
+```haskell
 type EngineSpecification:
     fuelType string (1..*)
         [metadata scheme]
@@ -92,15 +90,15 @@ type EngineSpecification:
 ```
 
 This maps:
-•	The input value ‘combustible’ is mapped to `fuelType`
-•	The metadata ‘fuelTypeScheme’ associated to ‘combustible’ is mapped to `scheme`
+- The input value ‘combustible’ is mapped to `fuelType`
+- The metadata ‘fuelTypeScheme’ associated to ‘combustible’ is mapped to `scheme`
 
 ### 1.5 Enumeration mapping
 Synonyms can map input strings to Rune enum values.
 
 **Example**
 
-``` Haskell
+```haskell
 enum EngineEnum: <"The enumerated values for the natural person's role.">
     Hybrid
         [synonym CONDITIONAL_SET_TO_EXAMPLE_8 value "hybrid"]
@@ -108,7 +106,7 @@ enum EngineEnum: <"The enumerated values for the natural person's role.">
 
 #### External enumeration synonyms
 These are defined in a separate block preceded by the keyword `enums`:
-``` Haskell
+```haskell
 enums
 
 	EngineEnum:
@@ -133,7 +131,7 @@ When an input attribute has a value, that value is assigned to all bound Rune ob
 Hints allow the algorithm to **skip a layer** in the Rune structure without consuming the input attribute.
 
 **Example**
-``` Haskell
+```haskell
 type EngineSpecification:
     engineMetric EngineMetric (0..*)
         [synonym MULTI_CARDINALITY_EXAMPLE_12 value "capacityDetail"]
@@ -153,7 +151,7 @@ In this example:
 If a Rune attribute has multiple cardinality, multiple input elements may map to it.
 **Without merging**
 Two synonyms produces **two** `EngineSpecification` objects:
-``` Haskell
+```haskell
 engineSpecification EngineSpecification (0..*)
   [synonym MULTI_CARDINALITY_EXAMPLE_20 value "fuelDetail"]
   [synonym MULTI_CARDINALITY_EXAMPLE_20 value "capacityDetail"]
@@ -161,7 +159,7 @@ engineSpecification EngineSpecification (0..*)
 
 #### With merging
 Use a single synonym with multiple values to produce **one** `EngineSpecification` object containing both sets of data.
-``` Haskell
+```haskell
 engineSpecification EngineSpecification (0..*)
   [synonym FpML_5_10 value fuelDetail, capacityDetail]
 ```
@@ -179,20 +177,20 @@ A **set to** mapping assigns a **constant value** to an attribute.
 
 **Example: Set to a constant enum**
 
-``` Haskell
+```haskell
 engineEnum EngineEnum (0..1)
   [synonym CONDITIONAL_SET_TO_EXAMPLE_13 set to EngineEnum->Hybrid]
 ```
 #### Conditional set to
 You can add a **when** clause to make the assignment conditional:
-``` Haskell
+```haskell
 engineEnum EngineEnum (0..1)
   [synonym CONDITIONAL_SET_TO_EXAMPLE_13 set to EngineEnum->Hybrid when "alternativeFuelDetail" exists and "fuelDetail" exists]
 ```
 
 #### Multiple set to rules
 You can list several **set to** rules in order. They’ll be evaluated in the order specified with the **first matching value** used:
-``` Haskell
+```haskell
 engineSystem string (1..1)
   [synonym CONDITIONAL_SET_TO_EXAMPLE_6
     set to "Combustion" when "engineDetail->fuelDetail->combustible" = "Gasoline",
@@ -202,11 +200,11 @@ engineSystem string (1..1)
 
 #### Set when mapping
 A **set when** mapping assigns a value **from the input document** if a condition is met.
-``` Haskell
+```haskell
 alternativeFuelType string (0..1) [synonym CONDITIONAL_SET_EXAMPLE_5 value "complementaryEnergy" path "engineType->engineDetail" set when "engineType->engineDetail->complementaryEnergy" exists] 
 ```
 You can also provide a fallback constant if no conditions match:
-``` Haskell
+```haskell
 capacityUnit string (0..1)
   [synonym CONDITIONAL_DEFAULT_EXAMPLE_1 value "volumeCapacityUnit" path "engineType->engineDetail" default to "UK Gallon"]
 ```
@@ -224,7 +222,7 @@ A test expression checks the input document using:
 - `=` or `<>` – value equals or does not equal a constant
 
 **Examples**
-``` Haskell
+```haskell
 capacityUnit string (0..1)	    
   [synonym CONDITIONAL_SET_EXAMPLE_2 value "volumeCapacityUnit" path "engineType->engineDetail" set when "engineType->engineDetail->powerUnit" exists]
 capacityUnit string (0..1)
@@ -235,7 +233,7 @@ capacityUnit string (0..1)
 
 #### Input path expression
 Checks the **exact path** in the input document that led to the current value.
-``` Haskell
+```haskell
 volume string (0..1)
   [synonym CONDITIONAL_SET_EXAMPLE_6 value "capacity" set when path = "ukEngineVersion->terminology"]
 ```
@@ -245,7 +243,7 @@ Checks the **path in the Rune output object**.
 The condition is true when the current output path **ends with** the given path.
 
 **Example**
-``` Haskell
+```haskell
 fuelType string (1..1)
   [metadata scheme]
   [synonym CONDITIONAL_SET_EXAMPLE_16 value "combustible" path "engineDetail" set when "engineDetail->combustible->scheme"="petrolScheme" and rosettaPath = Root->engineSpecification->fuel->fuelType meta "scheme"]
@@ -253,7 +251,7 @@ fuelType string (1..1)
 
 ### 2.5. Mapper
 If Rune’s mapping syntax cannot express the required transformation, you can call a **mapper**.
-``` Haskell
+```haskell
 fuelType string (0..1)
   // value updated by mapper
   [synonym MAPPERS_EXAMPLE_1 value "combustible" path "engineDetail->metric" mapper "Example1"]
@@ -266,7 +264,7 @@ Mappers allow full programming language flexibility.
 
 #### Format
 For date/time values, you can specify a format. The keyword `format` should be followed by a string. The string should follow a standardized [date format](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html).
-``` Haskell
+```haskell
 fabricationDate date (1..1)
 	[synonym FORMAT_EXAMPLE_1 value "fabricationDate" dateFormat "MM/dd/yyyy"]
 ```
@@ -280,7 +278,7 @@ The keyword `pattern` is followed by two quoted strings. The first string is a r
 **Example**
 
 Extract only the digits from a value:
-``` Haskell
+```haskell
 type EngineSpecification:
 	guaranteePeriod int (1..1)
 		[synonym FORMAT_EXAMPLE_1 value "guaranteePeriod" maps 2 pattern "([0-9])*.*" "$1"]
