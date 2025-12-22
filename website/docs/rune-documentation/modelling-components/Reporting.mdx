@@ -40,7 +40,7 @@ These rules correspond to the regulatory expectations of:
 - Completeness
 - Accuracy
 
-### Report syntax
+### 2.1 Report syntax
 A report is defined as:
 ```haskell
 report <Authority> <Corpus1> <Corpus2> <...> in <TimingRule>
@@ -93,7 +93,7 @@ type EuropeanParliamentReport:
         [ruleReference CarbonMonoxide]
 ```
 
-### Integrity requirements
+### 2.2 Integrity requirements
 To ensure the reporting model is valid, all of these must already exist in the regulatory hierarchy:
 - The **authority**,
 - The **corpus**, and
@@ -107,7 +107,7 @@ Rune DSL takes a **functional approach** to regulatory reporting. A reporting ru
 - y = reported data (output)
 Using this idea, reported data is simply a **projection** of business data.
 
-### Types of rules
+### 3.1 Types of rules
 - Field rules – output is the data to be reported
 - Eligibility rules – output is a boolean that indicates `True` when something must be reported
 
@@ -117,7 +117,7 @@ Rune DSL reporting rules are important because they’re:
 - **Auditable** – as each rule is explicitly tied to regulatory references, using the regulatory hierarchy concepts of body, corpus and segment
 This ensures reporting logic is transparent, consistent, and traceable back to any applicable text.
 
-### Rule syntax
+### 3.2 Rule syntax
 A rule is defined as:
 ```haskell
 <ruleType> rule <RuleName> from <InputType>:
@@ -161,7 +161,7 @@ extract
   then "MOrN1"
 ```
 
-### Chaining instructions with `then`
+### 3.3 Chaining instructions with `then`
 The keyword `then` continues extraction from the previous result. Rune DSL enforces type safety: the output type of one step must match the input type of the next.
 
 **Example**
@@ -178,7 +178,7 @@ reporting rule VehicleClassification from VehicleOwnership:
     // extract VehicleOwnership -> vehicle -> vehicleClassification
 ```
 
-### Filtering
+### 3.4 Filtering
 The example above can be rewritten as:
 ```haskell
 extract vehicle
@@ -194,7 +194,7 @@ reporting rule VehicleIsM:
 ```
 
 
-### Repeat instruction (repeatable fields)
+### 3.5 Repeat instruction (repeatable fields)
 Some regulations require reporting with **lists** of values (also known as schedules), for example in the CFTC Part 45 regulations (fields 33-35).
 Rune supports this using a constructor inside an `extract`:
 ```haskell
@@ -228,7 +228,7 @@ reporting rule NotionalAmountScheduleLeg1EffectiveDate from DatedValue: <"Effect
 The `repeatable` keyword (used in the full example) tells Rune DSL that the output is a list of repeating items.
 
 
-### Rule references and labels for nested attributes 
+### 3.6 Rule references and labels for nested attributes 
 #### Simple attributes
 You can attach a `label` and a `ruleReference` directly to a report attribute when the attribute is simple (string, number, date, etc):
 ```haskell
@@ -269,7 +269,7 @@ type ReportComponent:
     componentPrice number (1..1)
 ```
 
-### Rule reference and label inheritance
+### 3.7 Rule reference and label inheritance
 When a report type **overrides** an attribute, all labels and rule references are inherited automatically.
 You can:
 - **Override** a rule reference
@@ -298,7 +298,7 @@ Function overriding lets you **customize** existing functions without rewriting 
 - **Reusability** – keep most of the original function
 - **Maintainability** – updates to the base function flow through unless overridden
 
-### Scope
+### 4.1 Scope
 Function overriding happens inside a **scope**, which defines where extensions apply. All function extensions **must** be defined within a scoped file, which is declared using the `scope` keyword at the namespace level.
 
 #### Scope rules
@@ -320,7 +320,7 @@ version "1.0"
 ```
 
 
-### Function extension
+### 4.2 Function extension
 A function extension:
 - Inherits the **inputs, output**, and optionally the **implementation** of another function
 - Provides a **custom implementation**
@@ -379,7 +379,7 @@ func ExtendedCalculateNotional extends CalculateNotional:
 ```
 
 
-### Super call
+### 4.3 Super call
 The keyword `super` allows an extending function to **call the original function** and build on its result, without the need to replace it.
 
 **Syntax**
@@ -415,7 +415,7 @@ func ExtendedProcessTransfer extends ProcessTransfer:
 **Note:** `super` can **only** be used inside an extending function. Using it in a normal function causes a validation error.
 
 
-### Calling extended functions 
+### 4.4 Calling extended functions 
 When a function is extended inside a **scope**, that extended version becomes available throughout the entire model – not just inside the scope where it was defined.
 This gives calling code a choice:
 - Use the original function
