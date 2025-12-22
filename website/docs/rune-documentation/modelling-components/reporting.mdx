@@ -1,4 +1,6 @@
 ---
+title: Reporting
+sidebar_label: Reporting
 sidebar_position: 12
 ---
 
@@ -130,7 +132,7 @@ A rule is defined as:
 ```
 
 The `ruleType` can be either `reporting` (returns a value) or `eligibility` (returns a boolean).
-`regulatoryReference` links the rule to the exact regulatory text that justifies it and uses the same syntax as `docReference`. In the document reference section of the [Metadata component](./Metadata#document-reference).
+`regulatoryReference` links the rule to the exact regulatory text that justifies it and uses the same syntax as `docReference`. In the document reference section of the [Metadata component](./metadata#2-document-reference).
 
 Functional expressions are composable, so a rule can also call another rule, as shown here. Both `Euro1Standard`, and `Euro6Standard` are themselves reporting rules.
 
@@ -143,7 +145,7 @@ reporting rule EuroEmissionStandard from ReportableEvent:
   else if Euro2Standard exists
   then Euro2Standard
 ```
-The expressions may use any type of [Expression component](./Expressions.mdx) available in Rune DSL, from simple path expressions or constants to more complex conditional statements:
+The expressions may use any type of [Expression component](./expressions.mdx) available in Rune DSL, from simple path expressions or constants to more complex conditional statements:
 
 **Example: simple extraction**
 `extract specification -> dateOfFirstRegistration`
