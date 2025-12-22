@@ -53,7 +53,7 @@ A function in Rune includes:
 
 **Example**
 
-``` Haskell
+```haskell
 func <FunctionName>: (optional: <"Description">)
   inputs:
     <attribute1>
@@ -86,14 +86,14 @@ Inputs and output behave like attributes in type definitions. Each has:
 
 **Example: Output only**
 
-``` Haskell
+```haskell
 func GetBusinessDate: <"Provides the business date from the underlying system implementation.">
    output:
      businessDate date (1..1) <"The provided business date.">
 ```
 
 **Example: Inputs and output**
-``` Haskell
+```haskell
 func UpdateAmountForEachQuantity:
   inputs:
      priceQuantity PriceQuantity (0..*)
@@ -104,7 +104,7 @@ func UpdateAmountForEachQuantity:
 
 **Example: multiple cardinality**
 Inputs and outputs may be lists:
-``` Haskell
+```haskell
 func UpdateAmountForEachQuantity:
   inputs:
      priceQuantity PriceQuantity (0..*)
@@ -122,7 +122,7 @@ Conditions restrict what values are allowed for inputs and outputs. They ensure 
  - Apply to **inputs and output**
  - Checked **after** the function runs
 
-``` Haskell
+```haskell
 func Create_VehicleOwnership: <"Creation of a vehicle ownership record file">
     inputs:
         drivingLicence DrivingLicence (0..*)
@@ -162,14 +162,14 @@ Sometimes a function only checks the output (using `post condition`) but does no
 This means the function is only specified but **not fully defined**.
 
 You can fully define a function by assigning values to the output using the `set` keyword:
-``` Haskell
+```haskell
 set <PathExpression>: <Expression>
 ```
 
 - **Left side:** which attribute of the output to set
 - **Right side:** how to compute the value from inputs
 
-``` Haskell
+```haskell
 func Create_VehicleOwnership: <"Creation of a vehicle ownership record file">
     inputs:
         drivingLicence DrivingLicence (0..*)
@@ -198,7 +198,7 @@ func Create_VehicleOwnership: <"Creation of a vehicle ownership record file">
 - Appends a single element or a list to an existing list.
 
 **Example**
-``` Haskell
+```haskell
 func AddDrivingLicenceToVehicleOwnership: <"Add new driving licence to vehicle owner.">
     inputs:
         vehicleOwnership VehicleOwnership (1..1)
@@ -212,7 +212,7 @@ func AddDrivingLicenceToVehicleOwnership: <"Add new driving licence to vehicle o
         newDrivingLicence
 ```
 Another example using filtering and mapping:
-``` Haskell
+```haskell
 func GetDrivingLicenceNames: <"Get driver's names from given list of licences.">
     inputs:
         drivingLicences DrivingLicence (0..*)
@@ -235,7 +235,7 @@ These functions classify an object based on a set of rules.
 - They use a **qualification name** (a string from that classification) to specify what type of object is being classified (e.g. `Product, BusinessEvent`) and returns a boolean.
 
 **Example**
-``` Haskell
+```haskell
 annotation qualification: <"Annotation that describes a func that is used for event and product Qualification">
   [prefix Qualify]
   Product boolean (0..1)
@@ -247,7 +247,7 @@ Naming convention: `Qualify_(QualificationName` uses PascalCase; spaces/colons b
 Short hand functions provide a compact way to express frequently used or long path expressions.
 
 **Example**
-``` Haskell
+```haskell
 func PaymentDate:
   inputs: economicTerms EconomicTerms (1..1)
   output: result date (0..1)
@@ -260,7 +260,7 @@ Instead of writing the long path for the `EconomicTerms` object repeatedly, you 
 Aliases act like temporary variables inside a function. They make complex logic easier to read and maintain.
 
 **Example**
-``` Haskell
+```haskell
 func FixedAmount:
   inputs:
     interestRatePayout InterestRatePayout (1..1)
@@ -297,7 +297,7 @@ A function call uses consists of the function name, followed by a comma-separate
 **Function 1:** `Max`
 
 This function returns the larger of two numbers.
-``` Haskell
+```haskell
 func Max:
     inputs:
         a number (1..1)
@@ -316,7 +316,7 @@ This function uses Max(a, b) to determine which input is larger and returns "A" 
  - The result is compared to a.
  - If a is the larger number, the function returns "A".
  - Otherwise, it returns "B".
-``` Haskell
+```haskell
 func WhichIsBigger:
     inputs:
         a number (1..1)
