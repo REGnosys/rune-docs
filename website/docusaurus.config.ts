@@ -103,7 +103,7 @@ const config: Config = {
           sidebarId: 'docsSidebar',
           position: 'left',
           label: 'Case Studies',
-          href: '/docs/rune-documentation/resources/case-studies',
+          // href: '/docs/rune-documentation/resources/case-studies',
         },
       ],
     },
