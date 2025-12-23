@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Rune DSL',
-  tagline: 'Rune is a Domain-Specific Language (DSL) that supports the modelling of operational processes for the financial markets\' industry. Its purpose is to promote consistency and inter-operability between the various implementations of these processes.',
+  tagline: 'Rune DSL is a domain‑specific language (DSL) designed to bring clarity and consistency to how financial markets and other sectors describe their processes. Use it with the Rosetta platform to create models that generate consistent, machine‑readable representations of financial products and workflows.',
   favicon: 'img/img/rune/Icon/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -67,15 +67,43 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'docsSidebar',
-          position: 'left',
-          label: 'Docs',
-        },
-        {
           href: 'https://github.com/finos/rune-dsl',
           label: 'Rune DSL',
           position: 'right',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'docsSidebar',
+          position: 'left',
+          label: 'Overview',
+          href: '/docs/rune-documentation/overview',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'docsSidebar',
+          position: 'left',
+          label: 'Components',
+          href: '/docs/rune-documentation/rune-dsl-modelling-components',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'docsSidebar',
+          position: 'left',
+          label: 'Developers',
+          href: '/docs/rune-documentation/developers',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'docsSidebar',
+          position: 'left',
+          label: 'FAQs',
+          href: '/docs/rune-documentation/resources/faqs',
+        }, {
+          type: 'docSidebar',
+          sidebarId: 'docsSidebar',
+          position: 'left',
+          label: 'Case Studies',
+          // href: '/docs/rune-documentation/resources/case-studies',
         },
       ],
     },
@@ -83,37 +111,49 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Get Started',
           items: [
             {
-              label: 'Docs',
-              to: '/docs/landing',
+              label: 'Get Started',
+              to: '/docs/rune-documentation/overview/get-started',
+            },
+            {
+              label: 'Keyword Search',
+              to: '/docs/rune-documentation/overview/keyword-search',
+            },
+            {
+              label: 'Modelling Components',
+              to: '/docs/rune-documentation/rune-dsl-modelling-components',
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Questions and Stories',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'FAQs',
+              href: '/docs/rune-documentation/resources/faqs',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: 'Projects',
+              href: '/docs/rune-documentation/projects',
             },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
-          ],
+          ]
         },
         {
           title: 'More',
           items: [
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: 'Developers',
+              href: '/docs/rune-documentation/developers',
+            },
+            {
+              label: 'Glossary',
+              href: '/docs/rune-documentation/resources/glossary',
+            },
+            {
+              label: 'Contact us',
+              href: '/docs/rune-documentation/resources/contact-us',
             },
           ],
         },
