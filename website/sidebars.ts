@@ -35,8 +35,9 @@ const sidebars: SidebarsConfig = {
           collapsible: true,
           collapsed: false,
           items: [
-            'rune-documentation/overview/overview',
             'rune-documentation/overview/get-started',
+            'rune-documentation/overview/keyword-search',
+            'rune-documentation/overview/overview',
           ],
         },
         {
