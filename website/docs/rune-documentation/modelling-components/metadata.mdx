@@ -208,13 +208,13 @@ Aside from the annotation itself, templates do not change the model – they do 
 
 Template designation also applies to all encapsulated types within the annotated type. 
 
-In this example, marking `ContractualProduct` as a template also makes `EconomicTerms` (and all types inside it) eligible for the template:
+In this example, marking `NonTransferableProduct` as a template also makes `EconomicTerms` (and all types inside it) eligible for the template:
 ```haskell
-type ContractualProduct:
+type NonTransferableProduct:
   [metadata key]
   [metadata template]
-  productIdentification ProductIdentification (0..1)
-  productTaxonomy ProductTaxonomy (0..*)
+  identifier ProductIdentifier (0..*)
+  taxonomy ProductTaxonomy (0..*)
   economicTerms EconomicTerms (1..1)
 ```
 
