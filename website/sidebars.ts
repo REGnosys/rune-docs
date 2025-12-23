@@ -36,8 +36,7 @@ const sidebars: SidebarsConfig = {
           collapsed: false,
           items: [
             'rune-documentation/overview/overview',
-            'rune-documentation/overview/quick-start',
-
+            'rune-documentation/overview/get-started',
           ],
         },
         {
