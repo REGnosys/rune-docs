@@ -14,19 +14,19 @@ Just like spreadsheets let you create formulas and reuse them, Rune lets you bui
  - Each sub process is represented as a function.
  - Functions can call other functions, allowing you to build multi layered logic (process → sub process → sub sub process, etc).
 
-### Benefits of reusing small, modular functions
+#### When to reuse existing industry processes
+If a process is already well defined and widely used, it should be reused rather than recreated. You can do this with:
+- **Mathematical functions** such as sum, absolute value, or average.
+- **Reference data lookups**, which are typically provided by industry-standard utilities.
+- **Quantitative finance components**, such as generating coupon schedules from parameters, or adjusting dates based on holiday calendars.
+
+#### Benefits of reusing small, modular functions
 - **1. Consistency:** If a sub process changes, every process that uses it automatically benefits from the update.
 - **2. Flexibility:** You don’t need to define every process from scratch. You can assemble new processes by reusing existing building blocks.
 
-### When to reuse existing industry processes
-If a process is already well defined and widely used, it should be reused rather than recreated. Examples include:
-- **Mathematical functions** such as sum, absolute value, or average.
-- **Reference data lookups**, which are typically provided by industry-standard utilities.
-- **Quantitative finance components**, such as generating coupon schedules from parameters, or adjusting dates based on holiday calendars
-
 The concept of building systems from small, reusable components fits naturally with a modular modelling approach. It keeps models clean, maintainable, and scalable.
 
-There are three main things to consider with funtions:
+There are three main things to consider with functions:
 1. [Function specification](#1-function-specification)
 2. [Function definition](#2-function-definition)
 3. [Function call](#3-function-call)
@@ -37,12 +37,7 @@ Function specifications define the processes used in a Rune domain model. They d
 - What output it must produce
 - The types associated with those inputs and outputs
 
-In practice, this amounts to specifying the API you need to follow when building the function. Standardising these specifications ensures:
-- **Integrity** – functions behave as expected
-- **Interoperability** – components work together
-- **Consistency** – processes follow the same rules across the model
-
-**Syntax**
+**Function syntax**
 
 A function in Rune includes:
  - A **name**
@@ -57,8 +52,8 @@ A function in Rune includes:
 ```haskell
 func <FunctionName>: (optional: <"Description">)
   inputs:
-    <attribute1>
-    <attribute2>
+    <attribute1> (0..1)
+    <attribute2> (0..1)
     <...>
   output:
     <returnAttribute>
@@ -154,6 +149,8 @@ However, because Rune has limited language features, not all logic can always be
 #### Partially defined function
  - Only some validation rules are satisfied in the DSL.
  - You must extend the generated code (e.g. in Java) to finish building the output.
+[^1]
+[^1]: Why must you extend the generated code - is this still valid?
  - The output must still be fully valid when the function is executed.
 
 **Note:** Whether a function is fully or partially defined depends on the specific use case. 
@@ -227,7 +224,7 @@ func GetDrivingLicenceNames: <"Get driver's names from given list of licences.">
 ```
 Rune supports two function cases where the output is fully defined:
 1. Object qualification functions
-2. Short hand functions
+2. Shorthand functions
 These often use annotations to guide code generation.
 
 ### 2.2 Object qualification functions
@@ -244,8 +241,8 @@ annotation qualification: <"Annotation that describes a func that is used for ev
 ```
 Naming convention: `Qualify_(QualificationName` uses PascalCase; spaces/colons become underscores.)
 
-### 2.3 Short hand functions
-Short hand functions provide a compact way to express frequently used or long path expressions.
+### 2.3 Shorthand functions
+Shorthand functions provide a compact way to express frequently used or long path expressions.
 
 **Example**
 ```haskell
@@ -255,7 +252,7 @@ func PaymentDate:
   set result: economicTerms -> payout -> interestRatePayout only-element -> paymentDate -> adjustedDate
 ```
 Instead of writing the long path for the `EconomicTerms` object repeatedly, you can simply call:
-`PaymentDate( EconomicTerms )`
+`PaymentDate(EconomicTerms)`
 
 ### 2.4 Aliases
 Aliases act like temporary variables inside a function. They make complex logic easier to read and maintain.
