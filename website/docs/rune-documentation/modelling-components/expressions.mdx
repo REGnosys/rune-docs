@@ -4,26 +4,27 @@ sidebar_label: Expressions
 
 ---
 
-The Rune DSL provides a small, controlled set of features for expressing simple logic – basic operations, comparisons and combinations of these into larger expressions. It’s intentionally limited so domain experts can read it easily and avoid unintended behaviour. Rune is **not** a Turing complete language: it has no looping constructs, no concurrency and no built in I/O operations.
+Rune provides a small, controlled set of features for expressing simple logic – basic operations, comparisons and combinations of these into larger expressions. It’s intentionally limited so domain experts who are not software engineers can read it easily and avoid unintended behaviour. Simple expressions can be built up using operators to form more complex expressions.
 
 Logical expressions appear in:
 - Functions
 - Validation conditions
 - Conditional mappings
 - Reporting rules
+[^1]
+[^1]: Check links for these
 
 Expressions are evaluated against a Rune object and return either:
 - a **single value** (built in, complex, or enumeration), or
 - a **list of values** of the same type
 The type of an expression is simply the type of the value it produces – for example, a boolean expression returns a `boolean`, and an expression that produces a `Party` is of type `Party`.
 
-There are six main types of expressions:
+There are two main types of expressions, and these can be amended with standard operators and list operators:
 1. [Constant expressions](#1-constant-expressions)
 2. [Path expressions](#2-path-expressions)
 3. [Operators](#3-operators)
-4. [Operator precedence](#4-operator-precedence)
-5. [Lists](#5-lists)
-6. [List comparison](#6-list-comparison)
+4. [List operatorss](#4-list-operators)
+5. [Conversion operators](#5-conversion-operators)
 
 
 ## 1. Constant expressions 
@@ -178,14 +179,14 @@ In this example, when `drivingLicense` is null, the final `penaltyPoints` attrib
 ```haskell 
 owner -> drivingLicence -> penaltyPoints
 ```
-[^1]
-[^1]: Fuller code example required?
+[^2]
+[^2]: Fuller code example required?
 
 ### 2.2 Deep paths for choice types
 Use deep path operator `->>` to access common attributes across all options of a choice type. 
 With a choice type called `Vehicle`, each of its options exposing an attribute `vehicleId`, this identifier can be accessed directly using `vehicle ->> vehicleId`.
-[^2]
-[^2]: Fuller code example required?
+[^3]
+[^3]: Fuller code example required?
 
 ## 3. Operators
 Rune provides a set of operators that let you combine expressions into more complex logic. These operators mirror the basics found in most programming languages:
@@ -290,14 +291,14 @@ Rune supports basic arithmetic:
 - Always returns a number
 
 
-### 3.5. Default operators
+### 3.5. `Default` operators
 The `default` operator returns the first value unless it’s empty:
 - If **left** has a value – return **left**
 - If **left** is empty – return **right**
 Both sides must have the **same type and cardinality**.
 
 
-### 3.6. Switch operators
+### 3.6. `Switch` operators
 The `switch` operator performs case analysis on a value.
 
 **Syntax**
@@ -458,7 +459,7 @@ func MyFunc:
 ```
 
 
-## 4. Operator precedence
+### 3.8. Operator precedence
 Rune evaluates expressions in a fixed order, from highest to lowest priority:
 1. RosettaPathExpressions: e.g. `Lineage -> executionReference`
 2. Brackets: e.g. `(1+2)`
@@ -472,13 +473,13 @@ Rune evaluates expressions in a fixed order, from highest to lowest priority:
 10. Equality operators: `=, <>`
 11. and - e.g. `5>6 and true`
 12. or - e.g. `5>6 or true`
-[^3]
-[^3]: Here and elsewhere, should 'true' have a capital 'T', as per our keywords?
+[^4]
+[^4]: Here and elsewhere, should 'true' have a capital 'T', as per our keywords?
 
-## 5. Lists
+## 4. List operators
 A list is an ordered collection of items of the same type (basic, complex, or enumeration).
 Key behaviors:
-- A path expression pointing to a multi cardinality attribute returns a list.
+- A path expression pointing to a multiple cardinality attribute returns a list.
 - Any expression expected to return multiple values always evaluates to a list, even if it contains zero or just one element.
 - If such an expression returns null, Rune treats it as an empty list.
 - Chained paths with multiple multi cardinality attributes produce a flattened list.
@@ -490,7 +491,7 @@ This returns a single list containing all vehicle entitlements from all of the o
 owner -> drivingLicence -> vehicleEntitlement 
 ```
 
-### 5.1 List operators
+### 4.1 List operator keywords
 Rune supports common list operations:
 - `then`
 - `filter`
@@ -610,7 +611,7 @@ drivingLicences
 #### `Reduce`
 The `reduce` keyword is an operation that takes a list and returns a **single value**.
 
-#### Built in reduction operators
+#### Built-in reduction operators
 - `sum` – sum of all numbers
 - `min, max` – smallest or largest element
 - `join` – concatenates strings (optional delimiter)
@@ -628,8 +629,9 @@ vehicles
 
 For `join`, the operator can specify a delimiter expression in-between each string element. This example concatenates a list of strings, separating each element with the given delimiter:
 ` strings join ", "`
-[^4]
-[^4]: Do we need an example of code here?
+[^5]
+[^5]: Do we need an example of code here?
+
 Reduction works by repeatedly combining two list elements into one until only a single result remains. All built in reduction operators are just shortcuts for this generic reduce process. 
 When using `reduce`, you must provide an expression that defines how to merge two items. The earlier example that finds the vehicle with the highest engine power can be rewritten.
 ```haskell
@@ -640,20 +642,20 @@ vehicles
 ```
 
 
-## 6. List comparison
+### 4.2. List comparison
 Rune supports comparison operators on lists. All list comparisons return a **boolean**.
 
-### 6.1 Additional list comparison keywords:
+### 4.3 Additional list comparison keywords:
 - `all / any` – compare a list to a single value
 - `contains` – true if the right side is a subset of the left
 - `disjoint` – true if the lists share no elements 
 If a single value expression is used with `contains` or `disjoint`, Rune treats it as a list with one element (or empty if null).
 
-### 6.2 Rules
+### 4.4 Rules
 - If one side is a list and the other is a single value, you must use `all` or `any`.
 - If both sides are lists, they must have the same length for pairwise comparisons.
 
-### 6.3 Semantics
+### 4.5 Semantics
 `=`
 - List vs list – true if same length and all items match
 - List vs single (all) – all items equal the value
@@ -669,7 +671,7 @@ If a single value expression is used with `contains` or `disjoint`, Rune treats 
 - List vs single (all) – comparison must hold for all items
 - List vs single (any) – comparison must hold for at least one item
 
-### 6.4 Other list operators
+### 4.6 Other list operators
 These operators all require that the expression has multiple cardinality:
 - **only-element** – returns the single element if the list has exactly one item
 - **count** – number of items
@@ -691,7 +693,7 @@ owner -> drivingLicense -> countryofIssuance distinct count = 1
 ```
 
 
-### 6.5 Conversion operators
+## 5. Conversion operators
 Rune provides five conversion operators:
 - `to-enum`
 - `to-string`
@@ -718,7 +720,7 @@ If conversion fails – the result is empty.
 - `"3.14" to-int` – empty
 
 
-### 6.6 Keyword clashes
+### 5.1 Keyword clashes
 If a model name clashes with a Rune keyword, prefix it with the `^` operator. The `^` is not included in generated code or JSON.
 
 **Example**
