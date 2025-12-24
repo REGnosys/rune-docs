@@ -117,6 +117,13 @@ button--secondary:hover {
   display: none !important;
 } */
 
+.theme-doc-toc-desktop {
+  background-image: url('/img/top-green-curve.png');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: contain;
+}
+
 /* Force full width for the content column, overriding the theme's 75% limit */
 /* @media (min-width: 997px) {
   @layer docusaurus.theme-classic {
