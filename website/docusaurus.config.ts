@@ -134,10 +134,6 @@ const config: Config = {
               label: 'FAQs',
               href: '/docs/rune-documentation/resources/faqs',
             },
-            {
-              label: 'Projects',
-              href: '/docs/rune-documentation/projects',
-            },
           ]
         },
         {
