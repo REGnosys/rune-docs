@@ -112,6 +112,11 @@ button--secondary:hover {
   flex: 1;
 }
 
+/* Hide Pagination Navigation */
+.pagination-nav {
+  display: none !important;
+}
+
 /* Hide right-hand TOC */
 /* .theme-doc-toc-desktop {
   display: none !important;
