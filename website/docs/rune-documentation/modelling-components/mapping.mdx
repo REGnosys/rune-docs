@@ -10,6 +10,8 @@ This is done using **synonyms**, which are annotations placed on:
 - Values of enum types
 
 All synonyms across the model work together to map the structure of the input document into the final Rune document. These mappings can be used to generate an **Ingestion Environment** – a Java library that reads an input document and produces the corresponding Rune document.
+[^1]
+[^1]: Are we still offering guidance on synonyms? Or should we explain mapping in a different way?
 
 There are two types of mapping:
 1. [Basic mapping](#1-basic-mapping)
@@ -20,6 +22,7 @@ Basic mappings describe how a value in the input document maps directly to a val
 
 ### 1.1. Synonym source
 A **synonym source** defines a set of synonyms used for a specific type of input document.
+
 Example: `synonym source FpML_5_10 extends FpML`
 
 This means:
