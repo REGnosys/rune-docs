@@ -95,7 +95,72 @@ type EuropeanParliamentReport:
         [ruleReference CarbonMonoxide]
 ```
 
-### 2.2 Integrity requirements
+### 2.2 Rule references and labels for nested attributes 
+#### Simple attributes
+You can attach a `label` and a `ruleReference` directly to a report attribute when the attribute is simple (string, number, date, etc):
+```haskell
+type EuropeanParliamentReport:
+    vehicleRegistrationID string (1..1)
+        [label "Vehicle Registration ID"]
+        [ruleReference VehicleRegistrationID]
+```
+
+#### Complex attributes
+But if the report attribute is a **complex type**, you may need to label or reference a **nested** attribute instead. To do this, you can use a path:
+```haskell
+[label for subattribute -> subsubattribute -> ... "Nested attribute label"]
+[ruleReference subattribute -> subsubattribute -> ... NestedRule]
+```
+Supported path features:
+- `->` to navigate attributes
+- `item` to refer to the attribute the annotation is placed on
+- `->>` to access common attributes of choice types
+
+**Labels for lists (multiple cardinality attributes)**
+
+If an attribute is a **list of complex types**, you can include an index in the label using `$`:
+If you **don’t** include $, Rune automatically adds the index at the end:
+
+**Example**
+```haskell
+type Report:
+    components ReportComponent (0..*)
+        // label the id as "Component ID nr 0", "Component ID nr 1", "Component ID nr 2", ...
+        [label for componentID "Component ID nr $"]
+        // label the price using an implicit index: "Component Price (0)", "Component Price (1)", "Component Price (2)", ...
+        [label for componentPrice "Component Price"]
+        [ruleReference ReportComponentID]
+
+type ReportComponent:
+    componentID string (1..1)
+    componentPrice number (1..1)
+```
+
+### 2.3 Rule reference and label inheritance
+When a report type **overrides** an attribute, all labels and rule references are inherited automatically.
+You can:
+- **Override** a rule reference
+- **Remove** a rule reference using `empty`
+
+**Example**
+
+In this example, the `Report -> component` attribute inherits the rule reference for `componentID`, overrides the rule reference for `componentValue` and removes the rule reference for `componentUnit`.
+```haskell
+type CommonReport:
+    component ReportComponent (1..1)
+        [ruleReference for componentID ReportComponentID]
+        [ruleReference for componentValue ReportComponentValue]
+        [ruleReference for componentUnit ReportComponentUnit]
+
+type Report extends CommonReport:
+    override component ReportComponent (1..1)
+        [ruleReference for componentValue OverriddenReportComponentValue]
+        [ruleReference for componentUnit empty]
+```
+
+
+
+### 2.4 Integrity requirements
 To ensure the reporting model is valid, all of these must already exist in the regulatory hierarchy:
 - The **authority**,
 - The **corpus**, and
@@ -108,6 +173,8 @@ Rune DSL takes a **functional approach** to regulatory reporting. A reporting ru
 - x = business data (input)
 - y = reported data (output)
 Using this idea, reported data is simply a **projection** of business data.
+[^1]
+[^1]: Do we need this formula - or can we remove this section?
 
 ### 3.1 Types of rules
 - Field rules – output is the data to be reported
@@ -145,7 +212,7 @@ reporting rule EuroEmissionStandard from ReportableEvent:
   else if Euro2Standard exists
   then Euro2Standard
 ```
-The expressions may use any type of [Expression component](./expressions.mdx) available in Rune DSL, from simple path expressions or constants to more complex conditional statements:
+The expressions may use any type of [Expression component](./expressions.mdx) available in Rune, from simple path expressions or constants to more complex conditional statements:
 
 **Example: simple extraction**
 `extract specification -> dateOfFirstRegistration`
@@ -164,15 +231,15 @@ extract
 ```
 
 ### 3.3 Chaining instructions with `then`
-The keyword `then` continues extraction from the previous result. Rune DSL enforces type safety: the output type of one step must match the input type of the next.
+The keyword `then` continues extraction from the previous result. Rune enforces type safety: the output type of one step must match the input type of the next.
 
 **Example**
 ```haskell
 reporting rule VehicleForOwner from VehicleOwnership:
     extract vehicle
-```haskell
-Is equivalent to:
 ```
+Is equivalent to:
+```haskell
 reporting rule VehicleClassification from VehicleOwnership:
     extract VehicleForOwner
         then extract vehicleClassification
@@ -230,68 +297,6 @@ reporting rule NotionalAmountScheduleLeg1EffectiveDate from DatedValue: <"Effect
 The `repeatable` keyword (used in the full example) tells Rune DSL that the output is a list of repeating items.
 
 
-### 3.6 Rule references and labels for nested attributes 
-#### Simple attributes
-You can attach a `label` and a `ruleReference` directly to a report attribute when the attribute is simple (string, number, date, etc):
-```haskell
-type EuropeanParliamentReport:
-    vehicleRegistrationID string (1..1)
-        [label "Vehicle Registration ID"]
-        [ruleReference VehicleRegistrationID]
-    ...
-```
-
-#### Complex attributes
-But if the report attribute is a **complex type**, you may need to label or reference a **nested** attribute instead. To do this, you can use a path:
-```haskell
-[label for subattribute -> subsubattribute -> ... "Nested attribute label"]
-[ruleReference subattribute -> subsubattribute -> ... NestedRule]
-```
-Supported path features:
-- `->` to navigate attributes
-- `item` to refer to the attribute the annotation is placed on
-- `->>` to access common attributes of choice types
-
-**Labels for lists (multi cardinality attributes)**
-If an attribute is a **list of complex types**, you can include an index in the label using `$`:
-If you **don’t** include $, Rune automatically adds the index at the end:
-
-**Example**
-```haskell
-type Report:
-    components ReportComponent (0..*)
-        // label the id as "Component ID nr 0", "Component ID nr 1", "Component ID nr 2", ...
-        [label for componentID "Component ID nr $"]
-        // label the price using an implicit index: "Component Price (0)", "Component Price (1)", "Component Price (2)", ...
-        [label for componentPrice "Component Price"]
-        [ruleReference ReportComponentID]
-
-type ReportComponent:
-    componentID string (1..1)
-    componentPrice number (1..1)
-```
-
-### 3.7 Rule reference and label inheritance
-When a report type **overrides** an attribute, all labels and rule references are inherited automatically.
-You can:
-- **Override** a rule reference
-- **Remove** a rule reference using `empty`
-
-**Example**
-
-In this example, the `Report -> component` attribute inherits the rule reference for `componentID`, overrides the rule reference for `componentValue` and removes the rule reference for `componentUnit`.
-```haskell
-type CommonReport:
-    component ReportComponent (1..1)
-        [ruleReference for componentID ReportComponentID]
-        [ruleReference for componentValue ReportComponentValue]
-        [ruleReference for componentUnit ReportComponentUnit]
-
-type Report extends CommonReport:
-    override component ReportComponent (1..1)
-        [ruleReference for componentValue OverriddenReportComponentValue]
-        [ruleReference for componentUnit empty]
-```
 
 
 ## 4. Function overriding 
@@ -383,8 +388,10 @@ func ExtendedCalculateNotional extends CalculateNotional:
 
 ### 4.3 Super call
 The keyword `super` allows an extending function to **call the original function** and build on its result, without the need to replace it.
+[^1]
+[^1]: Super call may require more explanation
 
-**Syntax**
+**Super call syntax**
 
 `super(<input1>, <input2>, ...)`
 
@@ -418,6 +425,9 @@ func ExtendedProcessTransfer extends ProcessTransfer:
 
 
 ### 4.4 Calling extended functions 
+[^1]
+[^1]: Extended functions may require more explanation
+
 When a function is extended inside a **scope**, that extended version becomes available throughout the entire model – not just inside the scope where it was defined.
 This gives calling code a choice:
 - Use the original function
