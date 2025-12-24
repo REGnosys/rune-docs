@@ -25,13 +25,14 @@ const sidebars: SidebarsConfig = {
       link: {
         type: 'generated-index',
         title: 'Rune Docs',
-        description: 'Documentation for Rune',
+        description: 'All you need to know to understand and use the Rune domain-specific language for modelling operational processes in financial and other markets.',
         slug: '/category/rune-docs',
       },
       items: [
         {
           type: 'category',
           label: 'Overview',
+          description: 'Your introduction to the Rune language.',
           collapsible: true,
           collapsed: false,
           items: [
@@ -43,6 +44,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Modelling Components',
+          description: 'Our components and how they work, with examples.',
           link: {
             type: 'doc',
             id: 'rune-documentation/rune-dsl-modelling-components',
@@ -61,6 +63,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Developers',
+          description: 'Advanced use of Rune and how you can contribute.',
           link: {
             type: 'doc',
             id: 'rune-documentation/developers/developers',
@@ -74,6 +77,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Resources',
+          description: 'Our FAQs, glossary, and find out how to get in touch.',
           items: [
             'rune-documentation/resources/faqs',
             'rune-documentation/resources/glossary',
