@@ -42,14 +42,6 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
-          label: 'Projects',
-          items: [
-            'rune-documentation/projects/projects',
-            'rune-documentation/projects/projects-cdm',
-          ],
-        },
-        {
-          type: 'category',
           label: 'Modelling Components',
           link: {
             type: 'doc',
