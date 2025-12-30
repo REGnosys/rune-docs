@@ -102,7 +102,7 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'docsSidebar',
           position: 'left',
-          label: 'Case Studies',
+          label: 'Case studies',
           // href: '/docs/rune-documentation/resources/case-studies',
         },
       ],
@@ -111,24 +111,24 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Get Started',
+          title: 'Get started',
           items: [
             {
-              label: 'Get Started',
+              label: 'Get started',
               to: '/docs/rune-documentation/overview/get-started',
             },
             {
-              label: 'Keyword Search',
+              label: 'Keyword search',
               to: '/docs/rune-documentation/overview/keyword-search',
             },
             {
-              label: 'Modelling Components',
+              label: 'Modelling components',
               to: '/docs/rune-documentation/rune-dsl-modelling-components',
             },
           ],
         },
         {
-          title: 'Questions and Stories',
+          title: 'Questions and stories',
           items: [
             {
               label: 'FAQs',
