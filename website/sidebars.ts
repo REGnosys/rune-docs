@@ -21,10 +21,10 @@ const sidebars: SidebarsConfig = {
     'landing',
     {
       type: 'category',
-      label: 'Rune Docs',
+      label: 'Rune docs',
       link: {
         type: 'generated-index',
-        title: 'Rune Docs',
+        title: 'Rune docs',
         description: 'All you need to know to understand and use the Rune domain-specific language for modelling operational processes in financial and other markets.',
         slug: '/category/rune-docs',
       },
@@ -43,7 +43,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
-          label: 'Modelling Components',
+          label: 'Modelling components',
           description: 'Our components and how they work, with examples.',
           link: {
             type: 'doc',
