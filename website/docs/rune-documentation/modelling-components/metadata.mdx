@@ -3,7 +3,7 @@ title: Metadata
 sidebar_label: Metadata
 ---
 
-Metadata components add extra information to model elements like data types, attributes, and functions. 
+Metadata components add extra information to model elements like data types, attributes and functions. 
 Most components can include a plain text description. These descriptions don’t produce code, but they can provide important metadata and should be included for every model component, written clearly and completely. 
  
 To add a text description to a model component, place the text in double quote marks inside angle brackets: `<"This is a metadata description">`. 
@@ -40,7 +40,7 @@ Annotation names use **lower camelCase** and must be unique within a model. Attr
 annotation rootType: <"Mark a type as a root of the rune model">
 ```
 
-Rune DSL includes some built in annotations, but you can define your own as needed. 
+Rune includes some built-in annotations, but you can define your own as needed. 
 Once defined, you can apply an annotation to any model component using its name and any chosen attributes.
 ```haskell
 [<annotationName> (optional: <annotationAttribute>)]
@@ -49,6 +49,8 @@ Once defined, you can apply an annotation to any model component using its name 
 ### 1.2 `codeimplementation`
 The `codeImplementation` annotation tells users that a function’s logic is implemented elsewhere in the codebase – for example, in a static, handwritten Java class. 
 Functions marked with this annotation should not include any Rune implementation – their behavior is provided by the external code.
+[^1]
+[^1]: Should we be mentioning Java here? And if we do, do we need to explain it?
 
 **Example**
 ```haskell
@@ -63,7 +65,7 @@ func MyFunc:
 ### 1.3 `metadata`
 The `metadata` annotation defines qualifiers that can be applied to a data type or attribute. 
 
-Rune provides several built in metadata fields:
+Rune provides several built-in `metadata` fields:
 ```haskell
 annotation metadata:
   id string (0..1)
@@ -76,16 +78,16 @@ annotation metadata:
 ```
 
 Each `metadata` field represents a different qualifier:
-- `scheme`: Controls the allowed values for an attribute without needing an enumeration. The attribute is usually a simple `string`, and the annotation tells the system where to source the scheme values.
-- `template`: Marks that a data type can be used as a data template, allowing shared data to be stored once and referenced by multiple objects.
-- **Other fields**: Used for [cross referencing](#3-cross-referencing) between objects.
+- `scheme` – controls the allowed values for an attribute without needing an enumeration. The attribute is usually a simple `string`, and the annotation tells the system where to source the scheme values.
+- `template` – marks that a data type can be used as a data template, allowing shared data to be stored once and referenced by multiple objects.
+- **Other fields** – used for [cross referencing](#3-cross-referencing) between objects.
 
 ### 1.4 Using metadata in functions and expressions
 You can access metadata values through function inputs or expression outputs that have metadata annotations. 
-[^1]
-[^1]: Does this section require more explanation?
+[^2]
+[^2]: Does this section require more explanation?
 
-How a function can use metadata passed into it.
+Example: How a function can use metadata passed into it.
 ```haskell
 func MyFunc:
     inputs:
@@ -97,7 +99,7 @@ func MyFunc:
     set myResult: myInput -> scheme
 ```
 
-How to work with metadata that is the output of an expression:
+Example: How to work with metadata that is the output of an expression.
 ```haskell
 func MyFunc:
     inputs:
@@ -111,7 +113,7 @@ func MyFunc:
 ## 2. Document reference
 A document reference is an annotation that links model components to information stored in an external document. In Rune, you can define these external documents – who owns them and key parts of their content – as model components, and then associate them with other elements like data types or functions.
 
-If the external information is plain text, this creates a built in documentation trail for model behavior. When that behavior is later turned into executable software, the document reference acts as a form of self documentation.
+If the external information is plain text, this creates a built-in documentation trail for model behavior. When that behavior is later turned into software, the document reference acts as a form of self documentation.
 
 Document references consist of two parts: **hierarchy** and **content**.
 
@@ -121,7 +123,7 @@ Document hierarchy uses three keywords to structure document references:
 - `corpus` – the document set containing the referenced material
 - `segment` – the specific section within a document
 
-The syntax to define a body, corpus and segment:
+Syntax: To define a body, corpus and segment.
 ```haskell
 body <BodyType> <BodyName> (optional: <"Description">)
 corpus <CorpusType> (optional: <Body>) (optional: <"Alias">) <CorpusName> (optional: <"Description">)
@@ -133,7 +135,7 @@ segment <segmentType>
 body Authority EuropeanCommission <"European Commission (ec.europa.eu).">
 ```
 
-**Corpuses** represent document sets such as directives, laws, regulatory texts, technical standards, or best practice guidance. 
+**Corpuses** represent document sets such as directives, laws, regulatory texts, technical standards or best practise guidance. 
 A corpus may also include an **alias**, which provides an alternative identifier such as an official document number.
 ```haskell
 corpus Directive "93/59/EC" StandardEmissionsEuro1
@@ -159,7 +161,7 @@ article "26" paragraph "2"
 ```
 
 ### 2.2 Document content
-**Document content** is referenced using the `docReference` keyword. Each reference must point to a **corpus** and one or more **segments** defined in the document hierarchy. Document references can be attached to any type, attribute, function, or rule.
+**Document content** is referenced using the `docReference` keyword. Each reference must point to a **corpus** and one or more **segments** defined in the document hierarchy. Document references can be attached to any type, attribute, function or rule.
 
 You can use the `provision` keyword to include the specific text being referenced.
 ```haskell
@@ -196,15 +198,14 @@ type Report:
 ```
 
 In general, the path must start with the keyword `for`, followed by one of these:
-[^2]
-[^2]: Can we show an example that includes 'for'?
+[^3]
+[^3]: Can we show an example that includes 'for'?
 
 - An attribute name e.g. `payerReceiver`
 - A path to an attribute e.g. `payerReceiver -> payer`
 - The keyword `item` to refer to the attribute itself
 - A deep path in a choice type e.g. `item ->> dayCountConvention`. See the [deep path operator](./expressions.mdx). 
-[^3]
-[^3]: Link to deep path operator - Expressions component
+
 
 ### 2.4 Data template
 When a data type is marked as a **template**, it can reference a separate template object. Both the template and any object that uses it are usually incomplete and should not be validated on their own. After resolving the template reference, the template data must be merged into the object to create a fully populated object. Validation should only happen after this merge.
@@ -246,6 +247,8 @@ Any attribute marked as a reference must refer to a type annotated with a key.
 <targetAttribute>
   [metadata reference]
 ```
+
+**Example**
 
 `Party` and `Identifier` types show how cross reference annotations work. Marking `Party` with a key makes it referenceable. In `Identifier`, the reference annotation on `issuerReference` means this attribute can point to a `Party` using its key instead of duplicating the full object.
 ```haskell
