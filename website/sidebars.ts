@@ -18,21 +18,16 @@ const sidebars: SidebarsConfig = {
 
   // But you can create a sidebar manually
   docsSidebar: [
-    //'rune-documentation/landing',
+    'landing',
     {
       type: 'category',
-      label: 'Rune Docs',
+      label: 'Rune docs',
       link: {
-        type: 'doc',
-        id: 'rune-documentation/landing',
+        type: 'generated-index',
+        title: 'Rune docs',
+        description: 'All you need to know to understand and use the Rune domain-specific language for modelling operational processes in financial and other markets.',
+        slug: '/category/rune-docs',
       },
-      // Uncomment to use nice auto-generated landing page for Rune docs with nice tiles for all categories
-      // link: {
-      //   type: 'generated-index',
-      //   title: 'Rune docs',
-      //   description: 'All you need to know to understand and use the Rune domain-specific language for modelling operational processes in financial and other markets.',
-      //   slug: '/category/rune-docs',
-      // },
       items: [
         {
           type: 'category',
@@ -52,7 +47,7 @@ const sidebars: SidebarsConfig = {
           description: 'Our components and how they work, with examples.',
           link: {
             type: 'doc',
-            id: 'rune-documentation/modelling-components/modelling-components',
+            id: 'rune-documentation/rune-dsl-modelling-components',
           },
           items: [
             'rune-documentation/modelling-components/data',
@@ -83,10 +78,6 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Resources',
           description: 'Our FAQs, glossary, and find out how to get in touch.',
-          link: {
-            type: 'doc',
-            id: 'rune-documentation/resources/resources',
-          },
           items: [
             'rune-documentation/resources/faqs',
             'rune-documentation/resources/glossary',
