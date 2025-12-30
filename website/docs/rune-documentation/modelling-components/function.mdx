@@ -16,13 +16,13 @@ Just like spreadsheets let you create formulas and reuse them, Rune lets you bui
 
 #### When to reuse existing industry processes
 If a process is already well defined and widely used, it should be reused rather than recreated. You can do this with:
-- **Mathematical functions** such as sum, absolute value, or average.
+- **Mathematical functions**, such as sum, absolute value, or average.
 - **Reference data lookups**, which are typically provided by industry-standard utilities.
 - **Quantitative finance components**, such as generating coupon schedules from parameters, or adjusting dates based on holiday calendars.
 
 #### Benefits of reusing small, modular functions
-- **1. Consistency:** If a sub process changes, every process that uses it automatically benefits from the update.
-- **2. Flexibility:** You don’t need to define every process from scratch. You can assemble new processes by reusing existing building blocks.
+- **Consistency:** If a sub process changes, every process that uses it automatically benefits from the update.
+- **Flexibility:** You don’t need to define every process from scratch. You can assemble new processes by reusing existing building blocks.
 
 The concept of building systems from small, reusable components fits naturally with a modular modelling approach. It keeps models clean, maintainable, and scalable.
 
@@ -41,11 +41,10 @@ Function specifications define the processes used in a Rune domain model. They d
 
 A function in Rune includes:
  - A **name**
- - A **plain text description** (optional)
- - **Inputs** (optional)
- - **Output** (mandatory)
- - **Conditions** (optional)
- - **Output construction statements** (optional)
+ - A **plain text description**
+ - **Inputs and output attributes** (mandatory for output)
+ - **Inputs and output condition statements**
+ - **Output construction statements**
 
 **Example**
 
@@ -65,7 +64,8 @@ func <FunctionName>: (optional: <"Description">)
  - Syntax mirrors type definitions for consistency.
 
 ### 1.2 Descriptions
-Descriptions help you to understand the purpose and behaviour of a function. This improves clarity and communication.
+Descriptions help you to understand the purpose and behavior of a function. This improves clarity and communication.
+
 You can add descriptions to:
  - The function itself
  - Any input
@@ -80,7 +80,7 @@ Inputs and output behave like attributes in type definitions. Each has:
 
 `inputs` is plural whereas `output` is singular, because a function may take several inputs but may only return one output. The minimum requirement is that a function **must** define an output. Inputs are optional.
 
-**Example: Output only**
+**Example:** Output only
 
 ```haskell
 func GetBusinessDate: <"Provides the business date from the underlying system implementation.">
@@ -88,7 +88,7 @@ func GetBusinessDate: <"Provides the business date from the underlying system im
      businessDate date (1..1) <"The provided business date.">
 ```
 
-**Example: Inputs and output**
+**Example:** Inputs and output
 ```haskell
 func UpdateAmountForEachQuantity:
   inputs:
@@ -98,7 +98,8 @@ func UpdateAmountForEachQuantity:
      updatedPriceQuantity PriceQuantity (0..*)
 ```
 
-**Example: multiple cardinality**
+**Example:** Multiple cardinality
+
 Inputs and outputs may be lists:
 ```haskell
 func UpdateAmountForEachQuantity:
@@ -118,6 +119,7 @@ Conditions restrict what values are allowed for inputs and outputs. They ensure 
  - Apply to **inputs and output**
  - Checked **after** the function runs
 
+**Example:**
 ```haskell
 func Create_VehicleOwnership: <"Creation of a vehicle ownership record file">
     inputs:
@@ -142,12 +144,12 @@ In Rune, you can do more than just declare a function’s inputs and output – 
 However, because Rune has limited language features, not all logic can always be fully expressed. This leads to two types of functions:
 
 #### Fully defined function
- - All validation rules for the output are satisfied within the DSL.
+ - All validation rules for the output are satisfied within Rune.
  - The generated code is complete and ready to use.
  - No extra coding is required.
 
 #### Partially defined function
- - Only some validation rules are satisfied in the DSL.
+ - Only some validation rules are satisfied in Rune.
  - You must extend the generated code (e.g. in Java) to finish building the output.
 [^1]
 [^1]: Why must you extend the generated code - is this still valid?
@@ -187,7 +189,7 @@ func Create_VehicleOwnership: <"Creation of a vehicle ownership record file">
         isFirstHand
 ```
 
-#### Working with lists: set vs add
+#### Working with lists: `set` vs `add`
 `set`
 - Replaces the entire list.
 - The expression must return a list.
@@ -225,11 +227,12 @@ func GetDrivingLicenceNames: <"Get driver's names from given list of licences.">
 Rune supports two function cases where the output is fully defined:
 1. Object qualification functions
 2. Shorthand functions
+
 These often use annotations to guide code generation.
 
 ### 2.2 Object qualification functions
 These functions classify an object based on a set of rules.
-- They return **true** if the object meets all criteria for a specific classification.
+- They return `true` if the object meets all criteria for a specific classification.
 - They use a **qualification name** (a string from that classification) to specify what type of object is being classified (e.g. `Product, BusinessEvent`) and returns a boolean.
 
 **Example**
@@ -239,7 +242,7 @@ annotation qualification: <"Annotation that describes a func that is used for ev
   Product boolean (0..1)
   BusinessEvent boolean (0..1)
 ```
-Naming convention: `Qualify_(QualificationName` uses PascalCase; spaces/colons become underscores.)
+Naming convention: `Qualify_(QualificationName` uses PascalCase; spaces/colons become underscores.
 
 ### 2.3 Shorthand functions
 Shorthand functions provide a compact way to express frequently used or long path expressions.
@@ -252,7 +255,7 @@ func PaymentDate:
   set result: economicTerms -> payout -> interestRatePayout only-element -> paymentDate -> adjustedDate
 ```
 Instead of writing the long path for the `EconomicTerms` object repeatedly, you can simply call:
-`PaymentDate(EconomicTerms)`
+`PaymentDate(EconomicTerms)`.
 
 ### 2.4 Aliases
 Aliases act like temporary variables inside a function. They make complex logic easier to read and maintain.
