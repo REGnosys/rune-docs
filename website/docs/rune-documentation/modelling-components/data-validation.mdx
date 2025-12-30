@@ -35,7 +35,7 @@ type Address:
 
 
 ## 2. Condition statements
-Conditions are custom logic rules you can use to check if the data within an object makes sense. Conditions evaluate to True or False. If a condition is False, the object is considered invalid. Because conditions are written inside a data type, they can reference attributes directly.
+Conditions are custom logic rules you can use to check if the data within an object makes sense. Conditions evaluate to `True` or `False`. If a condition is `False`, the object is considered invalid. Because conditions are written inside a data type, they can reference attributes directly.
 
 Conditions are usually placed at the end of a type definition and include:
 - a name
@@ -61,7 +61,7 @@ type ConstituentWeight:
 
 
 ### 2.1 Choice conditions
-Sometimes, the validity of one attribute depends on another. Rune DSL provides ‘choice’ rules to handle these relationships without writing complex boolean logic.
+Sometimes, the validity of one attribute depends on another. Rune provides ‘choice’ rules to handle these relationships without writing complex boolean logic.
 A choice rule defines a **mutual exclusion** constraint between attributes. There are two main types:
 - **Optional choice:** At most one attribute can be present (0 or 1).
 - **Required choice:** Exactly one attribute must be present (1 only).
@@ -81,8 +81,8 @@ condition NameChoice:
     optional choice middleName, initial
 ```
 
-### 2.2 The ‘one-of’ shortcut
-If you want a rule where **exactly one** attribute from the entire list must be present, you can use the one-of shorthand. This is much faster than listing every single attribute in a choice rule.
+### 2.2 The `one-of` shortcut
+If you want a rule where **exactly one** attribute from the entire list must be present, you can use the `one-of` shorthand. This is much faster than listing every single attribute in a choice rule.
 
 **Example**
 ``` Haskell
