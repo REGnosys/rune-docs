@@ -67,7 +67,7 @@ synonym source EXTERNAL_SYNONYM_EXAMPLE_8 extends EXTERNAL_SYNONYM_EXAMPLE_8_BAS
 ### 1.4. Synonym body
 A synonym body defines how the input value maps to the Rune attribute.
 
-#### Value
+#### `Value`
 The simplest form: `[value "combustible"]`
 
 Meaning:
@@ -76,15 +76,15 @@ Meaning:
 - If both sides are complex types (with child attributes of their own), then child attributes are matched using synonyms
 - If one side is basic and the other complex, this results in a mapping error
 
-#### Path
+#### `Path`
 A synonym can include a path: `[synonym MULTI_CARDINALITY_EXAMPLE_2 value "combustible" path "engineDetail"]` 
 
 This maps `engineDetail.combustible` to the Rune attribute.
 
-#### Maps 2
+#### `Maps 2`
 Normally, one input value must map to one Rune value. If the same input value should map to multiple Rune values, use the `maps 2` keyword.
 
-#### Meta
+#### `Meta`
 The `meta` keyword inside a synonym is used to map metadata. 
 
 **Example**
@@ -124,12 +124,14 @@ enums
 The mapping algorithm:
 1. Binds the root of the input document to a predefined Rune root type
 2. Recursively walks through the input document
+
 At each step:
 - The current input attribute is linked to one or more Rune objects
 - For each child input attribute:
 - Rune attributes are checked for matching synonyms
 - For each match, a new Rune object is created
 - The algorithm recurses into that child
+
 When an input attribute has a value, that value is assigned to all bound Rune objects
 
 
@@ -155,7 +157,8 @@ In this example:
 
 ### 2.2. Merging inputs
 If a Rune attribute has multiple cardinality, multiple input elements may map to it.
-**Without merging**
+
+#### Without merging
 Two synonyms produces **two** `EngineSpecification` objects:
 ```haskell
 engineSpecification EngineSpecification (0..*)
@@ -172,10 +175,11 @@ engineSpecification EngineSpecification (0..*)
 
 ### 2.3. Conditional mappings 
 Conditional mappings let you create more advanced mapping rules. There are **two types**:
+
 **1. Set to** – assign a constant value
 **2. Set when** – assign a value from the input document only when a condition is met
 
-#### Set to mapping
+#### Set to 
 A **set to** mapping assigns a **constant value** to an attribute.
 - It does **not** use any value from the input document.
 - You must **not** provide a synonym value.
@@ -187,7 +191,8 @@ A **set to** mapping assigns a **constant value** to an attribute.
 engineEnum EngineEnum (0..1)
   [synonym CONDITIONAL_SET_TO_EXAMPLE_13 set to EngineEnum->Hybrid]
 ```
-#### Conditional set to
+**Conditional set to**
+
 You can add a **when** clause to make the assignment conditional:
 ```haskell
 engineEnum EngineEnum (0..1)
@@ -239,6 +244,8 @@ capacityUnit string (0..1)
 
 #### Input path expression
 Checks the **exact path** in the input document that led to the current value.
+
+**Example**
 ```haskell
 volume string (0..1)
   [synonym CONDITIONAL_SET_EXAMPLE_6 value "capacity" set when path = "ukEngineVersion->terminology"]
@@ -257,6 +264,8 @@ fuelType string (1..1)
 
 ### 2.5. Mapper
 If Rune’s mapping syntax cannot express the required transformation, you can call a **mapper**.
+
+**Example::
 ```haskell
 fuelType string (0..1)
   // value updated by mapper
@@ -279,6 +288,7 @@ fabricationDate date (1..1)
 Patterns apply to enums and basic types (except dates). They let you:
 1. Match the input using a [**regular expression**]( https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html)
 2. Transform it using a replacement expression
+
 The keyword `pattern` is followed by two quoted strings. The first string is a regular expression used to match against the input value. The second string is a replacement expression used to reformat the matched input before it’s processed as usual for the basictype/enum.
 
 **Example**
