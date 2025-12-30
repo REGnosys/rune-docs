@@ -18,7 +18,6 @@ const sidebars: SidebarsConfig = {
 
   // But you can create a sidebar manually
   docsSidebar: [
-    'landing',
     {
       type: 'category',
       label: 'Rune docs',
@@ -26,7 +25,7 @@ const sidebars: SidebarsConfig = {
         type: 'generated-index',
         title: 'Rune docs',
         description: 'All you need to know to understand and use the Rune domain-specific language for modelling operational processes in financial and other markets.',
-        slug: '/category/rune-docs',
+        slug: '/',
       },
       items: [
         {
