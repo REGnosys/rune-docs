@@ -20,7 +20,7 @@ const FeatureList: FeatureItem[] = [
         Search for a keyword to find the modelling component info you want, fast.
       </>
     ),
-    link: '/docs/rune-documentation/overview/keyword-search',
+    link: '/docs/rune-documentation/get-started/keyword-search',
   },
   {
     title: 'Components',
@@ -33,14 +33,14 @@ const FeatureList: FeatureItem[] = [
     link: '/docs/rune-documentation/rune-dsl-modelling-components',
   },
   {
-    title: 'Get Started',
+    title: 'Get started',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
         New to Rune? Interested in data modelling? Start here to find out all you need to know
       </>
     ),
-    link: '/docs/rune-documentation/overview/get-started',
+    link: '/docs/rune-documentation/get-started',
   },
 ];
 

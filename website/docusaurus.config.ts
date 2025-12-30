@@ -75,8 +75,8 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'docsSidebar',
           position: 'left',
-          label: 'Overview',
-          href: '/docs/rune-documentation/overview',
+          label: 'Get started',
+          href: '/docs/rune-documentation/get-started',
         },
         {
           type: 'docSidebar',
@@ -115,11 +115,11 @@ const config: Config = {
           items: [
             {
               label: 'Get started',
-              to: '/docs/rune-documentation/overview/get-started',
+              to: '/docs/rune-documentation/get-started',
             },
             {
               label: 'Keyword search',
-              to: '/docs/rune-documentation/overview/keyword-search',
+              to: '/docs/rune-documentation/get-started/keyword-search',
             },
             {
               label: 'Modelling components',

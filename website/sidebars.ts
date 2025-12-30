@@ -31,14 +31,14 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: 'category',
-          label: 'Overview',
+          label: 'Get started',
           description: 'Your introduction to the Rune language.',
           collapsible: true,
           collapsed: false,
           items: [
-            'rune-documentation/overview/get-started',
-            'rune-documentation/overview/keyword-search',
-            'rune-documentation/overview/overview',
+            'rune-documentation/get-started/index',
+            'rune-documentation/get-started/keyword-search',
+            'rune-documentation/get-started/overview',
           ],
         },
         {
