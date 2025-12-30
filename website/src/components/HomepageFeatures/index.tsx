@@ -30,7 +30,7 @@ const FeatureList: FeatureItem[] = [
         Our modelling components and how they work, with examples to show each feature.
       </>
     ),
-    link: '/docs/rune-documentation/rune-dsl-modelling-components',
+    link: '/docs/rune-documentation/modelling-components',
   },
   {
     title: 'Get Started',
