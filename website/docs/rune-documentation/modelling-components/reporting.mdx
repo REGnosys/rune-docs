@@ -4,9 +4,9 @@ sidebar_label: Reporting
 
 ---
 
-Rune supports financial institutions’ regulatory reporting requirements by allowing reporting rules to be written as **functional components** in the same language used to model the business domain – a **domain model**. Code generators can then turn these rules into executable code that all firms can use consistently.
+Rune supports financial institutions’ regulatory reporting requirements by allowing reporting rules to be written as **functional components** in the same language used to model the business domain – a **domain model**. Code generators then turn these rules into executable code that all firms can use consistently.
 
-There are four main things to know:
+There are four main things to know about Rune's reporting component:
 
 1. [Regulatory hierarchy](#1-regulatory-hierarchy)
 2. [Report definition](#2-report-definition)
@@ -15,15 +15,17 @@ There are four main things to know:
 
 ## 1. Regulatory hierarchy
 Before defining reporting rules, the regulatory content itself must be organised.
+
 Financial regulations:
 - Span multiple jurisdictions
 - Contain thousands of pages
 - Include complex cross references
 
-Rune DSL provides syntax to reference:
+Rune provides syntax to reference:
 - Regulatory documents
 - Their internal structure
 - The authorities that own them
+
 These components form the **regulatory hierarchy**, which the reporting rules rely on.
 
 ## 2. Report definition
@@ -118,8 +120,7 @@ Supported path features:
 
 **Labels for lists (multiple cardinality attributes)**
 
-If an attribute is a **list of complex types**, you can include an index in the label using `$`:
-If you **don’t** include $, Rune automatically adds the index at the end:
+If an attribute is a **list of complex types**, you can include an index in the label using `$`. If you **don’t** include $, Rune automatically adds the index at the end:
 
 **Example**
 ```haskell
@@ -165,25 +166,28 @@ To ensure the reporting model is valid, all of these must already exist in the r
 - The **authority**,
 - The **corpus**, and
 - All **referenced rules**
+
 A report simply assembles these components into a **complete recipe** that firms can implement directly to meet regulatory reporting obligations.
 
 
 ## 3. Report rules
-Rune DSL takes a **functional approach** to regulatory reporting. A reporting rule is simply a function: **y=f(x)**, where:
+Rune takes a **functional approach** to regulatory reporting. A reporting rule is simply a function, **y=f(x)**, where:
 - x = business data (input)
 - y = reported data (output)
+
 Using this idea, reported data is simply a **projection** of business data.
 [^1]
 [^1]: Do we need this formula - or can we remove this section?
 
 ### 3.1 Types of rules
-- Field rules – output is the data to be reported
-- Eligibility rules – output is a boolean that indicates `True` when something must be reported
+- **Field rules** – output is the data to be reported
+- **Eligibility rules** – output is a boolean that indicates `True` when something must be reported
 
-Rune DSL reporting rules are important because they’re:
-- **Human readable** – so they’re clear for regulatory analysts
-- **Machine executable** – so code generators turn them into executable logic
-- **Auditable** – as each rule is explicitly tied to regulatory references, using the regulatory hierarchy concepts of body, corpus and segment
+Rune reporting rules are important because they’re:
+- **Human readable** – so they’re clear for regulatory analysts.
+- **Machine executable** – so code generators turn them into executable logic.
+- **Auditable** – as each rule is explicitly tied to regulatory references, using the regulatory hierarchy concepts of body, corpus and segment.
+
 This ensures reporting logic is transparent, consistent, and traceable back to any applicable text.
 
 ### 3.2 Rule syntax
@@ -199,7 +203,8 @@ A rule is defined as:
 ```
 
 The `ruleType` can be either `reporting` (returns a value) or `eligibility` (returns a boolean).
-`regulatoryReference` links the rule to the exact regulatory text that justifies it and uses the same syntax as `docReference`. In the document reference section of the [Metadata component](./metadata#2-document-reference).
+
+`regulatoryReference` links the rule to the exact regulatory text that justifies it and uses the same syntax as `docReference`, as outlined in the document reference section of the [Metadata component](./metadata#2-document-reference).
 
 Functional expressions are composable, so a rule can also call another rule, as shown here. Both `Euro1Standard`, and `Euro6Standard` are themselves reporting rules.
 
@@ -294,24 +299,24 @@ reporting rule NotionalAmountScheduleLeg1EffectiveDate from DatedValue: <"Effect
   CDENotionalAmountScheduleEffectiveDate
 ```
 
-The `repeatable` keyword (used in the full example) tells Rune DSL that the output is a list of repeating items.
+The `repeatable` keyword (used in the full example) tells Rune that the output is a list of repeating items.
 
 
 
 
 ## 4. Function overriding 
 Function overriding lets you **customize** existing functions without rewriting them. It enables:
-- **Flexibility** – adapt logic for specific use cases
-- **Reusability** – keep most of the original function
+- **Flexibility** – adapts logic for specific use cases
+- **Reusability** – keeps most of the original function
 - **Maintainability** – updates to the base function flow through unless overridden
 
 ### 4.1 Scope
 Function overriding happens inside a **scope**, which defines where extensions apply. All function extensions **must** be defined within a scoped file, which is declared using the `scope` keyword at the namespace level.
 
 #### Scope rules
-- Scope names must be unique within a namespace
-- Functions can only be extended inside scoped files
-- Scopes must be enabled in the project configuration
+- **Scope names** must be unique within a namespace
+- **Functions** can only be extended inside scoped files
+- **Scopes** must be enabled in the project configuration
 
 **Syntax**
 ```haskell
@@ -350,9 +355,9 @@ Requirements:
 - Defined inside a scope
 - A base function can only be extended once per scope
 
-**Example**
+**Examples** 
 
-Base function:
+Base function
 ```haskell
 namespace cdm.base.math
 version "1.0"
@@ -432,6 +437,7 @@ When a function is extended inside a **scope**, that extended version becomes av
 This gives calling code a choice:
 - Use the original function
 - Use the extended function (the version defined in a scope)
+
 Which one is used depends on the execution context and how the model is configured.
 
 **Example**
