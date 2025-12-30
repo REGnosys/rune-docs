@@ -89,22 +89,30 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'docsSidebar',
           position: 'left',
-          label: 'Developers',
-          href: '/docs/rune-documentation/developers',
+          label: 'Keyword search',
+          href: '/docs/rune-documentation/get-started/keyword-search',
         },
         {
           type: 'docSidebar',
           sidebarId: 'docsSidebar',
           position: 'left',
-          label: 'FAQs',
-          href: '/docs/rune-documentation/resources/faqs',
-        }, {
-          type: 'docSidebar',
-          sidebarId: 'docsSidebar',
-          position: 'left',
-          label: 'Case studies',
-          // href: '/docs/rune-documentation/resources/case-studies',
+          label: 'Developers',
+          href: '/docs/rune-documentation/developers',
         },
+        // {
+        //   type: 'docSidebar',
+        //   sidebarId: 'docsSidebar',
+        //   position: 'left',
+        //   label: 'FAQs',
+        //   href: '/docs/rune-documentation/resources/faqs',
+        // },
+        //  {
+        //   type: 'docSidebar',
+        //   sidebarId: 'docsSidebar',
+        //   position: 'left',
+        //   label: 'Case studies',
+        //    href: '/docs/rune-documentation/resources/case-studies',
+        // },
       ],
     },
     footer: {
@@ -128,20 +136,28 @@ const config: Config = {
           ],
         },
         {
-          title: 'Questions and stories',
+          title: 'Developers',
           items: [
             {
-              label: 'FAQs',
-              href: '/docs/rune-documentation/resources/faqs',
+              label: 'Rune and Java',
+              to: '/docs/rune-documentation/developers/rune-and-java',
+            },
+            {
+              label: 'Code generator',
+              to: '/docs/rune-documentation/developers/code-generator',
+            },
+            {
+              label: 'Contribute to Rune',
+              to: '/docs/rune-documentation/developers/contribute-to-rune',
             },
           ]
         },
         {
-          title: 'More',
+          title: 'Resources',
           items: [
             {
-              label: 'Developers',
-              href: '/docs/rune-documentation/developers',
+              label: 'FAQs',
+              href: '/docs/rune-documentation/resources/faqs',
             },
             {
               label: 'Glossary',

@@ -33,8 +33,12 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Get started',
           description: 'Your introduction to the Rune language.',
-          collapsible: true,
-          collapsed: false,
+          link: {
+            type: 'generated-index',
+            title: 'Get started',
+            description: 'Your introduction to the Rune language.',
+            slug: '/rune-documentation/get-started',
+          },
           items: [
             'rune-documentation/get-started/index',
             'rune-documentation/get-started/keyword-search',
@@ -46,8 +50,10 @@ const sidebars: SidebarsConfig = {
           label: 'Modelling components',
           description: 'Our components and how they work, with examples.',
           link: {
-            type: 'doc',
-            id: 'rune-documentation/rune-dsl-modelling-components',
+            type: 'generated-index',
+            title: 'Modelling components',
+            description: 'The Rune DSL can express eight types of model components. This documentation details the purpose and features of each type of model component and highlights their relationships.',
+            slug: '/rune-documentation/rune-dsl-modelling-components',
           },
           items: [
             'rune-documentation/modelling-components/data',
@@ -65,8 +71,10 @@ const sidebars: SidebarsConfig = {
           label: 'Developers',
           description: 'Advanced use of Rune and how you can contribute.',
           link: {
-            type: 'doc',
-            id: 'rune-documentation/developers/developers',
+            type: 'generated-index',
+            title: 'Developers',
+            description: 'Advanced use of Rune and how you can contribute.',
+            slug: '/rune-documentation/developers',
           },
           items: [
             'rune-documentation/developers/rune-and-java',
@@ -78,6 +86,12 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Resources',
           description: 'Our FAQs, glossary, and find out how to get in touch.',
+          link: {
+            type: 'generated-index',
+            title: 'Resources',
+            description: 'Our FAQs, glossary, and find out how to get in touch.',
+            slug: '/category/resources',
+          },
           items: [
             'rune-documentation/resources/faqs',
             'rune-documentation/resources/glossary',
