@@ -39,7 +39,7 @@ const sidebars: SidebarsConfig = {
             slug: '/rune-documentation/get-started',
           },
           items: [
-            'rune-documentation/get-started/index',
+            'rune-documentation/get-started/introducing-rune',
             'rune-documentation/get-started/keyword-search',
             'rune-documentation/get-started/overview',
           ],

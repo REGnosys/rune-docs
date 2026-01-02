@@ -108,6 +108,7 @@ button--secondary:hover {
   display: flex;
   gap: 1.5rem;
 }
+
 .two-column>* {
   flex: 1;
 }
@@ -125,7 +126,14 @@ button--secondary:hover {
 .theme-doc-toc-desktop {
   background-image: url('/img/top-green-curve.png');
   background-repeat: no-repeat;
-  background-position: top right;
+  background-position: top left;
+  background-size: contain;
+}
+
+[data-theme='dark'] .theme-doc-toc-desktop {
+  background-image: url('/img/top-pink-curve.png');
+  background-repeat: no-repeat;
+  background-position: top left;
   background-size: contain;
 }
 
