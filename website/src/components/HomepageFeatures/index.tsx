@@ -37,7 +37,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        New to Rune? Interested in data modelling? Start here to find out all you need to know
+        New to Rune? Interested in data modelling? Start here to find out all you need to know.
       </>
     ),
     link: '/docs/rune-documentation/get-started',

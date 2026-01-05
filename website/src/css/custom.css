@@ -148,6 +148,17 @@ button--secondary:hover {
     }
   }
 } */
+
+/* Allow tile descriptions to wrap instead of truncating */
+[class*='cardDescription'] {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  display: block !important;
+}
+
 /* 
 
 Dark Pink: #C4297D
