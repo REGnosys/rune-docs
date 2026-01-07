@@ -220,8 +220,8 @@ A conditional expression consists of:
 Comparison operators always return a **boolean**.
 
 #### Equality
-- `=` – true if both sides are equal
-- `<>` – true if both sides are not equal
+- `=` – True if both sides are equal
+- `<>` – True if both sides are not equal
 
 #### Equality rules
 - Built-in types compare by value.
@@ -237,8 +237,8 @@ Comparison operators always return a **boolean**.
 Both sides must be the same type.
 
 #### Existence checks
-- `exists` – true if the expression has a value
-- `is absent` – true if it does not
+- `exists` – True if the expression has a value
+- `is absent` – True if it does not
 
 Modifiers:
 
@@ -274,10 +274,10 @@ These built-in types can be compared using mathematical comparison operators, as
 
 #### Comparisons and null
 When a single value expression is null, comparisons behave like this.
-- `null = value` – false
-- `null <> value` – true
-- `null > value` – false
-- `null >= value` – false
+- `null = value` – False
+- `null <> value` – True
+- `null > value` – False
+- `null >= value` – False
 
 This applies even when the other value is also null. The behavior is symmetric – null `<` value works the same as value `<` null.
 
@@ -483,10 +483,9 @@ Rune evaluates expressions in a fixed order, from highest to lowest priority:
 8. Additive operators: `+, -`
 9. Comparison operators: `>=, <=, >, <`
 10. Equality operators: `=, <>`
-11. and – e.g. `5>6 and true`
-12. or – e.g. `5>6 or true`
-[^6]
-[^6]: Here and elsewhere, should 'true' have a capital 'T', as per our keywords?
+11. and – e.g. `5>6 and True`
+12. or – e.g. `5>6 or True`
+
 
 ## 4. List operators
 A list is an ordered collection of items of the same type (basic, complex, or enumeration).
@@ -558,8 +557,8 @@ The `filter` keyword keeps only the items in a list that satisfy a boolean condi
 **Syntax**
 
 - The boolean expression is evaluated for each item.
-- If it’s true, the item is included.
-- If it’s false, the item is excluded.
+- If it’s True, the item is included.
+- If it’s False, the item is excluded.
 - The output list has the **same item type** as the input list.
 - The default item name is item, but you can provide your own.
 
@@ -660,8 +659,8 @@ Rune supports comparison operators on lists. All list comparisons return a **boo
 
 ### 4.3 Additional list comparison keywords
 - `all / any` – compare a list to a single value
-- `contains` – true if the right side is a subset of the left
-- `disjoint` – true if the lists share no elements 
+- `contains` – True if the right side is a subset of the left
+- `disjoint` – True if the lists share no elements 
 
 If a single value expression is used with `contains` or `disjoint`, Rune treats it as a list with one element (or empty if null).
 
@@ -671,12 +670,12 @@ If a single value expression is used with `contains` or `disjoint`, Rune treats 
 
 ### 4.5 Semantics
 `=`
-- List vs list – true if same length and all items match
+- List vs list – True if same length and all items match
 - List vs single (all) – all items equal the value
 - List vs single (any) – at least one item equals the value
 
 `<>`
-- List vs list – true if lengths differ or any item differs
+- List vs list – True if lengths differ or any item differs
 - List vs single (any) – any item differs
 - List vs single (all) – all items differ
 
