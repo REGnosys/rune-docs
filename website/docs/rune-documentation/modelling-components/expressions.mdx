@@ -187,8 +187,7 @@ owner -> drivingLicence -> penaltyPoints
 ### 2.2 Deep paths for choice types
 Use deep path operator `->>` to access common attributes across all options of a choice type. 
 With a choice type called `Vehicle`, each of its options exposing an attribute `vehicleId`, this identifier can be accessed directly using `vehicle ->> vehicleId`.
-[^3]
-[^3]: Fuller code example required?
+
 
 ## 3. Operators
 Rune provides a set of operators that let you combine expressions into more complex logic. These operators mirror the basics found in most programming languages:
@@ -641,7 +640,7 @@ vehicles
 ```
 
 For `join`, the operator can specify a delimiter expression in-between each string element. This example concatenates a list of strings, separating each element with the given delimiter:
-` strings join ", "`
+` strings join ";"`
 [^5]
 [^5]: Do we need an example of code here?
 
