@@ -6,7 +6,7 @@ Rune DSL is an open-source, domain-specific language (DSL) designed to make fina
 The Rune DSL documentation includes:
 - [A practical introduction to start using Rune](./docs/rune-documentation/get-started/introducing-rune.mdx)
 - [An overview of Rune - what it does and the benefits it offers](./docs/rune-documentation/get-started/overview.mdx)
-- [A breakdown of eight modelling components - how they work and what they do](./docs/rune-documentation/rune-dsl-modelling-components)
+- [A breakdown of eight modelling components - how they work and what they do](./docs/rune-documentation/modelling-components)
 - [Additional resources including a keyword search, FAQs and glossary](./docs/rune-documentation/resources)
 
   
