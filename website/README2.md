@@ -1,23 +1,13 @@
 
 # Rune DSL documentation 
 
-Rune DSL is an open-source, domain-specific language (DSL) designed to make financial market processes consistent, interoperable and easier to implement. It separates business logic from technical code, generates executable programs automatically, and empowers both developers and non-technical experts (like compliance teams) to contribute directly. Rosetta provides the tools and environment to build, test and adopt Rune models across the industry.
+Rune DSL is an open-source, domain-specific language (DSL) designed to make financial market processes consistent, interoperable and easier to implement. It separates business logic from technical code, generates executable programs automatically, and empowers both developers and non-technical experts (like compliance teams) to contribute directly. 
 
-## What Rune DSL does
-* Rune DSL tackles the problem of siloed IT systems where data and logic may be inconsistent across different applications.
-* Data and business logic are represented in a technology-agnostic way, creating a cohesive domain model. 
-* Models written in Rune DSL aren’t just documentation – they can generate executable code automatically.
+The Rune DSL documentation includes:
+- [A practical introduction to start using Rune](./docs/rune-documentation/get-started/introducing-rune.mdx)
+- [An overview of Rune - what it does and the benefits it offers](./docs/rune-documentation/get-started/overview.mdx)
+- [A breakdown of eight modelling components - how they work and what they do](./docs/rune-documentation/rune-dsl-modelling-components)
+- [Additional resources including a keyword search, FAQs and glossary](./docs/rune-documentation/resources)
 
-## Benefits of Rune DSL
-* **Consistency and interoperability:** Different systems can ‘talk’ to each other in the same language.
-* **Transparency:** Business logic isn’t buried in code – it’s clear, shared and auditable.
-* **Regulatory reporting:** Firms can codify reporting rules consistently, across all geographies, reducing exposure to compliance risks and fines.
-* **Accessibility:** Human-readable syntax means non-programmers (like compliance officers) can write functional rules, similar to working in Excel.
-
-## [Rune DSL modelling components](../rune-dsl-modelling-components)
-Our modelling components make Rune easier to use by breaking down complex financial domain modelling into modular, reusable building blocks. Instead of handcrafting every data type, validation rule or reference, Rune provides a structured set of components that simplify modelling and help to ensure consistency.
-* By breaking down complex financial domain modelling, our modelling components make Rune easier to use.
-* They provide modular, reusable building blocks for modelling – no need to hand craft every data type, validation rule, or reference.
-* Consistency across models and systems is the goal.
   
 Changes to the docs are on the [Rune DSL documentation website](https://rune-docs.netlify.app/)
