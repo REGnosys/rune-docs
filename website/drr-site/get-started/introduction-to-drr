@@ -1,1 +1,14 @@
 
+---
+title: Introduction to DRR
+sidebar_label: Introduction to DRR
+description: "Your introduction and first steps to using DRR."
+---
+ 
+# 🧭 Introduction to DRR
+Refer to the [**Rune DSL Overview**](./overview.mdx) to find out why Rune was developed and how it’s used to define data, behaviors and processes in the finance industry. This page shows you how to get started with Rune. 
+
+
+## 1. Sign up to GitHub
+All Rune code, components and files live in an open-source GitHub repository. You’ll need access to this to start using Rune. 
+
