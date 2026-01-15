@@ -132,6 +132,9 @@ type Party:
 
 **Note:** Code snippets that appear in the user documentation are being compared against actual CDM components and any mismatch will trigger an error in the build. This ensures that the user documentation is kept in sync with the model in production before any release.
 
+[^1]
+[^1]: Is this note still valid?
+
 <br>
 
 ## 2. Reporting rules and mapping rules
@@ -174,7 +177,8 @@ You can contribute through the normal open source workflow in the GitHub reposit
 - Submit a pull request
 
 A reviewer will look at your update, ask questions if needed, and help you get it merged.
-
+[^2]
+[^2]: Do we need more about contributing via Rosetta?
 
 
 
