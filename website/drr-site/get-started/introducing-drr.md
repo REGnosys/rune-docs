@@ -32,7 +32,7 @@ In short, DRR replaces fragmented interpretations with a **shared, executable so
 <br>
 
 ## Who’s using DRR?
-These institutions are currently using DRR as part of their regulatory reporting transformation:
+These institutions are currently using DRR as part of their regulatory reporting systems:
 - JPMorgan Chase
 - BNP Paribas
 - BMO (Bank of Montreal)
