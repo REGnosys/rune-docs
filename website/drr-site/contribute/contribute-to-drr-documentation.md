@@ -16,3 +16,5 @@ You can contribute by:
 Even small improvements can make a big difference.
 
 To contribute to the documentation, send your suggestion to: 
+[^1]
+[^1]: Define contribution process for documentation.
