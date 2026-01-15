@@ -1,4 +1,6 @@
-
+| title: | sidebar_label: | description: |
+| ----------- | ----------- | ----------- |
+| FAQs | FAQs | "Frequently asked questions on DRR" 
 
 # FAQs
 
