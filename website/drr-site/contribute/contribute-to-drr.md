@@ -5,7 +5,7 @@
 
 
 
-# Contributing to DRR
+# Contribute to DRR
 
 DRR is an open source project built by the industry, for the industry. Anyone can contribute – whether you’re fixing a bug, improving a rule, updating documentation, or helping with release notes. This guide explains, in simple terms, how you can get involved and why your contributions matter.
 
