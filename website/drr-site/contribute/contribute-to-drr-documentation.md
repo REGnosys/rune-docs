@@ -1,7 +1,7 @@
 
 | title: | sidebar_label: | description: |
 | ----------- | ----------- | ----------- |
-| Contributing to DRR documentation | Contributing to DRR documentation | "Your chance to improve the DRR documentation." 
+| Contribute to DRR documentation | Contribute to DRR documentation | "Your chance to improve the DRR documentation." 
 
 
 # Contributing to DRR documentation
