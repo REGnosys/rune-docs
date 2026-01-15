@@ -1,7 +1,7 @@
 
 | title: | sidebar_label: | description: |
 | ----------- | ----------- | ----------- |
-| Introduction to DRR | Introduction to DRR | "Your introduction and first steps to using DRR." 
+| Introducing DRR | Introducing DRR | "Your introduction and first steps to using DRR." 
 
 
 
