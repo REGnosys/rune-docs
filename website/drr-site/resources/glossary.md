@@ -21,6 +21,8 @@
 
 **deep path** – A way to access a shared attribute across all options of a choice type, without needing to know which option is present.
 
+**DRR** – Digital Regulatory Reporting. An industry‑developed, machine‑executable interpretation of regulatory rules that produces consistent, transparent and fully traceable reporting outputs from standardised CDM data.
+
 **DSL** – Domain-Specific Language – a programming language for a narrow purpose e.g. for financial regulatory reporting.
 
 **E-notation** – Exponential notation is a shorthand way to write very large or very small numbers, representing them as a number multiplied by a power of 10, with the "E" standing for "times ten to the power of" (e.g. 2.5 times 10 to the power of 6 becomes 2.5E6). 
