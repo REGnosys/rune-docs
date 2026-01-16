@@ -5,6 +5,8 @@
 
 # DRR glossary
 
+**ARM** – Approved Reporting Mechanism
+
 **API** – Application Programming Interface –bridges that let different software systems talk to each other.
 
 **Boolean** – Data type with only two values (yes/no, on/off etc).
