@@ -1,4 +1,4 @@
 | title: | sidebar_label: | description: |
 | ----------- | ----------- | ----------- |
-| Glossary | Glossary | "Terms, acronyms and jargon to help you with DRR." 
+| How DRR works | How DRR works | "Learn how DRR processes your data for regulatory reporting." 
 
