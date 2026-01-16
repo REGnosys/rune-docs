@@ -51,7 +51,7 @@
 
 **Rune DSL** – A Domain Specific Language for defining business rules, data structures, and calculations in financial and regulatory contexts. Used in Rosetta.
 
-**TR** – Trade Repository
+**TR** – trade repository
 
 **SDK** – Software Development Kit – a set of tools for building software.
 
