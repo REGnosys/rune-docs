@@ -47,9 +47,9 @@
 
 **root type** – A root type is the top level entity (parent) from which all other entities (child types) descend. It’s the entry point and highest node in a model’s structure and acts as a container that defines the scope of the dataset.
 
-**Rosetta** – REGnosys’s proprietary platform for building and sharing financial models.
+**Rosetta** – REGnosys’s proprietary platform used as an execution engine for DRR.
 
-**Rune DSL** – A Domain Specific Language for defining business rules, data structures, and calculations in financial and regulatory contexts. Used in Rosetta.
+**Rune DSL** – The domain-specific language built on Java that DRR uses for its logic. 
 
 **TR** – trade repository
 
