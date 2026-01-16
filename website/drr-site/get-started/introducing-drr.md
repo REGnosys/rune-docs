@@ -57,6 +57,8 @@ DRR will soon expand to support 11 reporting rule sets across nine jurisdictions
 
 Derivatives transactions, following the global financial reform initiated in 2009, are now transparently reported to trade repositories across all G20 jurisdictions. Similar reporting obligations have since been extended to the Securities Financing markets.
 
+DRR 7
+
 
 <br>
 
