@@ -33,11 +33,17 @@
 
 **FpML** – Financial Products Markup Language
 
+**GLEIF** – Global Legal Entity Identifier Foundation. A not‑for‑profit organization, established by the Financial Stability Board in 2014, that is responsible for supporting and overseeing the global Legal Entity Identifier (LEI) system.
+
 **I/O** – input/output
 
 **ISDA** – International Swaps and Derivatives Association. The global trade association for participants in the derivatives markets.
 
 **JSON** – JavaScript Object Notation. Text-based, language-independent format with key-value pairs (eg Name: Dave).
+
+**LEI** – Legal Entity Identifier. A 20‑character alphanumeric code, based on the ISO 17442 standard, that provides a unique and globally recognized identity for legal entities involved in financial transactions. 
+
+**MIC** – Market Identifier Code. A unique four‑character alphanumeric code, defined by the ISO 10383 standard, that identifies stock exchanges, trading venues, and other market facilities used in global securities trading.
 
 **PR** – Pull request
 
