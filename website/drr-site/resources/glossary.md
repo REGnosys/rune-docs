@@ -51,9 +51,13 @@
 
 **MIC** – Market Identifier Code. A unique four‑character alphanumeric code, defined by the ISO 10383 standard, that identifies stock exchanges, trading venues, and other market facilities used in global securities trading.
 
+**provision** – Sits inside the `regulatoryReference` block and captures the verbatim requirement from the regulation or standard. It provides the legal basis for the rule’s functional logic.
+
 **PR** – Pull request
 
 **PRG** – Peer review group
+
+**rationale** – An optional explanatory note added to a `regulatoryReference` to clarify why the rule’s functional logic is written the way it is.
 
 **Recursion** – A method of solving a computational problem where the solution depends on solutions to smaller instances of the same problem.
 
@@ -62,6 +66,8 @@
 **Rosetta** – REGnosys’s proprietary platform used as an execution engine for DRR.
 
 **Rune DSL** – The domain-specific language built on Java that DRR uses for its logic. 
+
+**segment** – A piece of information inside a `regulatoryReference` that points to the exact location of a rule within a regulatory or technical document.
 
 **standard** – An external technical specification that defines how a report must be formatted or structured.
 
