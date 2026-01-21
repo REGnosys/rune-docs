@@ -103,9 +103,11 @@ This type:
 
 ## 4. Report definition
 Each report is defined using three elements:
-**1. What to report** – the reportable fields
-**2. Whether to report** – eligibility criteria
-**3. When to report** – timing (this is informational only, not executable)
+
+- **What to report** – the reportable fields
+- **Whether to report** – eligibility criteria
+- **When to report** – timing (this is informational only, not executable)
+
 
 A report references:
 - A **body** and **corpus** (the regulatory source)
