@@ -14,7 +14,7 @@ Think of it as a pipeline:
 
 **Regulatory rules → Machine readable rules → Execution engine → Integration**
 
-![4 layers of DRR](./images/drr-layers.png)
+![4 layers of DRR](./static/img/drr/drr-layers.png)
  
 
 
