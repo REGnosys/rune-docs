@@ -9,6 +9,8 @@
 
 **API** – Application Programming Interface –bridges that let different software systems talk to each other.
 
+**body** – The organisation or authority that issues the regulatory or technical document the model is based on e.g. a regulator (CFTC, ESMA) or a standard‑setting organisation (CPMI–IOSCO).
+
 **Boolean** – Data type with only two values (yes/no, on/off etc).
 
 **Cardinality** – The number of elements in a set or other grouping, as a property of that grouping.
@@ -18,6 +20,10 @@
 **CDE** – Critical Data Element
 
 **CDM** – Common Domain Model. A standardised, machine-readable and machine-executable blueprint for how financial products are traded and managed across the transaction lifecycle. It is represented as a domain model and distributed in open source.
+
+**corpus** – The regulatory document that a reporting rule is based on.
+
+**data type** – A structured model object that defines: what information exists; how that information is organised; what constraints or validations apply. It’s the basic building block used to model reporting concepts such as events, trades, parties, reports and enriched information.
 
 **deep hash** – A hash value computed from all attributes of an object, including every nested or encapsulated attribute, recursively. Instead of hashing only the top‑level fields, a deep hash covers the entire object structure and incorporates every value into the final hash.
 
@@ -56,6 +62,8 @@
 **Rosetta** – REGnosys’s proprietary platform used as an execution engine for DRR.
 
 **Rune DSL** – The domain-specific language built on Java that DRR uses for its logic. 
+
+**standard** – An external technical specification that defines how a report must be formatted or structured.
 
 **TR** – trade repository
 
