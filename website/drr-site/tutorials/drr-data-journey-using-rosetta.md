@@ -31,7 +31,7 @@ You can complete this workflow either:
 
 1.3. Upload your own FpML example or select a preloaded test file (e.g. Example 02 Submission 1).
 
-![Rosetta translate service](./static/img/drr/rosetta-translate-service.png)
+![Rosetta translate service](../static/img/drr/rosetta-translate-service.png)
 
 1.4. Click the file to run the Translate service. This produces a **CDM ReportableEvent**.
 
