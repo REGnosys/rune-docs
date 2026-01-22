@@ -14,7 +14,7 @@ This page explains the full end to end workflow for converting an **FpML Recordk
 4. an **ISO 20022 XML projection**
 
 You can complete this workflow either:
-- through the **Rosetta UI**
+- through the [**Rosetta UI**](./drr-data-journey-using-rosetta.md) 
 - using **Postman** with the DRR API services
 
 <br>
