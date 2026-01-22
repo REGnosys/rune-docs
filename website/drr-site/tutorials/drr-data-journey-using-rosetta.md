@@ -1,3 +1,7 @@
+| title: | sidebar_label: | description: |
+| ----------- | ----------- | ----------- |
+| DRR data journey via Rosetta | DRR data journey via Rosetta | "Use the Rosetta platform to deliver DRR." 
+
 
 
 # The DRR data journey via Rosetta
@@ -15,7 +19,7 @@ This page explains the full end to end workflow for converting an **FpML Recordk
 
 You can complete this workflow either:
 - through the **Rosetta UI**
-- using **Postman** with the DRR API services
+- using [**Postman**](./drr-data-journey-using-rosetta.md) with the DRR API services
 
 <br>
 
