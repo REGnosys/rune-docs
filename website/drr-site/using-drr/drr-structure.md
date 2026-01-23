@@ -39,7 +39,7 @@ The [DRR codebase](https://ui.rosetta-technology.io/workspaces/read-only-digital
 ## DRR data hierarcy
 Different data types within DRR can interact with each other in different ways:
 
-
+<br>
 
  ![DRR data hierarchy](./static/img/drr/drr-data-hierarchy.png) 
 
