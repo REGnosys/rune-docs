@@ -16,7 +16,7 @@ Think of it as a pipeline:
 
 ![4 layers of DRR](./static/img/drr/drr-layers.png)
  
-
+<br>
 
 ### Layer 1: Regulatory rules (human language)
 DRR does the heavy lifting of consolidating the inconsistent world of regulatory rules, which are written in natural language and come full of ambiguity, exceptions and cross references.
@@ -32,6 +32,8 @@ Regulatory text may include:
 - MiFID/MiFIR 
 
 
+<br>
+
 ### Layer 2: Machine readable rules (DRR logic)
 DRR consists of four key steps to transform your data, ready for reporting:
 - **Ingest.** Normalises raw input into CDM – this first step takes a firm’s transaction event data and translates it into a DRR report object representing that transaction.
@@ -41,6 +43,8 @@ DRR consists of four key steps to transform your data, ready for reporting:
 
 ![DRR process overview: Ingest, Enrich, Report, Project](./images/drr-process-overview-2.png)
 
+
+<br>
 
 ### Layer 3: Execution engine (e.g. Rosetta platform)
 The Rosetta platform was built specifically for DRR and it’s where the DRR logic actually runs. Rosetta:
@@ -59,6 +63,8 @@ This layer ensures that **everyone running DRR gets the same result** for the sa
 
 **Note:** DRR is not reliant on the Rosetta platform, firms can build their own execution engine if required.
 
+
+<br>
 
 ### Layer 4: Integration (firms, vendors, trade repositories)
 This is where DRR meets the real world. Firms, vendors and others can use DRR outputs to submit compliant reports.
