@@ -43,5 +43,8 @@ Different data types within DRR can interact with each other in different ways:
 
  ![DRR data hierarchy](./static/img/drr/drr-data-hierarchy.png) 
 
-
- 
+### Namespace dependency rules
+There is a strict hierarchy governing allowable dependencies:
+ - **Regime namespaces** may import from `common` and `cde`
+- **Common namespaces** may import from `cde`
+- **CDE namespaces** may only import from `base`
