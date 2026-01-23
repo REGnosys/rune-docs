@@ -39,7 +39,7 @@ DRR consists of four key steps to transform your data, ready for reporting:
 - **Report.** Applies regime-specific reporting rules. The enriched DRR reportable event receives the reporting logic (field rules plus any additional regulatory data guidelines and data validation rules) to produce a DRR transaction report object containing all the reportable fields. 
 - **Project.** Produces the final reporting output. The DRR transaction report object acquires additional mapping and projection rules to produce a report file in the format required by trade repositories (TRs) or regulators (e.g. XML, ISO 20022).
 
-![DRR process overview: Ingest, Enrich, Report, Project](./images/drr-process-overview.png)
+![DRR process overview: Ingest, Enrich, Report, Project](./images/drr-process-overview-2.png)
 
 
 ### Layer 3: Execution engine (e.g. Rosetta platform)
@@ -47,7 +47,7 @@ The Rosetta platform was built specifically for DRR and it’s where the DRR log
 - Loads CDM types
 - Executes DRR logic step by step
 - Produces intermediate outputs (Ingest → Enrich → Report → Project)
-- Validates CDM input
+- Validates CDM input and dRR logic
 - Generates reporting payloads
 
 This layer ensures that **everyone running DRR gets the same result** for the same input. This layer is:
@@ -133,11 +133,11 @@ Standardised workflows that describe how events are applied and how states evolv
 ## Jurisdictions
 All jurisdictions in DRR use the same underlying elements:
 - **Common Domain Model (CDM)** for data structures.
--	**Translate → Enrich → Transform → Project** pipeline.
+-	**Ingest → Enrich → Report → Project** pipeline.
 -	The same enrichment patterns and reusable functions.
 
 Where jurisdictions differ e.g. EMIR vs CFTC vs ASIC, DRR isolates those differences in two places:
-- **Transform:** applies the jurisdiction’s regulatory logic.
+- **Report:** applies the jurisdiction’s regulatory logic.
 - **Project:** produces the jurisdiction’s required reporting schema.
 
 This means each jurisdiction can have its own rules, validations, and output formats without affecting others.
@@ -159,12 +159,13 @@ With DRR, you can establish:
 - Which **CDM field** a reporting value came from.
 - What **enrichment logic** produced a derived field.
 - Which **lifecycle event** created or modified a trade.
+- Why a **rule was changed** and by whom.
 - What **intermediate values** were used along the way.
 
 <br>
 
 ## DRR and the Rosetta platform
-The Rosetta platform is a bespoke execution engine designed specifically for DRR. DRR is not dependent on Rosetta however, and can be used with other execution engines which are able to accommodate it.
+The Rosetta platform is a bespoke execution engine and SDK designed specifically for DRR. DRR is not dependent on Rosetta however, and can be used with other execution engines which are able to accommodate it.
 
 With Rosetta, DRR provides the **machine executable regulatory logic**, while Rosetta provides the **execution environment** that runs that logic using the Common Domain Model (CDM). Together, they form a unified framework that turns complex regulatory rules into consistent, auditable reporting outputs. 
 
@@ -179,14 +180,14 @@ With Rosetta, DRR provides the **machine executable regulatory logic**, while Ro
 DRR is the industry authored interpretation of regulatory reporting rules, expressed in a deterministic, machine readable format. It defines:
 - How regulatory rules are translated into logic.
 - How CDM data should be structured and enriched.
-- How jurisdiction specific transformations are applied.
-- How final reporting payloads are produced.
+- How regime-specific transformations are applied.
+- How final reporting outputs are produced.
 
 ### The role of the execution engine (Rosetta)
 Rosetta is the original execution engine created to run DRR logic. It provides:
 - A compiler for the Rune DSL (formerly Rosetta DSL), the domain-specific language built on Java that DRR uses for its logic.
 - A runtime environment for executing CDM based rules.
-- Validation of CDM input structures.
-- Step by step outputs for Translate → Enrich → Transform → Project.
+- Validation of CDM input and DRR output structures.
+- Step by step outputs for Ingest → Enrich → Report → Project.
 - Deterministic execution across firms and environments.
 
