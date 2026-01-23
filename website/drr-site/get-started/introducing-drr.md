@@ -12,6 +12,7 @@
 
 It’s designed to provide a **standardized process overview** that moves reporting away from manual interpretation toward a machine-readable format. This creates a single, authoritative representation of what each rule means and how it should be applied, removing ambiguity from the reporting process.
 
+### Consistent and transparent
 DRR reduces interpretation risk, eliminates duplicated implementation effort, and provides a shared logic base that can be reused across jurisdictions. Because the rules are written once and executed consistently everywhere, firms don’t have to maintain their own bespoke reporting engines or reconcile differences between internal systems, vendors and trade repositories. DRR also accelerates onboarding for new regulations, since teams can build on existing patterns and reusable components.
 
 For regulators and the wider market, DRR delivers cleaner, more comparable data. When every participant applies the same logic, supervisory analysis becomes more reliable and systemic risks become easier to detect. The transparency of the model – every rule visible, versioned and reviewable – supports stronger governance and clearer communication between industry and regulators. 
@@ -31,23 +32,17 @@ In short, DRR replaces fragmented interpretations with a **shared, executable so
 
 <br>
 
-## Who’s using DRR?
-These institutions are currently using DRR as part of their regulatory reporting systems:
-- JPMorgan Chase
-- BNP Paribas
-- BMO (Bank of Montreal)
-- RBC (Royal Bank of Canada)
-
-<br>
-
 ## Scope and jurisdictions
 DRR covers a range of trade and transaction reporting regimes, including:
+- ASIC
 - CFTC
-- EMIR
+- CSA
+- ESMA
+- FCA
+- HKMA
 - JSFA
 - MAS
-- MiFID/MiFIR
-
+- SEC
 
 <br>
 
@@ -57,7 +52,7 @@ DRR will soon expand to support 11 reporting rule sets across nine jurisdictions
 
 Derivatives transactions, following the global financial reform initiated in 2009, are now transparently reported to trade repositories across all G20 jurisdictions. Similar reporting obligations have since been extended to the Securities Financing markets.
 
-DRR 7
+DRR 7 will include 
 
 
 <br>
