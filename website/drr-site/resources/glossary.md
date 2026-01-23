@@ -41,6 +41,8 @@
 
 **GLEIF** – Global Legal Entity Identifier Foundation. A not‑for‑profit organization, established by the Financial Stability Board in 2014, that is responsible for supporting and overseeing the global Legal Entity Identifier (LEI) system.
 
+**IDE** – Integrated Development Environment. A software application that brings together all the essential tools a developer needs to write, test and debug code in one unified workspace.
+
 **I/O** – input/output
 
 **ISDA** – International Swaps and Derivatives Association. The global trade association for participants in the derivatives markets.
@@ -66,6 +68,8 @@
 **Rosetta** – REGnosys’s proprietary platform used as an execution engine for DRR.
 
 **Rune DSL** – The domain-specific language built on Java that DRR uses for its logic. 
+
+**SDK** – Software Development Kit. A packaged set of tools that helps developers build software for a specific platform, service or framework.
 
 **segment** – A piece of information inside a `regulatoryReference` that points to the exact location of a rule within a regulatory or technical document.
 
