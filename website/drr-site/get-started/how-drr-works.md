@@ -39,14 +39,14 @@ DRR consists of four key steps to transform your data, ready for reporting:
 - **Report.** Applies regime-specific reporting rules. The enriched CDM transaction event object receives the reporting logic (field rules plus any additional regulatory data guidelines and data validation rules) to produce a DRR report object containing all the reportable fields. 
 - **Project.** Produces the final reporting output. The DRR report object acquires additional mapping and projection rules to produce a report file in the format required by trade repositories (TRs) or regulators (e.g. XML, ISO 20022).
 
-![DRR process overview: Translate, Enrich, Transform, Project](./images/drr-process-overview.png)
+![DRR process overview: Ingest, Enrich, Report, Project](./images/drr-process-overview.png)
 
 
 ### Layer 3: Execution engine (e.g. Rosetta platform)
 The Rosetta platform was built specifically for DRR and it’s where the DRR logic actually runs. Rosetta:
 - Loads CDM types
 - Executes DRR logic step by step
-- Produces intermediate outputs (Translate → Enrich → Transform → Project)
+- Produces intermediate outputs (Ingest → Enrich → Report → Project)
 - Validates CDM input
 - Generates reporting payloads
 
