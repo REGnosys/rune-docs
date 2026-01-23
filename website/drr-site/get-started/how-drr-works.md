@@ -34,10 +34,10 @@ Regulatory text may include:
 
 ### Layer 2: Machine readable rules (DRR logic)
 DRR consists of four key steps to transform your data, ready for reporting:
-- **Translate.** Normalises raw input into CDM – this first step takes a firm’s transaction event data and translates it into a CDM object representing that transaction.
-- **Enrich.** Adds derived fields (e.g. reporting counterparty, clearing status). This step enriches a CDM transaction event object with additional information obtained from an internal or external data source.
-- **Transform.** Applies jurisdiction specific reporting rules. The enriched CDM transaction event object receives the reporting logic (field rules plus any additional regulatory data guidelines and data validation rules) to produce a CDM report object containing all the reportable fields. 
-- **Project.** Produces the final reporting payload. The CDM report object acquires additional mapping and projection rules to produce a report file in the format required by trade repositories (TRs) or regulators (e.g. XML, ISO 20022).
+- **Ingest.** Normalises raw input into CDM – this first step takes a firm’s transaction event data and translates it into a CDM object representing that transaction.
+- **Enrich.** Adds derived fields (e.g. reporting counterparty, clearing status). This step enriches a CDM transaction event object with additional information obtained from an internal or external data sources.
+- **Report.** Applies regime-specific reporting rules. The enriched CDM transaction event object receives the reporting logic (field rules plus any additional regulatory data guidelines and data validation rules) to produce a DRR report object containing all the reportable fields. 
+- **Project.** Produces the final reporting output. The DRR report object acquires additional mapping and projection rules to produce a report file in the format required by trade repositories (TRs) or regulators (e.g. XML, ISO 20022).
 
 ![DRR process overview: Translate, Enrich, Transform, Project](./images/drr-process-overview.png)
 
