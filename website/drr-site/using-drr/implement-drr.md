@@ -21,7 +21,7 @@ This option gives you the most control.
 You use the free Rosetta Community Edition (or another execution engine) to test your own reporting logic.
 Rosetta lets you:
 - Upload input data
-- Run the DRR steps: Translate → Enrich → Transform → Project
+- Run the DRR steps: Ingest → Enrich → Report → Project
 - Compare your output with DRR’s expected output
 
 This is great for testing, proofs of concept, or validating your own build. But it is **not** designed for production scale reporting – it can only accommodate limited volume and throughput. Also, the **Translate** and **Project** services only cover the formats that have been publicly developed and distributed in the CDM and DRR, not firms’ custom formats.
