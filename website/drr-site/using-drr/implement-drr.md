@@ -24,7 +24,7 @@ Rosetta lets you:
 - Run the DRR steps: Ingest → Enrich → Report → Project
 - Compare your output with DRR’s expected output
 
-This is great for testing, proofs of concept, or validating your own build. But it is **not** designed for production scale reporting – it can only accommodate limited volume and throughput. Also, the **Translate** and **Project** services only cover the formats that have been publicly developed and distributed in the CDM and DRR, not firms’ custom formats.
+This is great for testing, proofs of concept, or validating your own build. But it is **not** designed for production scale reporting – it can only accommodate limited volume and throughput. Also, the **Ingest** and **Project** services only cover the formats that have been publicly developed and distributed in the CDM and DRR, not firms’ custom formats.
 
 ### Buy (you use a vendor solution)
 You purchase a reporting solution from a third party vendor. Vendors may use DRR internally to power their products.
@@ -35,7 +35,7 @@ DRR has four main steps. Each step has code and files you can use.
 
 <br>
 
-## 1.1 Translate
+## 1.1 Ingest
 ### Why
 Convert your internal trade data into a **CDM transaction event**.
 
@@ -92,7 +92,7 @@ Rosetta provides built in enrichment for common reference data such as:
 However, implementations of the external API calls are not distributed with DRR as their logic is not defined in the model.
 
 
-## 1.3 Transform
+## 1.3 Report
 ### Why
 Turn the enriched CDM event into a **jurisdiction specific report object**.
 
@@ -112,7 +112,7 @@ You don’t need deep Java knowledge – the important idea is that the DRR dist
 ### How to implement
 - Add the DRR Java dependency to your project.
 - Use the generated Java classes to run the reporting logic.
-- Provide a CDM input object (from Translate + Enrich).
+- Provide a CDM input object (from Ingest + Enrich).
 - Call the generated report function.
 - Tabulate the output into key value pairs.
 
@@ -315,7 +315,7 @@ public class CFTCPart45ExampleReport {
 **Note:** You can download this code is available as part of the DRR distribution. Go to the Downloads page and choose [Dev examples](https://drr.docs.rosetta-technology.io/source/download.html).
 
 ### Benchmark option
-Rosetta lets you run Transform directly through the UI or API.
+Rosetta lets you run Report directly through the UI or API.
 
 <br>
 
