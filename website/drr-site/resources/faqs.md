@@ -15,7 +15,7 @@ DRR is led by [**ISDA**](https://www.isda.org/isda-solutions-infohub/isda-digita
 Regulatory reporting is traditionally expensive, inconsistent and prone to interpretation differences. DRR standardises the rules so all firms implement the same logic, reducing cost and improving data quality.
 
 ### How does DRR ensure consistent reporting across firms?
-DRR expresses regulatory rules as **machine executable logic**, removing ambiguity in how firms interpret requirements. As more firms adopt the same CDM based transformations, reporting outputs become far more consistent across the industry.
+DRR expresses regulatory rules as **machine executable logic**, removing ambiguity in how firms interpret requirements. As more firms adopt the same CDM-based transformations, reporting outputs become far more consistent across the industry.
 
 ### Does DRR support multiple jurisdictions?
 Yes, very much so. DRR is designed to be **multi jurisdictional**. It includes rule models for major regimes such as CFTC, EMIR, ASIC, MAS and others. Each jurisdiction has its own transformation logic, but all share the same CDM foundation.
@@ -48,19 +48,19 @@ DRR expresses regulatory requirements as machine executable logic built on the [
 No. DRR helps firms implement the rules accurately, but it does not replace the need to understand the underlying regulation. Firms remain responsible for compliance, governance and oversight. DRR simply provides a transparent, industry agreed interpretation that reduces ambiguity and implementation risk.
 
 ###  How does DRR handle differences between regulatory jurisdictions?
-DRR uses a shared CDM foundation but applies jurisdiction specific logic in the Transform and Project stages. This means common concepts (like events, products and parties) are reused across regimes, while each jurisdiction’s unique reporting rules are implemented separately. The result is consistency where possible and specificity where required.
+DRR uses a shared CDM foundation but applies jurisdiction specific logic in the Report and Project stages. This means common concepts (like events, products and parties) are reused across regimes, while each jurisdiction’s unique reporting rules are implemented separately. The result is consistency where possible and specificity where required.
 
 ###  Can regulators rely on DRR outputs for supervisory analysis?
 Yes. One of DRR’s core goals is to improve the quality and comparability of regulatory data. Because DRR logic is transparent, version controlled and applied consistently across firms, regulators receive cleaner, more standardised data. This supports better supervision, reduces reconciliation issues and strengthens trust between industry and regulators.
 
 ###  How does DRR support auditability and regulatory assurance?
-Every value produced by DRR can be traced back through the full reporting pipeline – Translate, Enrich, Transform and Project. An execution engine such as Rosetta exposes each intermediate step, making it easy to see exactly how a rule was applied and where a value came from. This end to end lineage provides strong evidence for audits, internal controls and regulatory reviews.
+Every value produced by DRR can be traced back through the full reporting pipeline – Ingest, Enrich, Report and Project. An execution engine such as Rosetta exposes each intermediate step, making it easy to see exactly how a rule was applied and where a value came from. This end to end lineage provides strong evidence for audits, internal controls and regulatory reviews.
 
 <br>
 
 ## Troubleshooting 
-### Why is my DRR run failing before it reaches the Transform stage?
-This usually happens when the CDM input is incomplete or doesn’t match the expected structure. DRR validates the data during the Translate and Enrich stages and any missing fields, incorrect types or invalid event structures will stop the run early. Check the validation messages in your execution engine (e.g. Rosetta) – they’ll point to the exact field or object that needs fixing.
+### Why is my DRR run failing before it reaches the Report stage?
+This usually happens when the CDM input is incomplete or doesn’t match the expected structure. DRR validates the data during the Ingest and Enrich stages and any missing fields, incorrect types or invalid event structures will stop the run early. Check the validation messages in your execution engine (e.g. Rosetta) – they’ll point to the exact field or object that needs fixing.
 
 ### My output doesn’t match the example in the documentation. What should I check first?
 Start by confirming that you’re using the same DRR version as the example. DRR is versioned, and even small updates can change outputs. Next, compare your CDM input with the example input to ensure the same fields, values and event types are present. Differences in enrichment logic often come from differences in the underlying data.
