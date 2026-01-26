@@ -23,6 +23,7 @@ Rosetta lets you:
 - Upload input data
 - Run the DRR steps: Ingest → Enrich → Report → Project
 - Compare your output with DRR’s expected output
+- Write your own DRR logic using the Rune DSL
 
 This is great for testing, proofs of concept, or validating your own build. But it is **not** designed for production scale reporting – it can only accommodate limited volume and throughput. Also, the **Ingest** and **Project** services only cover the formats that have been publicly developed and distributed in the CDM and DRR, not firms’ custom formats.
 
@@ -37,15 +38,24 @@ DRR has four main steps. Each step has code and files you can use.
 
 ## 1.1 Ingest
 ### Why
-Convert your internal trade data into a **CDM transaction event**.
+Convert your internal trade data intoa  **DRR reportable event**.
 
 ### What you get
-- `Synonym`s (mapping files) that describe how to convert public data models into CDM.
-- [supported public models](https://cdm.finos.org/docs/mapping).
+**Synonyms**
+
+- `Synonym`s (mapping files) that describe how to convert public data models into CDM (this is soon to be replaced by functional ingestion).
+- [Supported public models](https://cdm.finos.org/docs/mapping).
 - Synonyms apply to public data models only, **not** mappings for private, proprietary or firm specific models. Custom adaptations need these synonyms to be extended.
 
+**Ingest functions**
+
+- Ingest functions are mapping functions written in Rune DSL, used to convert public or private data models into CDM.
+
+
 ### Where to find it
-All synonym files in the CDM distribution are in `.rune` format namespaces prefixed with `cdm.mapping.*`. For example: `cdm.mapping.synonym`.
+All synonym files in the CDM distribution are in `.rune` format namespaces prefixed with `drr.mapping.*`. For example: `drr.mapping.synonym`.
+
+All ingest functions are in `.rune` format namespaces prefixed with `drr.ingest.*`. or example: `drr.ingest.synonym`.
 
 ### How to implement – 3 options
 **1. If you use a public model**
@@ -66,7 +76,7 @@ Rosetta can convert **public models only** into CDM using its [ingestion service
 
 ## 1.2 Enrich
 ### Why
-- Add missing reference data e.g Legal Entity Identifiers (LEIs), Market Identifier Codes (MICs), static data, etc to the CDM event.
+- Add missing reference data e.g Legal Entity Identifiers (LEIs), Market Identifier Codes (MICs), static data, etc to the DRR event.
 - DRR is flexible to allow for different internal and external data sources and how they’re implemented.
 
 ### What you get
@@ -76,7 +86,7 @@ Rosetta can convert **public models only** into CDM using its [ingestion service
 
 ### Where to find it
 - Enrichment functions and external API call functions appear in the model’s `.rune` files, marked with `enrichment` and `external_api` so you can easily identify them. 
-- These functions can be placed anywhere in the model – they don’t have to live in a specific namespace.
+- These functions can be placed anywhere in the model – they don’t have to live in a specific namespace, though it's best to contain them in the DRR enrichment namespace e.g. `drr.enrichment.*`.
 
 ### How to implement – 2 options 
 You can include the DRR Java code for enrichment and API call functions as a dependency in your project (using tools like Maven or Gradle). Or you can [download it directly from Rosetta](https://docs.rosetta-technology.io/rosetta/rosetta-products/1-workspace/#download-workspace). In either case:
@@ -94,7 +104,7 @@ However, implementations of the external API calls are not distributed with DRR 
 
 ## 1.3 Report
 ### Why
-Turn the enriched CDM event into a **jurisdiction specific report object**.
+Turn the enriched DRR event into a **jurisdiction specific report object**.
 
 ### What you get
 - Report definitions and reporting rules in `.rune` files
@@ -105,14 +115,14 @@ Turn the enriched CDM event into a **jurisdiction specific report object**.
 - Report and rule functions are in the `drr.regulation.*` namespaces and follow that naming pattern e.g. `drr.regulation.cftc.rewrite`.
 - Code generated DRR rules (`reporting rule`) are aligned with Rune functions (`func`). This allows you to build your own execution engine, by providing a single way of using the CDM’s business logic as executable code.
 
-This step explains how to **run the reporting rules** and produce a **CDM report object** (for example, a CFTC Part 45 Transaction Report).
+This step explains how to **run the reporting rules** and produce a **DRR report object** (for example, a CFTC Part 45 Transaction Report).
 
 You don’t need deep Java knowledge – the important idea is that the DRR distribution already contains **generated Java classes** that run the rules for you.
 
 ### How to implement
 - Add the DRR Java dependency to your project.
 - Use the generated Java classes to run the reporting logic.
-- Provide a CDM input object (from Ingest + Enrich).
+- Provide a DRR input object (from Ingest + Enrich).
 - Call the generated report function.
 - Tabulate the output into key value pairs.
 
@@ -321,7 +331,7 @@ Rosetta lets you run Report directly through the UI or API.
 
 ## 1.4 Project
 ### Why
-Convert the CDM report object into the final message format required by the regulator or trade repository (e.g. ISO 20022 XML).
+Convert the DRR report object into the final message format required by the regulator or trade repository (e.g. ISO 20022 XML).
 
 ## Where to find it
 The projection functions are included in the DRR distribution as `.rune` files. They live in the `drr.projection.*` namespaces and follow that naming pattern e.g. `drr.projection.iso20022.esma.emir.refit.trade`.
@@ -330,7 +340,8 @@ Each projection function has a matching generated Java class (e.g. `Project_Esma
 
 ### What you get
 XML output for ISO 20022
-In the previous step, the CDM report object was converted to JSON using:
+
+In the previous step, the DRR report object was converted to JSON using:
 
 ```haskell
 RosettaObjectMapper.getNewRosettaObjectMapper()
@@ -339,6 +350,7 @@ RosettaObjectMapper.getNewRosettaObjectMapper()
 ```
 
 However, ISO 20022 reports **must** be submitted as **XML**, not JSON.
+
 To produce ISO 20022 compliant XML, you load the correct XML configuration file and serialise the ISO 20022 Document object like this:
 
 ```haskell
