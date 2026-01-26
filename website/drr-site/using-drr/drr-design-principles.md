@@ -6,7 +6,7 @@
 
 # DRR design principles
 
-The DRR model extends the Common Domain Model (CDM), so it follows the same core ideas: clear logic, reusable components, and transparent links back to regulatory text. For regulatory reporting, these ideas translate into four key principles:
+The DRR model extends the Common Domain Model (CDM), so it follows the same core ideas of clear logic and reusable components, but also adds transparent links back to regulatory text. For regulatory reporting, these ideas translate into four key principles:
 - Functional
 - Composable and reusable
 - Auditable
@@ -72,7 +72,7 @@ This keeps the model clean, consistent, and easier to maintain.
 <br> 
 
 ## 3. Auditable
-Every rule can be linked directly back to the **regulatory text** it comes from. This is done using the Rosetta DSL’s `regulatoryReference` metadata, which stores:
+Every rule can be linked directly back to the **regulatory text** it comes from. This is done using the Rune DSL’s `regulatoryReference` metadata, which stores:
 - The regulation
 - The exact section or table
 - The text of the provision
