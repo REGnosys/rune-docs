@@ -191,7 +191,7 @@ DRR is the industry authored interpretation of regulatory reporting rules, expre
 
 ### The role of the execution engine (Rosetta)
 Rosetta is the original execution engine created to run DRR logic. It provides:
-- A compiler for the Rune DSL (formerly Rosetta DSL), the domain-specific language built on Java that DRR uses for its logic.
+- A compiler for the [Rune DSL](https://rune-docs.netlify.app/docs/rune-documentation/get-started/overview) (formerly Rosetta DSL), the domain-specific language built on Java that DRR uses for its logic.
 - A runtime environment for executing CDM based rules.
 - Validation of CDM input and DRR output structures.
 - Step by step outputs for Ingest → Enrich → Report → Project.
