@@ -24,11 +24,12 @@ In short, DRR replaces fragmented interpretations with a **shared, executable so
 
 
 ## Benefits of using DRR
-- **Consistency:** By following established design principles and a unified modelling guide, all users ensure their data meets the same regulatory standards.
+- **Consistency:** By following established design principles and a unified modelling guide, all users ensure their data meets the same regulatory standards and that they're 100% best practice aligned.
 - **Transparency:** The scope and status of reporting requirements are clearly defined, reducing ambiguity for modellers.
 - **Efficiency:** The workflow automates the path from raw data to final regulatory projection, minimizing manual errors.
 - **Compliance:** Updates can be rolled out centrally for all users and across jurisdictions.
-- **Interoperability:** CDM ensures data is structured the same way across firms so everyone is using the same data standard. 
+- **Interoperability:** CDM ensures data is structured the same way across firms so everyone is using the same data standard.
+- **Reduced cost:** Integrating open-source solutions can save significantly on IT expenditure. 
 
 <br>
 
