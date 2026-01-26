@@ -33,6 +33,17 @@ In short, DRR replaces fragmented interpretations with a **shared, executable so
 
 <br>
 
+## How it works
+At its core, DRR consists of a four-layer architecture built to turn human written regulatory rules into machine executable logic that produces standardised reporting outputs across jurisdictions.
+
+Think of it as a pipeline:
+
+Regulatory rules → Machine readable rules → Execution engine → Integration
+
+With an organization's data translated into the CDM, DRR ingests that data, enriches it with additional regulatory fields, creates reports and projects them to the relevant regulatory bodies. 
+
+
+
 ## Scope and jurisdictions
 DRR covers a range of trade and transaction reporting regimes, including:
 - ASIC
