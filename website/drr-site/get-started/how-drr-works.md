@@ -200,6 +200,7 @@ Rosetta is the original execution engine created to run DRR logic. It provides:
 ### The role of Rune DSL
 Rune DSL is the the domain-specific language built on Java that DRR uses for its logic. It:
 - Describes DRR concepts (bodies, corpuses, rules, segments, provisions).
+- Models DRR functions (ingesting, mapping, validating, reporting).
 - Shows examples of DRR structures.
 - Presents DRR logic in a readable, tutorial‑friendly format.
 
