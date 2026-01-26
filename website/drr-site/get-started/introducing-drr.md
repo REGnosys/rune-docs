@@ -49,7 +49,7 @@ DRR covers a range of trade and transaction reporting regimes, including:
 
 ## Development roadmap
 As an open-source initiative, DRR is constantly evolving, with practical augmentations and rigorously tested developments forming an intrinsic part of the initiative.
-There are several Working Groups which oversee developments across DRR. Each  owns its Roadmap, facilitated by the Chair. The Steering WG oversees the process and the integration across Working Groups.
+There are several Working Groups which oversee developments across DRR. Each owns its roadmap, facilitated by the Chair. The Steering WG oversees the process and the integration across Working Groups.
 
 <table>
   <tr>
