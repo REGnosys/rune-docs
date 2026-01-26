@@ -13,7 +13,7 @@
 It’s designed to provide a **standardized process overview** that moves reporting away from manual interpretation toward a machine-readable format. This creates a single, authoritative representation of what each rule means and how it should be applied, removing ambiguity from the reporting process.
 
 ### Consistent and transparent
-DRR reduces interpretation risk, eliminates duplicated implementation effort, and provides a shared logic base that can be reused across jurisdictions. Because the rules are written once and executed consistently everywhere, firms don’t have to maintain their own bespoke reporting engines or reconcile differences between internal systems, vendors and trade repositories. DRR also accelerates onboarding for new regulations, since teams can build on existing patterns and reusable components.
+DRR reduces interpretation risk, eliminates duplicated implementation effort and provides a shared logic base that can be reused across jurisdictions. Because the rules are written once and executed consistently everywhere, firms don’t have to maintain their own bespoke reporting engines or reconcile differences between internal systems, vendors and trade repositories. DRR also accelerates onboarding for new regulations, since teams can build on existing patterns and reusable components.
 
 For regulators and the wider market, DRR delivers cleaner, more comparable data. When every participant applies the same logic, supervisory analysis becomes more reliable and systemic risks become easier to detect. The transparency of the model – every rule visible, versioned and reviewable – supports stronger governance and clearer communication between industry and regulators. 
 
