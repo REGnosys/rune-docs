@@ -9,7 +9,7 @@ The [DRR codebase](https://ui.rosetta-technology.io/workspaces/read-only-digital
 
  
 
-**Base** – This folder (namespace: drr.base.*) is where all CDM data lives. Objects within Base can leverage CDM or other Base objects only, including functions, types, rules, corpus, enums etc. 
+**Base** – This folder (namespace: drr.base.*) is where all DRR data lives. Objects within Base can leverage CDM or other Base objects only, including functions, types, rules, corpus, enums etc. 
 
  
 
