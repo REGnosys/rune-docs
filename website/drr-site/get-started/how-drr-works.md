@@ -173,7 +173,7 @@ With DRR, you can establish:
 ## DRR and the Rosetta platform
 The Rosetta platform is a bespoke execution engine and SDK designed specifically for DRR. DRR is not dependent on Rosetta however, and can be used with other execution engines which are able to accommodate it.
 
-With Rosetta, DRR provides the **machine executable regulatory logic**, while Rosetta provides the **execution environment** that runs that logic using the Common Domain Model (CDM). Together, they form a unified framework that turns complex regulatory rules into consistent, auditable reporting outputs. 
+With Rosetta, DRR provides the **machine executable regulatory logic**, while Rosetta provides the **execution environment** that runs that logic using the Common Domain Model (CDM) and [Rune DSL](https://rune-docs.netlify.app/docs/rune-documentation/get-started/overview). Together, they form a unified framework that turns complex regulatory rules into consistent, auditable reporting outputs. 
 
 <br>
 
