@@ -3,9 +3,9 @@
 | DRR structure | DRR structure | "How the data in DRR is organized." 
 
 
-## DRR structure / Where DRR lives 
+## DRR structure – where DRR lives 
 
-The [DRR codebase](https://ui.rosetta-technology.io/workspaces/read-only-digital-regulatory-reporting?view=textual&topPanel=true) is contained in five key areas: 
+The [DRR codebase](https://ui.rosetta-technology.io/workspaces/read-only-digital-regulatory-reporting?view=textual&topPanel=true) is contained in six key areas: 
 
  
 
