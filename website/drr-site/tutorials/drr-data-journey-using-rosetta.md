@@ -9,11 +9,11 @@
 
 This page explains the full end to end workflow for converting an **FpML Recordkeeping XML** into a:
 
-1. **CDM ReportableEvent**
+1. **DRR ReportableEvent**
 
 2. **TransactionReportInstruction**
 
-3. **regulatory transaction report**, and finally
+3. **Regulatory transaction report**, and finally
 
 4. **ISO 20022 XML projection**
 
@@ -29,38 +29,30 @@ You can complete this workflow either:
 ## 1. Running Rosetta Ingest
 1.1. [Create a **DRR workspace** in Rosetta](https://docs.rosetta-technology.io/rosetta/rosetta-products/1-workspace/).
 
-1.2. Open the **Translate** panel.
+1.2. Open the **Ingest** panel.
 
 1.3. Upload your own FpML example or select a preloaded test file (e.g. Example 02 Submission 1).
 
 ![Rosetta translate service](./static/img/drr/rosetta-translate-service.png)
 
-1.4. Click the file to run the Translate service. This produces a **CDM ReportableEvent**.
+1.4. Click the file to run the Ingest service. This produces a **DRR ReportableEvent**.
 
 ![Rosetta translate service response](./static/img/drr/rosetta-translate-service-response.png)
 
 
-1.5. In the **CDM** panel, download the generated model as **JSON**. Save this file for the next step.
 
 <br>
 
-## 2. Running the custom Function service
-2.1. Open the **Function** panel.
+## 2. Running the custom Enrich service
+2.1. Open the **Enrich** panel.
 
-2.2. From the list, select the function `Create_TransactionReportInstructionFromInstructionDefault`.
+2.2. Select the **Enrich** function from the dropdown.
 
-2.3. Upload the JSON file from the ingestion step.
+2.3. Upload your own DRR object example or select a preloaded test file from the dropdown (e.g. Example 02 Submission 1).
 
-
-![Rosetta custom function service](./static/img/drr/rosetta-cust-func.png)
-
-
-This produces a `TransactionReportInstruction`, including both `reportingParty` and `reportingCounterparty`.
+2.4. Click the file to run the Enrich service. This produces a `DRR TransactionReportInstruction`, enriched with additional required data from internal or external sources.
 
 
-![Rosetta custom function service response](./static/img/drr/rosetta-cust-func-response.png)
-
-2.4. Download the output JSON for the next step.
 
 <br>
 
@@ -69,21 +61,9 @@ This produces a `TransactionReportInstruction`, including both `reportingParty` 
 
 3.2. Select a report type (e.g. **ESMA / EMIR Trade**).
 
-3.3. Upload the `TransactionReportInstruction` JSON.
+3.3. Upload a `TransactionReportInstruction` from the previous step or select a preloaded test file from the dropdown (e.g. Example 02 Submission 1).
 
-Choose file type: `drr.regulation.common.TransactionReportInstruction`.
-
-
-![Rosetta reports service](./static/img/drr/rosetta-reports-service.png)
-
-
-You’ll see the uploaded file:
- 
-
-![Rosetta report upload](./static/img/drr/rosetta-report-upload.png)
-
-
-3.4. Click the file to view the generated report.
+3.4. Click the file to to run the Report service. This produces a single regime-specific `TransactionReport` with that regime's logic applied.
 
 
 ![Rosetta reports service response](./static/img/drr/reports-service-response.png)
@@ -95,16 +75,13 @@ You’ll see the uploaded file:
 
 4.2. Select a projection (e.g. **EsmaEmirTradeReportToIso20022**).
 
-4.3. Upload the transaction report JSON from the previous step.
+4.3. Upload the `TransactionReport` JSON from the previous step or select a preloaded test file from the dropdown (e.g. Example 02 Submission 1).
 
-
-![Rosetta reports projection service](./static/img/drr/reports-projection-service.png)
-
-You’ll see the uploaded file:
+4.4. Click the file to to run the Projection service. This produces the projection for the chosen regime (e.g. ISO 20022 XML, DTCC Harmonized XML). 
 
 
 ![Rosetta reports projection upload](./static/img/drr/reports-projection-upload.png)
 
-This produces the **ISO 20022 XML** projection.
+
 
 <br>
