@@ -8,11 +8,19 @@
 ## 1. Reporting regimes
 DRR currently supports these trade and transaction reporting regimes:
 
-[LIST OF REGIMES]
+- ASIC
+- CFTC
+- CSA
+- ESMA
+- FCA
+- HKMA
+- JSFA
+- MAS
+- SEC
 
 For each regulation, the model links to the **official regulatory documents** and the **authority that issued them**. These are represented as:
-- **body** – the issuing authority
-- **corpus** – the specific regulation or technical document
+- **Body** – the issuing authority
+- **Corpus** – the specific regulation or technical document
 
 **Example:** 
 
@@ -103,7 +111,7 @@ type ReportableEventBase: <"Specifies a workflowstep with enriched information r
 
 This type:
 - Is shared across all regulations
-- Lives in drr.regulation.common
+- Lives in `drr.regulation.common`
 - Provides a consistent starting point for all reporting rules
 
 <br>
@@ -111,15 +119,15 @@ This type:
 ## 4. Report definition
 Each report is defined using three elements:
 
-- **What to report** – the reportable fields
-- **Whether to report** – eligibility criteria
-- **When to report** – timing (this is informational only, not executable)
+- **What to report** – the reportable fields.
+- **Whether to report** – eligibility criteria.
+- **When to report** – timing (this is informational only, not executable).
 
 
 A report references:
-- A **body** and **corpus** (the regulatory source)
-- A **data type** that defines the output fields
-- An optional **standard** (e.g. ISO 20022, added at Project stage)
+- A **body** and **corpus** (the regulatory source).
+- A **data type** that defines the output fields.
+- An optional **standard** (e.g. ISO 20022, added at Project stage).
 
 **Example:**
 
