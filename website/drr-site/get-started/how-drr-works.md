@@ -136,7 +136,7 @@ Standardised workflows that describe how events are applied and how states evolv
 
 <br>
 
-## Jurisdictions
+## Jurisdiction-specific logic
 All jurisdictions in DRR use the same underlying elements:
 - **Common Domain Model (CDM)** for data structures.
 -	**Ingest → Enrich → Report → Project** pipeline.
