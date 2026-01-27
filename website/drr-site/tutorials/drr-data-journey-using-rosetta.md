@@ -7,25 +7,27 @@
 # The DRR data journey via Rosetta
 
 
-This page explains the full end to end workflow for converting an **FpML Recordkeeping XML** into:
+This page explains the full end to end workflow for converting an **FpML Recordkeeping XML** into a:
 
-1. a **CDM ReportableEvent**
+1. **CDM ReportableEvent**
 
-2. a **TransactionReportInstruction**
+2. **TransactionReportInstruction**
 
-3. a **regulatory transaction report**, and finally
+3. **regulatory transaction report**, and finally
 
-4. an **ISO 20022 XML projection**
+4. **ISO 20022 XML projection**
+
+<br>
 
 You can complete this workflow either:
-- through the **Rosetta UI**
-- using [**Postman**](./drr-data-journey-using-postman.md) with the DRR API services
+- Through the **Rosetta UI**.
+- Using [**Postman**](./drr-data-journey-using-postman.md) with the DRR API services.
 
 <br>
 
 
 ## 1. Running Rosetta Ingest
-1.1. Create a **DRR workspace** in Rosetta.
+1.1. [Create a **DRR workspace** in Rosetta](https://docs.rosetta-technology.io/rosetta/rosetta-products/1-workspace/).
 
 1.2. Open the **Translate** panel.
 
