@@ -47,6 +47,12 @@ Reporting regulations can themselves be further sub-divided, for instance when r
 drr.regulation.esma.emir.refit
 ```
 
+Reporting regulations can also be further sub-divided by report:
+
+```haskell
+drr.regulation.cftc.rewrite.margin
+```
+
 Some components are **shared across regulations** (e.g. common eligibility logic, shared data structures). These live in:
 
 ```haskell
@@ -77,8 +83,8 @@ This keeps the model modular, reusable, and consistent across jurisdictions.
 
 <br>
 
-## 3. Reportable event
-All reporting regimes assume that reporting starts from a **transaction event**. In DRR, this is represented by the `ReportableEvent` type.
+## 3. Reportable event 
+All reporting regimes assume that reporting starts from a **transaction event**. In DRR, this is represented by the `ReportableEventBase` type.
 
 In the CDM:
 - `BusinessEvent` describes the **state transition**.
@@ -87,10 +93,11 @@ In the CDM:
 For reporting, additional information is often required (e.g. reporting party, regime specific flags). Rather than overloading CDM types, DRR introduces a dedicated wrapper:
 
 ```haskell
-type ReportableEvent: <"Specifies a workflowstep with enriched information required for reporting.">
+type ReportableEventBase: <"Specifies a workflowstep with enriched information required for reporting.">
   [rootType]
   originatingWorkflowStep WorkflowStep (1..1) <"The workflowstep that originated the reportable event.">
   reportableTrade TradeState (0..1) <"The reportable trade decomposed from the originating workflow step when required.">
+  reportablePosition CounterpartyPositionState (0..1) <"The reportable position decomposed from the originating workflow step when required.">
   reportableInformation ReportableInformation (0..*) <"Additional information required for a reportable transaction, including the reporting regime. A list of reportable information is provided when an event is reportable to more than one regime.">
 ```
 
@@ -112,13 +119,14 @@ Each report is defined using three elements:
 A report references:
 - A **body** and **corpus** (the regulatory source)
 - A **data type** that defines the output fields
-- An optional **standard** (e.g. ISO 20022)
+- An optional **standard** (e.g. ISO 20022, added at Project stage)
 
 **Example:**
 
 ```haskell
 report CFTC Part43 in T+1
-  when ReportableEvent
+  from TransactionReportInstruction
+  when IsReportableEvent
   using standard ISO_20022
   with type CFTCPart43TransactionReport
 ```
