@@ -101,9 +101,9 @@ Rationales can also be added when the regulation needs clarification:
 
 ## Test driven
 Every rule in DRR must be validated using **synthetic test data** that represents real world scenarios. A rule is considered complete only when:
-- It produces the expected output
-- Across all relevant test cases
-- For all applicable asset classes
+- It produces the expected output.
+- Across all relevant test cases.
+- For all applicable asset classes.
 
 Those data are organised around themes and grouped into **test packs** in the DRR model repository – for instance, by asset class. These test packs are part of the model and allow firms to benchmark their own implementations.
 
