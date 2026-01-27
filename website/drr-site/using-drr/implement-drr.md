@@ -4,46 +4,47 @@
 
 
 # Implement DRR 
-There are three key routes to implement DRR: Build, Benchmark or Buy.
+There are three key routes to implement DRR: **Build**, **Benchmark** or **Buy**.
 
 You can mix and match these depending on your internal systems and resources.
 
 ### Build (you run DRR yourself)
 You take the open source DRR code and run it inside your own systems. This means you:
-- Run the DRR rules on your own infrastructure
-- Integrate DRR into your software lifecycle
-- Convert your internal data into CDM format
-- Use the DRR Test Pack to check your outputs
+- Run the DRR rules on your own infrastructure.
+- Integrate DRR into your software lifecycle.
+- Convert your internal data into CDM format.
+- Use the DRR Test Pack to check your outputs.
 
 This option gives you the most control.
 
 ### Benchmark (you test your implementation using an execution engine like Rosetta)
-You use the free Rosetta Community Edition (or another execution engine) to test your own reporting logic.
+You use the Rosetta platform (or another execution engine) to test your own reporting logic.
 Rosetta lets you:
-- Upload input data
-- Run the DRR steps: Ingest → Enrich → Report → Project
-- Compare your output with DRR’s expected output
-- Write your own DRR logic using the Rune DSL
+- Upload input data.
+- Run the DRR steps: Ingest → Enrich → Report → Project.
+- Compare your output with DRR’s expected output.
+- Write your own DRR logic using the Rune DSL.
 
 This is great for testing, proofs of concept, or validating your own build. But it is **not** designed for production scale reporting – it can only accommodate limited volume and throughput. Also, the **Ingest** and **Project** services only cover the formats that have been publicly developed and distributed in the CDM and DRR, not firms’ custom formats.
 
 ### Buy (you use a vendor solution)
 You purchase a reporting solution from a third party vendor. Vendors may use DRR internally to power their products.
 
+<br>
 
-## 1. The DRR pipeline (what you need to implement)
+## The DRR pipeline (what you need to implement)
 DRR has four main steps. Each step has code and files you can use.
 
 <br>
 
-## 1.1 Ingest
+## 1. Ingest
 ### Why
 Convert your internal trade data intoa  **DRR reportable event**.
 
 ### What you get
 **Synonyms**
 
-- `Synonym`s (mapping files) that describe how to convert public data models into CDM (this is soon to be replaced by functional ingestion).
+- Synonyms (mapping files) that describe how to convert public data models into CDM (this is soon to be replaced by functional ingestion).
 - [Supported public models](https://cdm.finos.org/docs/mapping).
 - Synonyms apply to public data models only, **not** mappings for private, proprietary or firm specific models. Custom adaptations need these synonyms to be extended.
 
@@ -55,7 +56,7 @@ Convert your internal trade data intoa  **DRR reportable event**.
 ### Where to find it
 All synonym files in the CDM distribution are in `.rune` format namespaces prefixed with `drr.mapping.*`. For example: `drr.mapping.synonym`.
 
-All ingest functions are in `.rune` format namespaces prefixed with `drr.ingest.*`. or example: `drr.ingest.synonym`.
+All ingest functions are in `.rune` format namespaces prefixed with `drr.ingest.*`. For example: `drr.ingest.synonym`.
 
 ### How to implement – 3 options
 **1. If you use a public model**
@@ -69,12 +70,12 @@ All ingest functions are in `.rune` format namespaces prefixed with `drr.ingest.
 **3. If you use a fully bespoke model**
 - You’ll need to write your own translation logic from scratch.
 
-**Benchmark option**
+## Benchmark option
 Rosetta can convert **public models only** into CDM using its [ingestion service](https://docs.rosetta-technology.io/rosetta/rosetta-products/4-api-export/#ingestion-service).
 
 <br>
 
-## 1.2 Enrich
+## 2. Enrich
 ### Why
 - Add missing reference data e.g Legal Entity Identifiers (LEIs), Market Identifier Codes (MICs), static data, etc to the DRR event.
 - DRR is flexible to allow for different internal and external data sources and how they’re implemented.
@@ -94,15 +95,16 @@ You can include the DRR Java code for enrichment and API call functions as a dep
 - You decide how to call your internal or external data sources.
 - Pre  and post conditions help validate your enrichment.
 
-### Benchmark option
+## Benchmark option
 Rosetta provides built in enrichment for common reference data such as:
 - Legal Entity Identifier (from GLEIF)
 - Market Identifier Code (from ISO)
 
 However, implementations of the external API calls are not distributed with DRR as their logic is not defined in the model.
 
+<br>
 
-## 1.3 Report
+## 3. Report
 ### Why
 Turn the enriched DRR event into a **jurisdiction specific report object**.
 
@@ -126,8 +128,7 @@ You don’t need deep Java knowledge – the important idea is that the DRR dist
 - Call the generated report function.
 - Tabulate the output into key value pairs.
 
-### How to implement
-**1.3.1 Add the DRR Java dependency**
+**3.1 Add the DRR Java dependency**
 
 You can either download the DRR Java code from the Rosetta platform or include it in your build using Maven:
 
@@ -161,7 +162,7 @@ This gives you access to the **generated report classes**, such as:
 
 These classes are created automatically from the DRR model – you don’t write them yourself.
 
-**1.3.2. Prepare the reporting environment**
+**3.2. Prepare the reporting environment**
 
 DRR uses a small setup step to load the reporting rules.
 This line creates the module that wires everything together:
@@ -171,9 +172,9 @@ this.injector = Guice.createInjector(new DrrRuntimeModuleExternalApi());
 
 ```
 
-You don’t need to understand Guice — just know that this line “turns on” the DRR rules.
+You don’t need to understand Guice – just know that this line “turns on” the DRR rules.
 
-**1.3.3. Create or load a CDM input event**
+**3.3. Create or load a CDM input event**
 
 The reporting function always takes a **CDM ReportableEvent** as input.
 You can load one from JSON:
@@ -184,7 +185,7 @@ ReportableEvent reportableEvent = ResourcesUtils.getObjectAndResolveReferences( 
 ```
 This is usually the easiest approach for modellers.
 
-**1.3.4. Build the `TransactionReportInstruction`**
+**3.4. Build the `TransactionReportInstruction`**
 
 Before running the report, you need to specify:
 - The reporting party
@@ -208,7 +209,7 @@ final TransactionReportInstruction reportInstruction =
 
 This step simply prepares the input for the reporting rules.
 
-**1.3.5. Run the reporting rules**
+**3.5. Run the reporting rules**
 
 This is the key step: the DRR-generated function produces the report object.
 
@@ -224,7 +225,7 @@ final CFTCPart45TransactionReport report =
 
 You now have the full **CDM report object**.
 
-**1.3.6. Print the report as JSON (optional)**
+**3.6. Print the report as JSON (optional)**
 
 ```haskell
 System.out.println( RosettaObjectMapper.getNewRosettaObjectMapper() .writerWithDefaultPrettyPrinter() .writeValueAsString(report) ); 
@@ -232,7 +233,7 @@ System.out.println( RosettaObjectMapper.getNewRosettaObjectMapper() .writerWithD
 
 This is useful for testing and validation but is not essential.
 
-**1.3.7. Convert the report into key–value pairs**
+**3.7. Convert the report into key–value pairs**
 
 ```haskell
 Tabulators turn the report into a simple list of fields and values:
@@ -245,7 +246,7 @@ final List<Tabulator.FieldValue> tabulatedReport =
 ```
 This is helpful for debugging or comparing against expected outputs.
 
-**1.3.8. Full example**
+**3.8. Full example**
 
 ```haskell
 package com.regnosys.drr.examples;
@@ -324,22 +325,22 @@ public class CFTCPart45ExampleReport {
 
 **Note:** You can download this code is available as part of the DRR distribution. Go to the Downloads page and choose [Dev examples](https://drr.docs.rosetta-technology.io/source/download.html).
 
-### Benchmark option
+## Benchmark option
 Rosetta lets you run Report directly through the UI or API.
 
 <br>
 
-## 1.4 Project
+## 4. Project
 ### Why
 Convert the DRR report object into the final message format required by the regulator or trade repository (e.g. ISO 20022 XML).
 
 ## Where to find it
 The projection functions are included in the DRR distribution as `.rune` files. They live in the `drr.projection.*` namespaces and follow that naming pattern e.g. `drr.projection.iso20022.esma.emir.refit.trade`.
 
-Each projection function has a matching generated Java class (e.g. `Project_EsmaEmirTradeReportToIso20022`). This one to one alignment ensures that the CDM’s projection logic can be executed consistently in any implementation.
+Each projection function has a matching generated Java class (e.g. `Project_EsmaEmirTradeReportToIso20022`). This one-to-one alignment ensures that the CDM’s projection logic can be executed consistently in any implementation.
 
 ### What you get
-XML output for ISO 20022
+XML output for ISO 20022.
 
 In the previous step, the DRR report object was converted to JSON using:
 
@@ -373,7 +374,7 @@ It’s provided in this Maven artifact:
 </dependency>
 ```
 
-**Note:** If you are serialising an `iso20022.auth030.esma.Document`, use the matching configuration file: `xml-config/auth030-esma-rosetta-xml-config.json`.
+**Note:** If you're serialising an `iso20022.auth030.esma.Document`, use the matching configuration file: `xml-config/auth030-esma-rosetta-xml-config.json`.
 
 To access ISO 20022 artefacts, add the ISDA repository:
 <repository>
@@ -418,7 +419,7 @@ To access ISO 20022 artefacts, add the ISDA repository:
 ```
 
 
-**Benchmark option**
-To run the full reporting pipeline without building your own implementation, the Rosetta Platform provides a ready made [reporting service](https://docs.rosetta-technology.io/rosetta/rosetta-products/4-api-export/#regulation-report-service).
+## Benchmark option
+To run the full reporting pipeline without building your own implementation, the Rosetta Platform provides a ready-made [reporting service](https://docs.rosetta-technology.io/rosetta/rosetta-products/4-api-export/#regulation-report-service).
 
 
