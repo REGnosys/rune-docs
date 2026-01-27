@@ -70,7 +70,7 @@ All ingest functions are in `.rune` format namespaces prefixed with `drr.ingest.
 **3. If you use a fully bespoke model**
 - You’ll need to write your own translation logic from scratch.
 
-## Benchmark option
+## *Benchmark option*
 Rosetta can convert **public models only** into CDM using its [ingestion service](https://docs.rosetta-technology.io/rosetta/rosetta-products/4-api-export/#ingestion-service).
 
 <br>
@@ -95,7 +95,7 @@ You can include the DRR Java code for enrichment and API call functions as a dep
 - You decide how to call your internal or external data sources.
 - Pre  and post conditions help validate your enrichment.
 
-## Benchmark option
+## *Benchmark option*
 Rosetta provides built in enrichment for common reference data such as:
 - Legal Entity Identifier (from GLEIF)
 - Market Identifier Code (from ISO)
@@ -325,7 +325,7 @@ public class CFTCPart45ExampleReport {
 
 **Note:** You can download this code is available as part of the DRR distribution. Go to the Downloads page and choose [Dev examples](https://drr.docs.rosetta-technology.io/source/download.html).
 
-## Benchmark option
+## *Benchmark option*
 Rosetta lets you run Report directly through the UI or API.
 
 <br>
@@ -334,10 +334,6 @@ Rosetta lets you run Report directly through the UI or API.
 ### Why
 Convert the DRR report object into the final message format required by the regulator or trade repository (e.g. ISO 20022 XML).
 
-## Where to find it
-The projection functions are included in the DRR distribution as `.rune` files. They live in the `drr.projection.*` namespaces and follow that naming pattern e.g. `drr.projection.iso20022.esma.emir.refit.trade`.
-
-Each projection function has a matching generated Java class (e.g. `Project_EsmaEmirTradeReportToIso20022`). This one-to-one alignment ensures that the CDM’s projection logic can be executed consistently in any implementation.
 
 ### What you get
 XML output for ISO 20022.
@@ -418,8 +414,13 @@ To access ISO 20022 artefacts, add the ISDA repository:
 </repositories>
 ```
 
+### Where to find it
+The projection functions are included in the DRR distribution as `.rune` files. They live in the `drr.projection.*` namespaces and follow that naming pattern e.g. `drr.projection.iso20022.esma.emir.refit.trade`.
 
-## Benchmark option
+Each projection function has a matching generated Java class (e.g. `Project_EsmaEmirTradeReportToIso20022`). This one-to-one alignment ensures that the CDM’s projection logic can be executed consistently in any implementation.
+
+
+## *Benchmark option*
 To run the full reporting pipeline without building your own implementation, the Rosetta Platform provides a ready-made [reporting service](https://docs.rosetta-technology.io/rosetta/rosetta-products/4-api-export/#regulation-report-service).
 
 
