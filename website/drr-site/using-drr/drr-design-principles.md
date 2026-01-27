@@ -99,7 +99,7 @@ Rationales can also be added when the regulation needs clarification:
 
 <br> 
 
-## Test driven
+## 4. Test driven
 Every rule in DRR must be validated using **synthetic test data** that represents real world scenarios. A rule is considered complete only when:
 - It produces the expected output.
 - Across all relevant test cases.
