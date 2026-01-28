@@ -1,6 +1,6 @@
 | title: | sidebar_label: | description: |
 | ----------- | ----------- | ----------- |
-| Scope and organisation | Scope and organisation | "How DRR creates reports." 
+| Scope and organisation | Scope and organization | "How DRR creates reports." 
 
 
 # Scope and organisation
