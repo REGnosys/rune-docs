@@ -42,19 +42,26 @@ Regulatory rules → Machine readable rules → Execution engine → Integration
 
 With an organization's data translated into the CDM, DRR ingests that data, enriches it with additional regulatory fields, creates reports and projects them to the relevant regulatory bodies. 
 
-
+<br>
 
 ## Scope and jurisdictions
 DRR covers a range of trade and transaction reporting regimes, including:
-- ASIC
-- CFTC
-- CSA
-- ESMA
-- FCA
-- HKMA
-- JSFA
-- MAS
-- SEC
+
+### North America
+- CFTC — Commodity Futures Trading Commission (United States)
+- SEC — Securities and Exchange Commission (United States)
+- CSA — Canadian Securities Administrators (Canada)
+
+### Europe and United Kingdom
+- ESMA — European Securities and Markets Authority (European Union)
+- FCA — Financial Conduct Authority (United Kingdom)
+
+### Asia‑Pacific
+- ASIC — Australian Securities and Investments Commission (Australia)
+- HKMA — Hong Kong Monetary Authority (Hong Kong)
+- JFSA — Japan Financial Services Agency (Japan)
+- MAS — Monetary Authority of Singapore (Singapore)
+
 
 <br>
 
