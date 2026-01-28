@@ -8,15 +8,22 @@
 ## 1. Reporting regimes
 DRR currently supports these trade and transaction reporting regimes:
 
-- ASIC
-- CFTC
-- CSA
-- ESMA
-- FCA
-- HKMA
-- JSFA
-- MAS
-- SEC
+### North America
+- CFTC — Commodity Futures Trading Commission (United States)
+- SEC — Securities and Exchange Commission (United States)
+- CSA — Canadian Securities Administrators (Canada)
+
+### Europe and United Kingdom
+- ESMA — European Securities and Markets Authority (European Union)
+- FCA — Financial Conduct Authority (United Kingdom)
+
+### Asia‑Pacific
+- ASIC — Australian Securities and Investments Commission (Australia)
+- HKMA — Hong Kong Monetary Authority (Hong Kong)
+- JFSA — Japan Financial Services Agency (Japan)
+- MAS — Monetary Authority of Singapore (Singapore)
+
+<br>
 
 For each regulation, the model links to the **official regulatory documents** and the **authority that issued them**. These are represented as:
 - **Body** – the issuing authority
