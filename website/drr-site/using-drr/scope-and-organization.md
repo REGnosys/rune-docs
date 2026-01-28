@@ -134,7 +134,7 @@ Each report is defined using three elements:
 A report references:
 - A **body** and **corpus** (the regulatory source).
 - A **data type** that defines the output fields.
-- An optional **standard** (e.g. ISO 20022, added at Project stage).
+- An optional **standard** (e.g. ISO 20022, added at Projection stage).
 
 **Example:**
 
