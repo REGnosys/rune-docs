@@ -21,11 +21,11 @@ This option gives you the most control.
 You use the Rosetta platform (or another execution engine) to test your own reporting logic.
 Rosetta lets you:
 - Upload input data.
-- Run the DRR steps: Ingest → Enrich → Report → Project.
+- Run the DRR steps: Ingest → Enrich → Reports → Projection.
 - Compare your output with DRR’s expected output.
 - Write your own DRR logic using the Rune DSL.
 
-This is great for testing, proofs of concept, or validating your own build. But it is **not** designed for production scale reporting – it can only accommodate limited volume and throughput. Also, the **Ingest** and **Project** services only cover the formats that have been publicly developed and distributed in the CDM and DRR, not firms’ custom formats.
+This is great for testing, proofs of concept, or validating your own build. But it is **not** designed for production scale reporting – it can only accommodate limited volume and throughput. Also, the **Ingest** and **Projection** services only cover the formats that have been publicly developed and distributed in the CDM and DRR, not firms’ custom formats.
 
 ### Buy (you use a vendor solution)
 You purchase a reporting solution from a third party vendor. Vendors may use DRR internally to power their products.
