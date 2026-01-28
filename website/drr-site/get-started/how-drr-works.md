@@ -38,8 +38,8 @@ Regulatory text may include:
 DRR consists of four key steps to transform your data, ready for reporting:
 - **Ingest.** Normalises raw input into CDM – this first step takes a firm’s transaction event data and translates it into a DRR report object representing that transaction.
 - **Enrich.** Adds derived fields (e.g. reporting counterparty, clearing status). This step enriches a DRR reportable event with additional information obtained from an internal or external data sources.
-- **Report.** Applies regime-specific reporting rules. The enriched DRR reportable event receives the reporting logic (field rules plus any additional regulatory data guidelines and data validation rules) to produce a DRR transaction report object containing all the reportable fields. 
-- **Project.** Produces the final reporting output. The DRR transaction report object acquires additional mapping and projection rules to produce a report file in the format required by trade repositories (TRs) or regulators (e.g. XML, ISO 20022).
+- **Reports.** Applies regime-specific reporting rules. The enriched DRR reportable event receives the reporting logic (field rules plus any additional regulatory data guidelines and data validation rules) to produce a DRR transaction report object containing all the reportable fields. 
+- **Projection.** Produces the final reporting output. The DRR transaction report object acquires additional mapping and projection rules to produce a report file in the format required by trade repositories (TRs) or regulators (e.g. XML, ISO 20022).
 
 ![DRR process overview: Ingest, Enrich, Report, Project](./images/drr-process-overview-2.png)
 
@@ -50,7 +50,7 @@ DRR consists of four key steps to transform your data, ready for reporting:
 The Rosetta platform was built specifically for DRR and it’s where the DRR logic actually runs. Rosetta:
 - Loads CDM types
 - Executes DRR logic step by step
-- Produces intermediate outputs (Ingest → Enrich → Report → Project)
+- Produces intermediate outputs (Ingest → Enrich → Reports → Projection)
 - Validates CDM input and dRR logic
 - Generates reporting payloads
 
@@ -139,12 +139,12 @@ Standardised workflows that describe how events are applied and how states evolv
 ## Jurisdiction-specific logic
 All jurisdictions in DRR use the same underlying elements:
 - **Common Domain Model (CDM)** for data structures.
--	**Ingest → Enrich → Report → Project** pipeline.
+-	**Ingest → Enrich → Reports → Projection** pipeline.
 -	The same enrichment patterns and reusable functions.
 
 Where jurisdictions differ e.g. EMIR vs CFTC vs ASIC, DRR isolates those differences in two places:
-- **Report:** applies the jurisdiction’s regulatory logic.
-- **Project:** produces the jurisdiction’s required reporting schema.
+- **Reports:** applies the jurisdiction’s regulatory logic.
+- **Projection:** produces the jurisdiction’s required reporting schema.
 
 This means each jurisdiction can have its own rules, validations, and output formats without affecting others.
 
@@ -194,7 +194,7 @@ Rosetta is the original execution engine created to run DRR logic. It provides:
 - A compiler for the [Rune DSL](https://rune-docs.netlify.app/docs/rune-documentation/get-started/overview) (formerly Rosetta DSL).
 - A runtime environment for executing CDM based rules.
 - Validation of CDM input and DRR output structures.
-- Step by step outputs for Ingest → Enrich → Report → Project.
+- Step by step outputs for Ingest → Enrich → Reports → Projection.
 - Deterministic execution across firms and environments.
 
 ### The role of Rune DSL
