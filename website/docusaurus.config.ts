@@ -53,7 +53,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/rune/icon/2024_Rune_Icon.svg',
     colorMode: {
       respectPrefersColorScheme: true,
     },
@@ -97,20 +97,6 @@ const config: Config = {
           label: 'Developers',
           href: '/docs/rune-documentation/developers',
         },
-        // {
-        //   type: 'docSidebar',
-        //   sidebarId: 'docsSidebar',
-        //   position: 'left',
-        //   label: 'FAQs',
-        //   href: '/docs/rune-documentation/resources/faqs',
-        // },
-        //  {
-        //   type: 'docSidebar',
-        //   sidebarId: 'docsSidebar',
-        //   position: 'left',
-        //   label: 'Case studies',
-        //    href: '/docs/rune-documentation/resources/case-studies',
-        // },
       ],
     },
     footer: {
