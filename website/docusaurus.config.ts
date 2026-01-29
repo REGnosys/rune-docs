@@ -1,6 +1,7 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import {GlossaryPresetOptions} from "docusaurus-plugin-glossary/preset";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -36,18 +37,40 @@ const config: Config = {
   },
 
   presets: [
+    // [
+    //   'classic',
+    //   {
+    //     // docs: {
+    //     //   sidebarPath: './sidebars.ts',
+    //     //   editUrl:
+    //     //     'https://github.com/REGnosys/rune-docs/tree/master/website',
+    //     // },
+    //     // theme: {
+    //     //   customCss: './src/css/custom.css',
+    //     // },
+    //     // blog: false,
+    //   } satisfies Preset.Options,
+    // ],
     [
-      'classic',
+      'docusaurus-plugin-glossary/preset',
       {
+        // Glossary configuration
+        id: 'glossary',
+        glossary: {
+          glossaryPath: 'glossary/glossary.json',
+          routePath: '/glossary',
+        },
+        // Standard Docusaurus preset-classic options
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl:
-            'https://github.com/REGnosys/rune-docs/tree/master/website',
+              'https://github.com/REGnosys/rune-docs/tree/master/website',
         },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
-      } satisfies Preset.Options,
+      } satisfies GlossaryPresetOptions,
     ],
   ],
 
