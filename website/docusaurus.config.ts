@@ -168,7 +168,7 @@ const config: Config = {
             },
             {
               label: 'Glossary',
-              href: '/docs/rune-documentation/resources/glossary',
+              href: '/glossary',
             },
             {
               label: 'Contact us',
