@@ -40,15 +40,15 @@ const config: Config = {
     // [
     //   'classic',
     //   {
-    //     // docs: {
-    //     //   sidebarPath: './sidebars.ts',
-    //     //   editUrl:
-    //     //     'https://github.com/REGnosys/rune-docs/tree/master/website',
-    //     // },
-    //     // theme: {
-    //     //   customCss: './src/css/custom.css',
-    //     // },
-    //     // blog: false,
+    //     docs: {
+    //       sidebarPath: './sidebars.ts',
+    //       editUrl:
+    //         'https://github.com/REGnosys/rune-docs/tree/master/website',
+    //     },
+    //     theme: {
+    //       customCss: './src/css/custom.css',
+    //     },
+    //     blog: false,
     //   } satisfies Preset.Options,
     // ],
     [
