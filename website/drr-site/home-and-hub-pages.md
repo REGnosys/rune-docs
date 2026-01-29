@@ -10,6 +10,15 @@ DRR can reduce implementation cost, improve reporting accuracy and increase tran
 
 At its core, DRR works by translating trade data into CDM, applying jurisdiction specific rule logic, and generating regulatory reports and projections in the required formats. This documentation will guide you through that journey – from understanding the model, to running the services, to contributing to the future of DRR.
 
+<br>
+
+### What’s covered
+This documentation offers a general introduction to DRR, including background, theory and best practices. It also includes practical guidance related to DRR implantation and management.
+
+### What’s not covered
+This is not a guide to creating models for DRR. Although technical examples are provided, in-depth analysis of code or implementation techniques are not covered.
+
+<br>
 
 ### Get started
 What DRR does, how it does it, and which regimes it can be applied to. 
