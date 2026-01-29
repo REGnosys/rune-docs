@@ -10,9 +10,18 @@ DRR can reduce implementation cost, improve reporting accuracy and increase tran
 
 At its core, DRR works by translating trade data into CDM, applying jurisdiction specific rule logic, and generating regulatory reports and projections in the required formats. This documentation will guide you through that journey – from understanding the model, to running the services, to contributing to the future of DRR.
 
+<br>
+
+### What’s covered
+This documentation offers a general introduction to DRR, including background, theory and best practices. It also includes practical guidance related to DRR implantation and management.
+
+### What’s not covered
+This is not a guide to creating models for DRR. Although technical examples are provided, in-depth analysis of code or implementation techniques are not covered.
+
+<br>
 
 ### Get started
-What DRR does, how it does it, and how it helps firms automate their regulatory reporting. 
+What DRR does, how it does it, and which regimes it can be applied to. 
 
 ### Using DRR
 Getting technical – explore how DRR is structured, how to implement it and how to work it.
@@ -36,7 +45,7 @@ Begin your DRR journey with the foundational concepts you need to understand the
 What you need before working with DRR, including Rosetta access and basic CDM familiarity.
 
 ### Introducing DRR 
-A high level overview of the DRR initiative, its goals and structure.
+A high level overview of the DRR initiative, its goals, structure and relevant regimes.
 
 ### How DRR works 
 A walkthrough of the DRR pipeline and how it executes regulatory logic.

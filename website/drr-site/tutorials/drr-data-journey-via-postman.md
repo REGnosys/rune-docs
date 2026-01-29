@@ -19,7 +19,7 @@ You can complete this workflow either:
 
 <br>
 
-##1. Running the ingestion service via Postman
+## 1. Running the ingestion service via Postman
 You can ingest an FpML example directly via API.
 
 1.1 In Rosetta,  open **DRR Model → API Export**.
