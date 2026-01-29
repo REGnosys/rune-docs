@@ -12,7 +12,7 @@ At its core, DRR works by translating trade data into CDM, applying jurisdiction
 
 
 ### Get started
-What DRR does, how it does it, and how it helps firms automate their regulatory reporting. 
+What DRR does, how it does it, and which regimes it can be applied to. 
 
 ### Using DRR
 Getting technical – explore how DRR is structured, how to implement it and how to work it.
@@ -36,7 +36,7 @@ Begin your DRR journey with the foundational concepts you need to understand the
 What you need before working with DRR, including Rosetta access and basic CDM familiarity.
 
 ### Introducing DRR 
-A high level overview of the DRR initiative, its goals and structure.
+A high level overview of the DRR initiative, its goals, structure and relevant regimes.
 
 ### How DRR works 
 A walkthrough of the DRR pipeline and how it executes regulatory logic.
