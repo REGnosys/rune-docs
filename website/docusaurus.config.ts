@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Rune DSL',
   tagline: 'Rune DSL is a domain‑specific language (DSL) designed to bring clarity and consistency to how financial markets and other sectors describe their processes. Use it with the Rosetta platform to create models that generate consistent, machine‑readable representations of financial products and workflows.',
-  favicon: 'img/img/rune/Icon/favicon.ico',
+  favicon: '/img/rune/icon/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -41,10 +41,8 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/REGnosys/rune-docs/tree/master/website',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -63,7 +61,7 @@ const config: Config = {
       title: 'Rune DSL',
       logo: {
         alt: 'Rune DSL Logo',
-        src: 'img/rune/Icon/2024_Rune_Icon.svg',
+        src: 'img/rune/icon/2024_Rune_Icon.svg',
       },
       items: [
         {
@@ -178,6 +176,17 @@ const config: Config = {
       additionalLanguages: ['haskell'],
     },
   } satisfies Preset.ThemeConfig,
+
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        // Optional: configure languages if needed
+        language: ["en"]
+      }
+    ]
+  ]
 };
 
 export default config;
