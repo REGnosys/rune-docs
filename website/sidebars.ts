@@ -82,7 +82,11 @@ const sidebars: SidebarsConfig = {
       },
       items: [
         'rune-documentation/resources/faqs',
-        'rune-documentation/resources/glossary',
+        {
+          type: 'link',
+          href: '/glossary',
+          label: 'Glossary',
+        },
         'rune-documentation/resources/contact-us',
       ],
     },
