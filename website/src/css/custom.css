@@ -119,6 +119,12 @@ button--secondary:hover {
   display: none !important;
 }
 
+.footer__bottom {
+  font-size: 0.8rem;
+  margin-top: 2rem;
+  opacity: 0.7;
+}
+
 /* Hide right-hand TOC */
 /* .theme-doc-toc-desktop {
   display: none !important;
