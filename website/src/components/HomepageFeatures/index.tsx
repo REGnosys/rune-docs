@@ -51,9 +51,13 @@ function Feature({ title, Svg, description, link }: FeatureItem) {
         {/*<Svg className={styles.featureSvg} role="img" />*/}
       </div>
       <div className="text--center padding-horiz--md">
-        <Heading as="h3">
-          {link ? <Link to={link}>{title}</Link> : title}
-        </Heading>
+        {link ? (
+          <Link to={link}>
+            <h3>{title}</h3>
+          </Link>
+        ) : (
+          <Heading as="h3">{title}</Heading>
+        )}
         <p>{description}</p>
       </div>
     </div>
