@@ -25,7 +25,7 @@ const sidebars: SidebarsConfig = {
         type: 'generated-index',
         title: 'Get started',
         description: 'Your introduction to the Rune language.',
-        slug: '/rune-documentation/get-started',
+        slug: '/get-started',
       },
       items: [
         'rune-documentation/get-started/introducing-rune',
@@ -41,7 +41,7 @@ const sidebars: SidebarsConfig = {
         type: 'generated-index',
         title: 'Modelling components',
         description: 'The Rune DSL can express eight types of model components. This documentation details the purpose and features of each type of model component and highlights their relationships.',
-        slug: '/rune-documentation/rune-dsl-modelling-components',
+        slug: '/modelling-components',
       },
       items: [
         'rune-documentation/modelling-components/data',
@@ -62,7 +62,7 @@ const sidebars: SidebarsConfig = {
         type: 'generated-index',
         title: 'Developers',
         description: 'Advanced use of Rune and how you can contribute.',
-        slug: '/rune-documentation/developers',
+        slug: '/developers',
       },
       items: [
         'rune-documentation/developers/rune-and-java',
@@ -78,13 +78,13 @@ const sidebars: SidebarsConfig = {
         type: 'generated-index',
         title: 'Resources',
         description: 'Our FAQs, glossary, and find out how to get in touch.',
-        slug: '/category/resources',
+        slug: '/resources',
       },
       items: [
         'rune-documentation/resources/faqs',
         {
           type: 'link',
-          href: '/glossary',
+          href: '/docs/resources/glossary',
           label: 'Glossary',
         },
         'rune-documentation/resources/contact-us',

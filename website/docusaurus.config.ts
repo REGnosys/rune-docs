@@ -58,7 +58,7 @@ const config: Config = {
         id: 'glossary',
         glossary: {
           glossaryPath: 'glossary/glossary.json',
-          routePath: '/glossary',
+          routePath: '/docs/resources/glossary',
         },
         // Standard Docusaurus preset-classic options
         docs: {
@@ -67,6 +67,7 @@ const config: Config = {
               'https://github.com/REGnosys/rune-docs/tree/master/website',
         },
         blog: false,
+        debug: true,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -88,37 +89,29 @@ const config: Config = {
       },
       items: [
         {
-          href: 'https://github.com/finos/rune-dsl',
           label: 'Rune DSL',
           position: 'right',
+          href: 'https://github.com/finos/rune-dsl',
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'docsSidebar',
           position: 'left',
           label: 'Get started',
-          href: '/docs/rune-documentation/get-started',
+          to: '/docs/get-started',
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'docsSidebar',
           position: 'left',
           label: 'Components',
-          href: '/docs/rune-documentation/rune-dsl-modelling-components',
+          to: '/docs/modelling-components',
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'docsSidebar',
           position: 'left',
           label: 'Keyword search',
-          href: '/docs/rune-documentation/get-started/keyword-search',
+          to: '/docs/get-started/keyword-search',
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'docsSidebar',
           position: 'left',
           label: 'Developers',
-          href: '/docs/rune-documentation/developers',
+          to: '/docs/developers',
         },
       ],
     },
@@ -130,15 +123,15 @@ const config: Config = {
           items: [
             {
               label: 'Get started',
-              to: '/docs/rune-documentation/get-started',
+              to: '/docs/get-started',
             },
             {
               label: 'Keyword search',
-              to: '/docs/rune-documentation/get-started/keyword-search',
+              to: '/docs/get-started/keyword-search',
             },
             {
               label: 'Modelling components',
-              to: '/docs/rune-documentation/rune-dsl-modelling-components',
+              to: '/docs/modelling-components',
             },
           ],
         },
@@ -147,15 +140,15 @@ const config: Config = {
           items: [
             {
               label: 'Rune and Java',
-              to: '/docs/rune-documentation/developers/rune-and-java',
+              to: '/docs/developers/rune-and-java',
             },
             {
               label: 'Code generator',
-              to: '/docs/rune-documentation/developers/code-generator',
+              to: '/docs/developers/code-generator',
             },
             {
               label: 'Contribute to Rune',
-              to: '/docs/rune-documentation/developers/contribute-to-rune',
+              to: '/docs/developers/contribute-to-rune',
             },
           ]
         },
@@ -164,15 +157,15 @@ const config: Config = {
           items: [
             {
               label: 'FAQs',
-              href: '/docs/rune-documentation/resources/faqs',
+              to: '/docs/resources/faqs',
             },
             {
               label: 'Glossary',
-              href: '/glossary',
+              to: '/docs/resources/glossary',
             },
             {
               label: 'Contact us',
-              href: '/docs/rune-documentation/resources/contact-us',
+              to: '/docs/resources/contact-us',
             },
           ],
         },
