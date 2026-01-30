@@ -13,14 +13,14 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Keyword search',
+    title: 'Rune keywords',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
         Search for a keyword to find the modelling component info you want, fast.
       </>
     ),
-    link: '/docs/rune-documentation/get-started/keyword-search',
+    link: '/docs/get-started/rune-keywords',
   },
   {
     title: 'Components',
@@ -30,7 +30,7 @@ const FeatureList: FeatureItem[] = [
         Our modelling components and how they work, with examples to show each feature.
       </>
     ),
-    link: '/docs/rune-documentation/rune-dsl-modelling-components',
+    link: '/docs/modelling-components',
   },
   {
     title: 'Get started',
@@ -40,7 +40,7 @@ const FeatureList: FeatureItem[] = [
         New to Rune? Interested in data modelling? Start here to find out all you need to know.
       </>
     ),
-    link: '/docs/rune-documentation/get-started',
+    link: '/docs/get-started',
   },
 ];
 
@@ -48,12 +48,16 @@ function Feature({ title, Svg, description, link }: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        {/*<Svg className={styles.featureSvg} role="img" />*/}
       </div>
       <div className="text--center padding-horiz--md">
-        <Heading as="h3">
-          {link ? <Link to={link}>{title}</Link> : title}
-        </Heading>
+        {link ? (
+          <Link to={link}>
+            <h3>{title}</h3>
+          </Link>
+        ) : (
+          <Heading as="h3">{title}</Heading>
+        )}
         <p>{description}</p>
       </div>
     </div>

@@ -4,9 +4,10 @@
  * work well for content-centric websites.
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 /* You can override the default Infima variables here. */
 :root {
-
   /*  PINK - Light to Dark */
   --ifm-color-primary: #E94591;
   --ifm-color-primary-dark: #E03E8C;
@@ -22,13 +23,13 @@
 
   /*  GREEN - Dark to Light */
 
-
   --ifm-color-primary-light: #C9D646;
   --ifm-color-primary-lighter: #B0D176;
   --ifm-color-primary-lightest: #96CCA6;
   --ifm-code-font-size: 95%;
 
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-font-family-base: Inter, Helvetica, Arial;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -118,24 +119,17 @@ button--secondary:hover {
   display: none !important;
 }
 
+.footer__bottom {
+  font-size: 0.8rem;
+  margin-top: 2rem;
+  opacity: 0.7;
+}
+
 /* Hide right-hand TOC */
 /* .theme-doc-toc-desktop {
   display: none !important;
 } */
 
-.theme-doc-toc-desktop {
-  background-image: url('/img/top-green-curve.png');
-  background-repeat: no-repeat;
-  background-position: top left;
-  background-size: contain;
-}
-
-[data-theme='dark'] .theme-doc-toc-desktop {
-  background-image: url('/img/top-pink-curve.png');
-  background-repeat: no-repeat;
-  background-position: top left;
-  background-size: contain;
-}
 
 /* Force full width for the content column, overriding the theme's 75% limit */
 /* @media (min-width: 997px) {
