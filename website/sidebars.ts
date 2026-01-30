@@ -29,7 +29,7 @@ const sidebars: SidebarsConfig = {
       },
       items: [
         'rune-documentation/get-started/introducing-rune',
-        'rune-documentation/get-started/keyword-search',
+        'rune-documentation/get-started/rune-keywords',
         'rune-documentation/get-started/overview',
       ],
     },

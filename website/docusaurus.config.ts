@@ -67,7 +67,6 @@ const config: Config = {
               'https://github.com/REGnosys/rune-docs/tree/master/website',
         },
         blog: false,
-        debug: true,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -105,8 +104,8 @@ const config: Config = {
         },
         {
           position: 'left',
-          label: 'Keyword search',
-          to: '/docs/get-started/keyword-search',
+          label: 'Rune keywords',
+          to: '/docs/get-started/rune-keywords',
         },
         {
           position: 'left',
@@ -126,8 +125,8 @@ const config: Config = {
               to: '/docs/get-started',
             },
             {
-              label: 'Keyword search',
-              to: '/docs/get-started/keyword-search',
+              label: 'Rune keywords',
+              to: '/docs/get-started/rune-keywords',
             },
             {
               label: 'Modelling components',
