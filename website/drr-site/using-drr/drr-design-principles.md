@@ -78,7 +78,7 @@ Every rule can be linked directly back to the **regulatory text** it comes from.
 - The text of the provision
 - Optional rationale from working group discussions
 
-This makes the model traceable and defensible for audits. This metadata is implemented in DRR using the [**Rune DSL’s document reference feature**]( https://rune-docs.netlify.app/docs/rune-documentation/modelling-components/metadata#2-document-reference).
+This makes the model traceable and defensible for audits. This metadata is implemented in DRR using the [Rune DSL’s document reference feature]( https://rune-docs.netlify.app/docs/rune-documentation/modelling-components/metadata#2-document-reference).
 
 **Example:**
 

@@ -9,7 +9,7 @@
 Digital Regulatory Reporting (DRR) is an industry initiative that converts regulatory reporting rules into machine‑executable code, ensuring consistent and cost‑effective implementation across firms. It provides a shared, open‑source expression of reporting logic that firms can adopt directly.
 
 ### Who created DRR?
-DRR is led by [**ISDA**](https://www.isda.org/isda-solutions-infohub/isda-digital-regulatory-reporting/) and developed collaboratively across the financial industry. It’s built using the [**Common Domain Model (CDM)**](https://www.finos.org/common-domain-model), developed by FINOS, which provides the shared data and process model underpinning the reporting logic.
+DRR is led by [ISDA](https://www.isda.org/isda-solutions-infohub/isda-digital-regulatory-reporting/) and developed collaboratively across the financial industry. It’s built using the [Common Domain Model (CDM)](https://www.finos.org/common-domain-model), developed by FINOS, which provides the shared data and process model underpinning the reporting logic.
 
 ### What problem does DRR solve?
 Regulatory reporting is traditionally expensive, inconsistent and prone to interpretation differences. DRR standardises the rules so all firms implement the same logic, reducing cost and improving data quality.
@@ -33,7 +33,7 @@ Yes. DRR is open source and can be extended to support firm specific workflows o
 DRR is built as an extension of the CDM, using CDM data structures to represent transaction inputs and CDM functions to express reporting logic. This alignment reduces duplication, improves interoperability, and ensures that reporting outputs are consistent across jurisdictions and firms.
 
 ### What data do I need to run DRR?
-You need transaction data structured according to the [**Common Domain Model (CDM)**](https://www.finos.org/common-domain-model). DRR then applies enrichment, transformation, and projection steps to produce the required regulatory fields. The DRR documentation includes examples of the expected input payloads.
+You need transaction data structured according to the [Common Domain Model (CDM)](https://www.finos.org/common-domain-model). DRR then applies enrichment, transformation, and projection steps to produce the required regulatory fields. The DRR documentation includes examples of the expected input payloads.
 
 ### Can I test DRR logic before integrating it into my systems?
 Yes. The DRR documentation includes examples for running transformations directly in the **Rosetta UI** or via **Postman**. This allows you to validate your data, inspect intermediate steps and confirm outputs before embedding DRR into production workflows.
@@ -42,7 +42,7 @@ Yes. The DRR documentation includes examples for running transformations directl
 
 ## Regulatory 
 ###  How does DRR ensure that regulatory rules are interpreted consistently across firms?
-DRR expresses regulatory requirements as machine executable logic built on the [**Common Domain Model (CDM)**](https://www.finos.org/common-domain-model). Because the logic is deterministic, the same input always produces the same output, no matter who runs it. This removes firm specific interpretation and ensures that all participants apply the rules in a consistent, regulator aligned way.
+DRR expresses regulatory requirements as machine executable logic built on the [Common Domain Model (CDM)](https://www.finos.org/common-domain-model). Because the logic is deterministic, the same input always produces the same output, no matter who runs it. This removes firm specific interpretation and ensures that all participants apply the rules in a consistent, regulator aligned way.
 
 ### Does DRR replace a firm’s responsibility to understand the regulation?
 No. DRR helps firms implement the rules accurately, but it does not replace the need to understand the underlying regulation. Firms remain responsible for compliance, governance and oversight. DRR simply provides a transparent, industry agreed interpretation that reduces ambiguity and implementation risk.

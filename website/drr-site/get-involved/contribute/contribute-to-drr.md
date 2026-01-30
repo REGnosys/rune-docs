@@ -38,11 +38,11 @@ You can contribute by:
 - Showing before/after examples when something changes
 - Explaining why a change was made
 
-Release notes are written in Markdown, a simple formatting language. If you know how to write # headings and * bullets, you’re ready. If you’re not sure, take a look at this [**Markdown cheat sheet**](https://www.markdownguide.org/cheat-sheet/).
+Release notes are written in Markdown, a simple formatting language. If you know how to write # headings and * bullets, you’re ready. If you’re not sure, take a look at this [Markdown cheat sheet](https://www.markdownguide.org/cheat-sheet/).
 
-If you’re offering contributions via Rosetta, you can download this [**DRR Release Notes Template**](https://drr.docs.rosetta-technology.io/_downloads/bc7192ca70ae16929a2c4b392aad97ca/DRR-release-notes-template.md)
+If you’re offering contributions via Rosetta, you can download this [DRR Release Notes Template](https://drr.docs.rosetta-technology.io/_downloads/bc7192ca70ae16929a2c4b392aad97ca/DRR-release-notes-template.md)
 
-For additional background on governance and contribution processes you can also refer to the [**CDM Development Guidelines**](https://cdm.finos.org/docs/dev-guidelines/). 
+For additional background on governance and contribution processes you can also refer to the [CDM Development Guidelines](https://cdm.finos.org/docs/dev-guidelines/). 
 
 ### 1.1 Tips for writing release notes 
 When you write release notes in Markdown, include:

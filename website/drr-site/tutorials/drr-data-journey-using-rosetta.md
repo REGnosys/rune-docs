@@ -21,7 +21,7 @@ This page explains the full end to end workflow for converting an **FpML Recordk
 
 You can complete this workflow either:
 - Through the **Rosetta UI**.
-- Using [**Postman**](./drr-data-journey-using-postman.md) with the DRR API services.
+- Using [Postman](./drr-data-journey-using-postman.md) with the DRR API services.
 
 <br>
 
