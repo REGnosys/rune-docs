@@ -20,7 +20,7 @@ const FeatureList: FeatureItem[] = [
         Search for a keyword to find the modelling component info you want, fast.
       </>
     ),
-    link: '/docs/get-started/keyword-search',
+    link: '/docs/get-started/rune-keywords',
   },
   {
     title: 'Components',
@@ -40,7 +40,7 @@ const FeatureList: FeatureItem[] = [
         New to Rune? Interested in data modelling? Start here to find out all you need to know.
       </>
     ),
-    link: '/docs/get-started/introduction',
+    link: '/docs/get-started',
   },
 ];
 
