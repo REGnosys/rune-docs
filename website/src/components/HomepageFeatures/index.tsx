@@ -6,7 +6,8 @@ import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  Svg?: React.ComponentType<React.ComponentProps<'svg'>>;
+  imgSrc?: string;
   description: ReactNode;
   link?: string;
 };
@@ -14,7 +15,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Rune keywords',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    imgSrc: require('@site/static/img/rune/icon/Rune-icon-Keyword-search.png').default,
     description: (
       <>
         Search for a keyword to find the modelling component info you want, fast.
@@ -24,7 +25,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Components',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    imgSrc: require('@site/static/img/rune/icon/Rune-icon-Components.png').default,
     description: (
       <>
         Our modelling components and how they work, with examples to show each feature.
@@ -34,7 +35,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Get started',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    imgSrc: require('@site/static/img/rune/icon/Rune-icon-Get-started.png').default,
     description: (
       <>
         New to Rune? Interested in data modelling? Start here to find out all you need to know.
@@ -44,11 +45,15 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-function Feature({ title, Svg, description, link }: FeatureItem) {
+function Feature({ title, Svg, imgSrc, description, link }: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        {/*<Svg className={styles.featureSvg} role="img" />*/}
+        {Svg ? (
+          <Svg className={styles.featureSvg} role="img" />
+        ) : imgSrc ? (
+          <img src={imgSrc} className={styles.featureSvg} alt={title} />
+        ) : null}
       </div>
       <div className="text--center padding-horiz--md">
         {link ? (

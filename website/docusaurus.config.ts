@@ -1,7 +1,8 @@
-import { themes as prismThemes } from 'prism-react-renderer';
-import type { Config } from '@docusaurus/types';
+import {themes as prismThemes} from 'prism-react-renderer';
+import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import {GlossaryPresetOptions} from "docusaurus-plugin-glossary/preset";
+import {PluginOptions} from "@docusaurus/plugin-svgr";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -37,20 +38,6 @@ const config: Config = {
   },
 
   presets: [
-    // [
-    //   'classic',
-    //   {
-    //     docs: {
-    //       sidebarPath: './sidebars.ts',
-    //       editUrl:
-    //         'https://github.com/REGnosys/rune-docs/tree/master/website',
-    //     },
-    //     theme: {
-    //       customCss: './src/css/custom.css',
-    //     },
-    //     blog: false,
-    //   } satisfies Preset.Options,
-    // ],
     [
       'docusaurus-plugin-glossary/preset',
       {
@@ -72,6 +59,17 @@ const config: Config = {
         },
       } satisfies GlossaryPresetOptions,
     ],
+  ],
+
+  plugins: [
+    [
+      '@docusaurus/plugin-svgr',
+      {
+        svgrConfig: {
+          typescript: true,
+        },
+      } satisfies PluginOptions,
+    ]
   ],
 
   themeConfig: {
