@@ -8,133 +8,173 @@ description: "Use keywords to find the functions you're looking for, fast."
 
 For quick access to documentation for a Rune type, function, expression or annotation, choose a keyword to link to the relevant documentation.
 
-### Structural
-***Types***
-- [type](../modelling-components/data#data-component-types)
-- [extends](../modelling-components/mapping#12-extending-a-synonym-source)
-- [choice](../modelling-components/data#23-choice-type-union-type)
-- [basicType](../modelling-components/data#11-basic-types)
-- [recordType](../modelling-components/data#13-record-types)
-- metaType
-- [typeAlias](../modelling-components/data#type-aliases)
-- [enum](../modelling-components/data#3-enumeration-enum)
-- [displayName](../modelling-components/data#3-enumeration-enum)
-
-***Namespaces***
-- [import](../modelling-components/namespace)
-- [namespace](../modelling-components/namespace)
-- [version](../modelling-components/reporting#4-function-overriding)
-
-### Functional
-***Functions***
-- [alias](../modelling-components/data#type-aliases)
-- [func](../modelling-components/metadata#1-annotations)
-- [add](../modelling-components/function#21-output-construction)
-- [set](../modelling-components/function#21-output-construction)
-- [inputs](../modelling-components/function#1-function-specification)
-- [output](../modelling-components/function#1-function-specification)
-
-***Regulatory reporting***
-- [report](../modelling-components/reporting#2-report-definition)
-- [reporting](../modelling-components/reporting#2-report-definition)
-- [when](../modelling-components/mapping#23-conditional-mappings)
-- [in](../modelling-components/reporting#2-report-definition)
-- [from](../modelling-components/reporting#2-report-definition)
-- [with type](../modelling-components/reporting#2-report-definition)
-- with source
-- rule source
-- [rule](../modelling-components/reporting#3-report-rules)
-- [source](../modelling-components/mapping#11-synonym-source)
-- [body](../modelling-components/metadata#21-document-hierarchy)
-- [corpus](../modelling-components/metadata#21-document-hierarchy)
-- [segment](../modelling-components/metadata#21-document-hierarchy)
-
-***Conditions***
-- [condition](../modelling-components/function#14-conditions)
-- [pre-condition](../modelling-components/function#14-conditions)
-- [post-condition](../modelling-components/function#14-conditions)
-
-***Expressions***
-Constants
-- [empty](../modelling-components/expressions#1-constant-expressions)
-- [True](../modelling-components/function#14-conditions)
-- [False](../modelling-components/function#14-conditions)
-
-***Control flow***
-- [super](../modelling-components/reporting#43-super-call)
-- [extract](../modelling-components/expressions#41-list-operator-keywords)
-- [if](../modelling-components/expressions#3-operators)
-- [then](../modelling-components/expressions#41-list-operator-keywords)
-- [else](../modelling-components/expressions#3-operators)
-- [switch](../modelling-components/expressions#3-operators)
-
-***Logical***
-- [and](../modelling-components/expressions#3-operators)
-- [or](../modelling-components/expressions#3-operators)
-
-### Conversions
-- [to-date-time](../modelling-components/expressions#38-operator-precedence)
-- [to-date](../modelling-components/expressions#38-operator-precedence)
-- [to-time](../modelling-components/expressions#38-operator-precedence)
-- [to-zoned-date-time](../modelling-components/expressions#38-operator-precedence)
-- [to-enum](../modelling-components/expressions#5-conversion-operators)
-- [to-string](../modelling-components/expressions#38-operator-precedence)
-- [to-number](../modelling-components/expressions#38-operator-precedence)
-- [to-int](../modelling-components/expressions#38-operator-precedence)
-- [to-time](../modelling-components/expressions#38-operator-precedence)
-
-### Operations 
-- [one-of](../modelling-components/expressions#32-comparison-operators)
-- [reverse](../modelling-components/expressions#38-operator-precedence)
-- [flatten](../modelling-components/expressions#46-other-list-operators)
-- [filter](../modelling-components/expressions#41-list-operator-keywords)
-- [sort](../modelling-components/expressions#46-other-list-operators)
-- [count](../modelling-components/expressions#46-other-list-operators)
-- [sum](../modelling-components/expressions#38-operator-precedence)
-- [join](../modelling-components/expressions#38-operator-precedence)
-- [reduce](../modelling-components/expressions#41-list-operator-keywords)
-- [first](../modelling-components/expressions#46-other-list-operators)
-- [last](../modelling-components/expressions#46-other-list-operators)
-- [(single/multiple/only) exists](../modelling-components/expressions#32-comparison-operators)
-- [required/optional choice](../modelling-components/expressions#22-deep-paths-for-choice-types)
-- [only-element](../modelling-components/expressions#46-other-list-operators)
-- [distinct](../modelling-components/expressions#46-other-list-operators)
-- [is absent](../modelling-components/expressions#32-comparison-operators)
-- [default](../modelling-components/expressions#35-default-operators)
-- [min](../modelling-components/expressions#41-list-operator-keywords)
-- [max](../modelling-components/expressions#41-list-operator-keywords)
-- as-key
-- [disjoint](../modelling-components/expressions#43-additional-list-comparison-keywords)
-- [`+`](../modelling-components/expressions#34-arithmetic-operators)
-- [`-`](../modelling-components/expressions#34-arithmetic-operators)
-- [`*`](../modelling-components/expressions#34-arithmetic-operators)
-- [`/`](../modelling-components/expressions#34-arithmetic-operators)
-- [`->`](../modelling-components/expressions#2-path-expressions)
-- [`->>`](../modelling-components/expressions#22-deep-paths-for-choice-types)
-- [`...`](../modelling-components/expressions#2-path-expressions)
-- [with-meta](../modelling-components/expressions#37-with-meta-operator)
-
-***Comparison operations***
-- [any](../modelling-components/expressions#32-comparison-operators)
-- [all](../modelling-components/expressions#32-comparison-operators)
-- [`=`](../modelling-components/expressions#32-comparison-operators)
-- [`<`](../modelling-components/expressions#32-comparison-operators)
-- [`>`](../modelling-components/expressions#32-comparison-operators)
-- [`<=`](../modelling-components/expressions#32-comparison-operators)
-- [`>=`](../modelling-components/expressions#32-comparison-operators)
-- [`<>`](../modelling-components/expressions#32-comparison-operators)
-
-### Annotations
-- [annotation](../modelling-components/metadata#1-annotations)
-- [regulatoryReference](../modelling-components/reporting#32-rule-syntax)
-- [docReference](../modelling-components/reporting#32-rule-syntax)
-- [ruleReference](../modelling-components/reporting#32-rule-syntax)
-- [rationale](../modelling-components/reporting#35-repeat-instruction-repeatable-fields)
-- [rationale_author](../modelling-components/reporting#35-repeat-instruction-repeatable-fields)
-- structured_provision
-- [provision](../modelling-components/reporting#32-rule-syntax)
-- [for](../modelling-components/metadata#23-document-reference-on-a-path)
-- [label](../modelling-components/reporting#21-report-syntax)
+<table style={{ width: '100%', borderCollapse: 'collapse' }}>
+  <thead>
+    <tr style={{ backgroundColor: 'var(--ifm-color-emphasis-100)' }}>
+      <th style={{ padding: '10px', textAlign: 'left', width: '200px' }}>Category</th>
+      <th style={{ padding: '10px', textAlign: 'left' }}>Keywords</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ verticalAlign: 'top', padding: '10px' }}><strong>Structural</strong></td>
+      <td style={{ padding: '10px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+          <strong>Types</strong>: 
+          [type](../modelling-components/data#data-component-types), 
+          [extends](../modelling-components/mapping#12-extending-a-synonym-source), 
+          [choice](../modelling-components/data#23-choice-type-union-type), 
+          [basicType](../modelling-components/data#11-basic-types), 
+          [recordType](../modelling-components/data#13-record-types), 
+          metaType, 
+          [typeAlias](../modelling-components/data#type-aliases), 
+          [enum](../modelling-components/data#3-enumeration-enum), 
+          [displayName](../modelling-components/data#3-enumeration-enum)
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
+          <strong>Namespaces</strong>: 
+          [import](../modelling-components/namespace), 
+          [namespace](../modelling-components/namespace), 
+          [version](../modelling-components/reporting#4-function-overriding)
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style={{ verticalAlign: 'top', padding: '10px' }}><strong>Functional</strong></td>
+      <td style={{ padding: '10px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+          <strong>Functions</strong>: 
+          [alias](../modelling-components/data#type-aliases), 
+          [func](../modelling-components/metadata#1-annotations), 
+          [add](../modelling-components/function#21-output-construction), 
+          [set](../modelling-components/function#21-output-construction), 
+          [inputs](../modelling-components/function#1-function-specification), 
+          [output](../modelling-components/function#1-function-specification)
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
+          <strong>Regulatory reporting</strong>: 
+          [report](../modelling-components/reporting#2-report-definition), 
+          [reporting](../modelling-components/reporting#2-report-definition), 
+          [when](../modelling-components/mapping#23-conditional-mappings), 
+          [in](../modelling-components/reporting#2-report-definition), 
+          [from](../modelling-components/reporting#2-report-definition), 
+          [with type](../modelling-components/reporting#2-report-definition), 
+          with source, 
+          rule source, 
+          [rule](../modelling-components/reporting#3-report-rules), 
+          [source](../modelling-components/mapping#11-synonym-source), 
+          [body](../modelling-components/metadata#21-document-hierarchy), 
+          [corpus](../modelling-components/metadata#21-document-hierarchy), 
+          [segment](../modelling-components/metadata#21-document-hierarchy)
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
+          <strong>Conditions</strong>: 
+          [condition](../modelling-components/function#14-conditions), 
+          [pre-condition](../modelling-components/function#14-conditions), 
+          [post-condition](../modelling-components/function#14-conditions)
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
+          <strong>Expressions</strong>: 
+          Constants ([empty](../modelling-components/expressions#1-constant-expressions), [True](../modelling-components/function#14-conditions), [False](../modelling-components/function#14-conditions))
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
+          <strong>Control flow</strong>: 
+          [super](../modelling-components/reporting#43-super-call), 
+          [extract](../modelling-components/expressions#41-list-operator-keywords), 
+          [if](../modelling-components/expressions#3-operators), 
+          [then](../modelling-components/expressions#41-list-operator-keywords), 
+          [else](../modelling-components/expressions#3-operators), 
+          [switch](../modelling-components/expressions#3-operators)
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
+          <strong>Logical</strong>: 
+          [and](../modelling-components/expressions#3-operators), 
+          [or](../modelling-components/expressions#3-operators)
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style={{ verticalAlign: 'top', padding: '10px' }}><strong>Conversions</strong></td>
+      <td style={{ padding: '10px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+          [to-date-time](../modelling-components/expressions#38-operator-precedence), 
+          [to-date](../modelling-components/expressions#38-operator-precedence), 
+          [to-time](../modelling-components/expressions#38-operator-precedence), 
+          [to-zoned-date-time](../modelling-components/expressions#38-operator-precedence), 
+          [to-enum](../modelling-components/expressions#5-conversion-operators), 
+          [to-string](../modelling-components/expressions#38-operator-precedence), 
+          [to-number](../modelling-components/expressions#38-operator-precedence), 
+          [to-int](../modelling-components/expressions#38-operator-precedence), 
+          [to-time](../modelling-components/expressions#38-operator-precedence)
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style={{ verticalAlign: 'top', padding: '10px' }}><strong>Operations</strong></td>
+      <td style={{ padding: '10px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+           [one-of](../modelling-components/expressions#32-comparison-operators)
+           [reverse](../modelling-components/expressions#38-operator-precedence)
+           [flatten](../modelling-components/expressions#46-other-list-operators)
+           [filter](../modelling-components/expressions#41-list-operator-keywords)
+           [sort](../modelling-components/expressions#46-other-list-operators)
+           [count](../modelling-components/expressions#46-other-list-operators)
+           [sum](../modelling-components/expressions#38-operator-precedence)
+           [join](../modelling-components/expressions#38-operator-precedence)
+           [reduce](../modelling-components/expressions#41-list-operator-keywords)
+           [first](../modelling-components/expressions#46-other-list-operators)
+           [last](../modelling-components/expressions#46-other-list-operators)
+           [(single/multiple/only) exists](../modelling-components/expressions#32-comparison-operators)
+           [required/optional choice](../modelling-components/expressions#22-deep-paths-for-choice-types)
+           [only-element](../modelling-components/expressions#46-other-list-operators)
+           [distinct](../modelling-components/expressions#46-other-list-operators)
+           [is absent](../modelling-components/expressions#32-comparison-operators)
+           [default](../modelling-components/expressions#35-default-operators)
+           [min](../modelling-components/expressions#41-list-operator-keywords)
+           [max](../modelling-components/expressions#41-list-operator-keywords)
+           as-key
+           [disjoint](../modelling-components/expressions#43-additional-list-comparison-keywords)
+           [`+`](../modelling-components/expressions#34-arithmetic-operators)
+           [`-`](../modelling-components/expressions#34-arithmetic-operators)
+           [`*`](../modelling-components/expressions#34-arithmetic-operators)
+           [`/`](../modelling-components/expressions#34-arithmetic-operators)
+           [`->`](../modelling-components/expressions#2-path-expressions)
+           [`->>`](../modelling-components/expressions#22-deep-paths-for-choice-types)
+           [`...`](../modelling-components/expressions#2-path-expressions)
+           [with-meta](../modelling-components/expressions#37-with-meta-operator)
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
+          <strong>Comparison operations</strong>:
+           [any](../modelling-components/expressions#32-comparison-operators)
+           [all](../modelling-components/expressions#32-comparison-operators)
+           [`=`](../modelling-components/expressions#32-comparison-operators)
+           [`<`](../modelling-components/expressions#32-comparison-operators)
+           [`>`](../modelling-components/expressions#32-comparison-operators)
+           [`<=`](../modelling-components/expressions#32-comparison-operators)
+           [`>=`](../modelling-components/expressions#32-comparison-operators)
+           [`<>`](../modelling-components/expressions#32-comparison-operators)
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style={{ verticalAlign: 'top', padding: '10px' }}><strong>Annotations</strong></td>
+      <td style={{ padding: '10px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+          [annotation](../modelling-components/metadata#1-annotations), 
+          [regulatoryReference](../modelling-components/reporting#32-rule-syntax), 
+          [docReference](../modelling-components/reporting#32-rule-syntax), 
+          [ruleReference](../modelling-components/reporting#32-rule-syntax), 
+          [rationale](../modelling-components/reporting#35-repeat-instruction-repeatable-fields), 
+          [rationale_author](../modelling-components/reporting#35-repeat-instruction-repeatable-fields), 
+          structured_provision, 
+          [provision](../modelling-components/reporting#32-rule-syntax), 
+          [for](../modelling-components/metadata#23-document-reference-on-a-path), 
+          [label](../modelling-components/reporting#21-report-syntax)
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 
 
