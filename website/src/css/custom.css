@@ -84,6 +84,13 @@ button--secondary:hover {
   color: #ffffff;
 }
 
+/* Hide color mode toggle and search on homepage */
+body.homepage .navbar [class*="colorModeToggle"],
+body.homepage .navbar [class*="toggle_"],
+body.homepage .navbar [class*="searchBox"] {
+  display: none !important;
+}
+
 /* Footer */
 .footer {
   background-color: #3D3D3D;
@@ -177,3 +184,99 @@ Computed 5-color scale:
 	5.	#C9D646 (Dark Green)
 
 */
+
+/* -------------------
+ * Sidebar icons
+ * ------------------- */
+/* Shared icon style */
+.theme-doc-sidebar-menu .menu__link::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
+/* Specific icons */
+.theme-doc-sidebar-menu .menu__link[href*="get-started"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-Get-started.png');
+}
+.theme-doc-sidebar-menu .menu__link[href*="rune-keywords"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-Keyword-search.png');
+}
+.theme-doc-sidebar-menu .menu__link[href*="overview"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-Overview.png');
+}
+
+.theme-doc-sidebar-menu .menu__link[href*="modelling-components"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-Components.png');
+}
+
+.theme-doc-sidebar-menu .menu__link[href*="developers"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-Developers.png');
+}
+.theme-doc-sidebar-menu .menu__link[href*="rune-and-java"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-Rune-and-Java.png');
+}
+.theme-doc-sidebar-menu .menu__link[href*="code-generator"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-code-generator.png');
+}
+.theme-doc-sidebar-menu .menu__link[href*="contribute-to-rune"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-contribute-to-Rune.png');
+}
+
+.theme-doc-sidebar-menu .menu__link[href*="resources"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-Resources.png');
+}
+.theme-doc-sidebar-menu .menu__link[href*="faqs"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-FAQs.png');
+}
+.theme-doc-sidebar-menu .menu__link[href*="glossary"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-Glossary.png');
+}
+.theme-doc-sidebar-menu .menu__link[href*="contact-us"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-Contact us.png');
+}
+
+/* Default icon for other items in the sidebar */
+.theme-doc-sidebar-menu .menu__link:not([href*="get-started"]):not([href*="rune-keywords"]):not([href*="overview"]):not([href*="modelling-components"]):not([href*="developers"]):not([href*="rune-and-java"]):not([href*="code-generator"]):not([href*="contribute-to-rune"]):not([href*="resources"]):not([href*="faqs"]):not([href*="glossary"]):not([href*="contact-us"])::before {
+  background-image: url('/img/rune/icon/2024_Rune_Icon.png');
+}
+
+/* -------------------
+ * Doc cards (Aesthetic polish)
+ * ------------------- */
+.card {
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 6px 12px rgba(0,0,0,0.04);
+  border-radius: 14px;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.06), 0 10px 20px rgba(0,0,0,0.06);
+  border-color: rgba(0,0,0,0.1);
+}
+
+/* Tweak list spacing and fonts to match the aesthetic while keeping colors */
+.theme-doc-sidebar-menu .menu__link {
+  font-weight: 600;
+}
+.theme-doc-sidebar-menu .menu__list-item {
+  margin: 2px 0;
+}
+
+/* Respect dark mode: soften shadows and borders */
+[data-theme='dark'] .card {
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.35), 0 6px 12px rgba(0,0,0,0.3);
+}
+[data-theme='dark'] .card:hover {
+  border-color: rgba(255,255,255,0.12);
+}

@@ -84,33 +84,7 @@ const config: Config = {
         alt: 'Rune DSL Logo',
         src: 'img/rune/icon/2024_Rune_Icon.svg',
       },
-      items: [
-        {
-          label: 'Rune DSL',
-          position: 'right',
-          href: 'https://github.com/finos/rune-dsl',
-        },
-        {
-          position: 'left',
-          label: 'Get started',
-          to: '/docs/get-started',
-        },
-        {
-          position: 'left',
-          label: 'Components',
-          to: '/docs/modelling-components',
-        },
-        {
-          position: 'left',
-          label: 'Rune keywords',
-          to: '/docs/get-started/rune-keywords',
-        },
-        {
-          position: 'left',
-          label: 'Developers',
-          to: '/docs/developers',
-        },
-      ],
+      items: [],
     },
     footer: {
       style: 'dark',
@@ -176,16 +150,7 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
 
-  themes: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        hashed: true,
-        // Optional: configure languages if needed
-        language: ["en"]
-      }
-    ]
-  ]
+  themes: []
 };
 
 export default config;

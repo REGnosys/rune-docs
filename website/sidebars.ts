@@ -21,6 +21,9 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Get started',
       description: 'Your introduction to the Rune language.',
+      customProps: {
+        icon: '/img/rune/icon/Rune-icon-Get-started.png',
+      },
       link: {
         type: 'generated-index',
         title: 'Get started',
@@ -28,15 +31,36 @@ const sidebars: SidebarsConfig = {
         slug: '/get-started',
       },
       items: [
-        'get-started/introducing-rune',
-        'get-started/rune-keywords',
-        'get-started/overview',
+        {
+                  type: 'doc',
+                  id: 'get-started/introducing-rune',
+                  customProps: {
+                    icon: '/img/rune/icon/2024_Rune_Icon.png',
+                  },
+                },
+        {
+          type: 'doc',
+          id: 'get-started/rune-keywords',
+          customProps: {
+            icon: '/img/rune/icon/Rune-icon-Keyword-search.png',
+          },
+        },
+        {
+          type: 'doc',
+          id: 'get-started/overview',
+          customProps: {
+            icon: '/img/rune/icon/Rune-icon-Overview.png',
+          },
+        },
       ],
     },
     {
       type: 'category',
       label: 'Modelling components',
       description: 'Our components and how they work, with examples.',
+      customProps: {
+        icon: '/img/rune/icon/Rune-icon-Components.png',
+      },
       link: {
         type: 'generated-index',
         title: 'Modelling components',
@@ -58,6 +82,9 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Developers',
       description: 'Advanced use of Rune and how you can contribute.',
+      customProps: {
+        icon: '/img/rune/icon/Rune-icon-Developers.png',
+      },
       link: {
         type: 'generated-index',
         title: 'Developers',
@@ -65,15 +92,36 @@ const sidebars: SidebarsConfig = {
         slug: '/developers',
       },
       items: [
-        'developers/rune-and-java',
-        'developers/code-generator',
-        'developers/contribute-to-rune',
+        {
+          type: 'doc',
+          id: 'developers/rune-and-java',
+          customProps: {
+            icon: '/img/rune/icon/Rune-icon-Rune-and-Java.png',
+          },
+        },
+        {
+          type: 'doc',
+          id: 'developers/code-generator',
+          customProps: {
+            icon: '/img/rune/icon/Rune-icon-code-generator.png',
+          },
+        },
+        {
+          type: 'doc',
+          id: 'developers/contribute-to-rune',
+          customProps: {
+            icon: '/img/rune/icon/Rune-icon-contribute-to-Rune.png',
+          },
+        },
       ],
     },
     {
       type: 'category',
       label: 'Resources',
       description: 'Our FAQs, glossary, and find out how to get in touch.',
+      customProps: {
+        icon: '/img/rune/icon/Rune-icon-Resources.png',
+      },
       link: {
         type: 'generated-index',
         title: 'Resources',
@@ -81,13 +129,28 @@ const sidebars: SidebarsConfig = {
         slug: '/resources',
       },
       items: [
-        'resources/faqs',
+        {
+          type: 'doc',
+          id: 'resources/faqs',
+          customProps: {
+            icon: '/img/rune/icon/Rune-icon-FAQs.png',
+          },
+        },
         {
           type: 'link',
           href: '/docs/resources/glossary',
           label: 'Glossary',
+          customProps: {
+            icon: '/img/rune/icon/Rune-icon-Glossary.png',
+          },
         },
-        'resources/contact-us',
+        {
+          type: 'doc',
+          id: 'resources/contact-us',
+          customProps: {
+            icon: '/img/rune/icon/Rune-icon-Contact us.png',
+          },
+        },
       ],
     },
   ],
