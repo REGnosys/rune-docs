@@ -30,6 +30,12 @@
 
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-font-family-base: Inter, Helvetica, Arial;
+
+  /* Sidebar design variables */
+  --ifm-menu-color: #475569;
+  --ifm-menu-color-active: var(--ifm-color-primary);
+  --ifm-menu-link-padding-vertical: 0.75rem;
+  --ifm-menu-link-padding-horizontal: 1rem;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -97,6 +103,24 @@ body.homepage .navbar [class*="searchBox"] {
   color: #FFFFFF;
 }
 
+/* Footer layout - logo on same plane as columns */
+.footer .container {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 4rem;
+}
+
+.footer__logo {
+  margin: 0;
+  flex-shrink: 0;
+}
+
 .footer h4,
 .footer .footer__title {
   color: var(--ifm-color-primary-dark);
@@ -121,10 +145,8 @@ body.homepage .navbar [class*="searchBox"] {
   flex: 1;
 }
 
-/* Hide Pagination Navigation */
-.pagination-nav {
-  display: none !important;
-}
+/* Hide Pagination Navigation on hub pages (generated-index pages) */
+/* Pagination is shown by default on sub-pages */
 
 .footer__bottom {
   font-size: 0.8rem;
@@ -186,97 +208,208 @@ Computed 5-color scale:
 */
 
 /* -------------------
- * Sidebar icons
+ * Sidebar Redesign (Inspired by Hasura)
  * ------------------- */
-/* Shared icon style */
-.theme-doc-sidebar-menu .menu__link::before {
-  content: '';
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  margin-right: 10px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.9;
-  flex-shrink: 0;
+
+.theme-doc-sidebar-container {
+  background-color: #f8fafc !important;
+  border-right: 1px solid #e2e8f0;
 }
 
-/* Specific icons */
-.theme-doc-sidebar-menu .menu__link[href*="get-started"]::before {
-  background-image: url('/img/rune/icon/Rune-icon-Get-started.png');
-}
-.theme-doc-sidebar-menu .menu__link[href*="rune-keywords"]::before {
-  background-image: url('/img/rune/icon/Rune-icon-Keyword-search.png');
-}
-.theme-doc-sidebar-menu .menu__link[href*="overview"]::before {
-  background-image: url('/img/rune/icon/Rune-icon-Overview.png');
+[data-theme='dark'] .theme-doc-sidebar-container {
+  background-color: #0f172a !important;
+  border-right: 1px solid #1e293b;
 }
 
-.theme-doc-sidebar-menu .menu__link[href*="modelling-components"]::before {
-  background-image: url('/img/rune/icon/Rune-icon-Components.png');
+.menu__list-item {
+  margin-top: 4px;
 }
 
-.theme-doc-sidebar-menu .menu__link[href*="developers"]::before {
-  background-image: url('/img/rune/icon/Rune-icon-Developers.png');
-}
-.theme-doc-sidebar-menu .menu__link[href*="rune-and-java"]::before {
-  background-image: url('/img/rune/icon/Rune-icon-Rune-and-Java.png');
-}
-.theme-doc-sidebar-menu .menu__link[href*="code-generator"]::before {
-  background-image: url('/img/rune/icon/Rune-icon-code-generator.png');
-}
-.theme-doc-sidebar-menu .menu__link[href*="contribute-to-rune"]::before {
-  background-image: url('/img/rune/icon/Rune-icon-contribute-to-Rune.png');
+/* Top-level sidebar items - card style */
+.menu__list > .menu__list-item > .menu__list-item-collapsible,
+.menu__list > .menu__list-item > .menu__link {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  margin-bottom: 4px;
+  transition: all 0.2s ease;
 }
 
-.theme-doc-sidebar-menu .menu__link[href*="resources"]::before {
-  background-image: url('/img/rune/icon/Rune-icon-Resources.png');
-}
-.theme-doc-sidebar-menu .menu__link[href*="faqs"]::before {
-  background-image: url('/img/rune/icon/Rune-icon-FAQs.png');
-}
-.theme-doc-sidebar-menu .menu__link[href*="glossary"]::before {
-  background-image: url('/img/rune/icon/Rune-icon-Glossary.png');
-}
-.theme-doc-sidebar-menu .menu__link[href*="contact-us"]::before {
-  background-image: url('/img/rune/icon/Rune-icon-Contact us.png');
+.menu__list > .menu__list-item > .menu__list-item-collapsible:hover,
+.menu__list > .menu__list-item > .menu__link:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 2px 8px rgba(233, 69, 145, 0.15);
 }
 
-/* Default icon for other items in the sidebar */
-.theme-doc-sidebar-menu .menu__link:not([href*="get-started"]):not([href*="rune-keywords"]):not([href*="overview"]):not([href*="modelling-components"]):not([href*="developers"]):not([href*="rune-and-java"]):not([href*="code-generator"]):not([href*="contribute-to-rune"]):not([href*="resources"]):not([href*="faqs"]):not([href*="glossary"]):not([href*="contact-us"])::before {
-  background-image: url('/img/rune/icon/2024_Rune_Icon.png');
+[data-theme='dark'] .menu__list > .menu__list-item > .menu__list-item-collapsible,
+[data-theme='dark'] .menu__list > .menu__list-item > .menu__link {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+[data-theme='dark'] .menu__list > .menu__list-item > .menu__list-item-collapsible:hover,
+[data-theme='dark'] .menu__list > .menu__list-item > .menu__link:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 2px 8px rgba(150, 204, 166, 0.15);
+}
+
+.menu__link--sublist {
+  font-weight: 600;
+}
+
+.menu__link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: flex !important;
+  align-items: center;
+}
+
+.menu__link:hover {
+  background-color: #f1f5f9;
+}
+
+[data-theme='dark'] .menu__link:hover {
+  background-color: #1e293b;
+}
+
+.menu__link--active {
+  background-color: rgba(233, 69, 145, 0.08) !important;
+  color: var(--ifm-color-primary) !important;
+  font-weight: 600;
+  border-left: 3px solid var(--ifm-color-primary) !important;
+}
+
+[data-theme='dark'] .menu__link--active {
+  background-color: rgba(150, 204, 166, 0.15) !important;
+  color: var(--ifm-color-primary) !important;
+}
+
+.menu__list-item-collapsible {
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.menu__list-item-collapsible:hover {
+  background-color: transparent;
+}
+
+/* Caret alignment */
+.menu__caret,
+.menu__link--sublist-caret::after {
+  margin-left: auto !important;
+}
+
+/* Sidebar list padding */
+.menu__list {
+  padding-left: 0.5rem;
 }
 
 /* -------------------
- * Doc cards (Aesthetic polish)
+ * Sidebar icons (only on top-level items)
  * ------------------- */
+/* Shared icon style */
+.theme-doc-sidebar-menu > .theme-doc-sidebar-item-category > .menu__list-item-collapsible > .menu__link::before,
+.theme-doc-sidebar-menu > .theme-doc-sidebar-item-link > .menu__link::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  flex-shrink: 0;
+}
+
+/* Hub page icons */
+.theme-doc-sidebar-menu .menu__link[href="/docs/get-started/introducing-rune"]::before {
+  background-image: url('/img/rune/icon/2024_Rune_Icon.png');
+}
+.theme-doc-sidebar-menu .menu__link[href="/docs/get-started"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-Get-started.png');
+}
+.theme-doc-sidebar-menu .menu__link[href="/docs/modelling-components"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-Components.png');
+}
+.theme-doc-sidebar-menu .menu__link[href="/docs/developers"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-Developers.png');
+}
+.theme-doc-sidebar-menu .menu__link[href="/docs/resources"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-Resources.png');
+}
+
+/* Documentation tiles - clearer with border and shadow */
 .card {
-  border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 6px 12px rgba(0,0,0,0.04);
-  border-radius: 14px;
-  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 4px 4px 0 rgba(29, 52, 85, 0.15) !important;
+  transition: all 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.06), 0 10px 20px rgba(0,0,0,0.06);
-  border-color: rgba(0,0,0,0.1);
+  border-color: var(--ifm-color-primary) !important;
+  box-shadow: 6px 6px 0 rgba(29, 52, 85, 0.25) !important;
+  transform: translate(-2px, -2px);
 }
 
-/* Tweak list spacing and fonts to match the aesthetic while keeping colors */
-.theme-doc-sidebar-menu .menu__link {
-  font-weight: 600;
-}
-.theme-doc-sidebar-menu .menu__list-item {
-  margin: 2px 0;
-}
-
-/* Respect dark mode: soften shadows and borders */
 [data-theme='dark'] .card {
-  border-color: rgba(255,255,255,0.08);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.35), 0 6px 12px rgba(0,0,0,0.3);
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3) !important;
 }
+
 [data-theme='dark'] .card:hover {
-  border-color: rgba(255,255,255,0.12);
+  border-color: var(--ifm-color-primary) !important;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.45) !important;
+}
+
+/* -------------------
+ * Table of Contents (TOC) Styling
+ * ------------------- */
+/* TOC text should be bold */
+.table-of-contents__link {
+  font-weight: 700;
+}
+
+/* TOC banner background - light pinkish/gray in light theme */
+.theme-doc-toc-desktop .table-of-contents {
+  background-color: #F9F9F9;
+  border-left: 5px solid var(--ifm-color-primary);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem;
+}
+
+.theme-doc-toc-desktop .table-of-contents__link {
+  color: var(--ifm-color-content);
+}
+
+.theme-doc-toc-desktop .table-of-contents__link:hover {
+  color: var(--ifm-color-primary);
+  opacity: 0.8;
+}
+
+.theme-doc-toc-desktop .table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+  font-weight: 800;
+}
+
+/* TOC banner background - dark gray/green in dark theme */
+[data-theme='dark'] .theme-doc-toc-desktop .table-of-contents {
+  background-color: #1E1E1E;
+  border-left-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .theme-doc-toc-desktop .table-of-contents__link {
+  color: #E3E3E3;
+}
+
+[data-theme='dark'] .theme-doc-toc-desktop .table-of-contents__link:hover {
+  color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .theme-doc-toc-desktop .table-of-contents__link--active {
+  color: var(--ifm-color-primary);
 }

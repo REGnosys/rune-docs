@@ -88,52 +88,16 @@ const config: Config = {
     },
     footer: {
       style: 'dark',
+      logo: {
+        alt: 'Rune DSL Logo',
+        src: 'img/rune/icon/2024_Rune_Icon.svg',
+        width: 50,
+        height: 50,
+      },
       links: [
         {
-          title: 'Get started',
+          title: 'Connect',
           items: [
-            {
-              label: 'Get started',
-              to: '/docs/get-started',
-            },
-            {
-              label: 'Rune keywords',
-              to: '/docs/get-started/rune-keywords',
-            },
-            {
-              label: 'Modelling components',
-              to: '/docs/modelling-components',
-            },
-          ],
-        },
-        {
-          title: 'Developers',
-          items: [
-            {
-              label: 'Rune and Java',
-              to: '/docs/developers/rune-and-java',
-            },
-            {
-              label: 'Code generator',
-              to: '/docs/developers/code-generator',
-            },
-            {
-              label: 'Contribute to Rune',
-              to: '/docs/developers/contribute-to-rune',
-            },
-          ]
-        },
-        {
-          title: 'Resources',
-          items: [
-            {
-              label: 'FAQs',
-              to: '/docs/resources/faqs',
-            },
-            {
-              label: 'Glossary',
-              to: '/docs/resources/glossary',
-            },
             {
               label: 'Contact us',
               to: '/docs/resources/contact-us',
@@ -150,7 +114,17 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
 
-  themes: []
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        indexDocs: true,
+        indexBlog: false,
+        docsRouteBasePath: "/docs",
+      },
+    ],
+  ]
 };
 
 export default config;
