@@ -7,6 +7,21 @@ import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
 
+// Hide search bar on homepage
+function useHideSearchBar() {
+  useEffect(() => {
+    const searchBar = document.querySelector('.navbar__search') as HTMLElement;
+    if (searchBar) {
+      searchBar.style.display = 'none';
+    }
+    return () => {
+      if (searchBar) {
+        searchBar.style.display = '';
+      }
+    };
+  }, []);
+}
+
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
@@ -42,7 +57,7 @@ function HomepageHeader() {
 
 export default function Home(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
-
+  useHideSearchBar();
   useEffect(() => {
     document.body.classList.add('homepage');
     return () => {

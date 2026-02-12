@@ -84,7 +84,12 @@ const config: Config = {
         alt: 'Rune DSL Logo',
         src: 'img/rune/icon/2024_Rune_Icon.svg',
       },
-      items: [],
+      items: [
+        {
+          type: 'search',
+          position: 'right',
+        },
+      ],
     },
     footer: {
       style: 'dark',
