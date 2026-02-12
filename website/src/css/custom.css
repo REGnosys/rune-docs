@@ -106,19 +106,29 @@ body.homepage .navbar [class*="searchBox"] {
 /* Footer layout - logo on same plane as columns */
 .footer .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 4rem;
 }
 
 .footer__links {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 4rem;
+  flex: 1;
 }
 
 .footer__logo {
   margin: 0;
   flex-shrink: 0;
+}
+
+.footer__bottom {
+  width: 100%;
+  font-size: 0.8rem;
+  margin-top: 2rem;
+  opacity: 0.7;
 }
 
 .footer h4,
@@ -146,12 +156,8 @@ body.homepage .navbar [class*="searchBox"] {
 }
 
 /* Hide Pagination Navigation on hub pages (generated-index pages) */
-/* Pagination is shown by default on sub-pages */
-
-.footer__bottom {
-  font-size: 0.8rem;
-  margin-top: 2rem;
-  opacity: 0.7;
+.generated-index-page .pagination-nav {
+  display: none !important;
 }
 
 /* Hide right-hand TOC */
@@ -218,7 +224,7 @@ Computed 5-color scale:
 
 [data-theme='dark'] .theme-doc-sidebar-container {
   background-color: #0f172a !important;
-  border-right: 1px solid #1e293b;
+  border-right: 1px solid #1e2d1f;
 }
 
 .menu__list-item {
@@ -243,8 +249,8 @@ Computed 5-color scale:
 
 [data-theme='dark'] .menu__list > .menu__list-item > .menu__list-item-collapsible,
 [data-theme='dark'] .menu__list > .menu__list-item > .menu__link {
-  background: #1e293b;
-  border-color: #334155;
+  background: #132015;
+  border-color: #1e2d1f;
 }
 
 [data-theme='dark'] .menu__list > .menu__list-item > .menu__list-item-collapsible:hover,
@@ -271,7 +277,7 @@ Computed 5-color scale:
 }
 
 [data-theme='dark'] .menu__link:hover {
-  background-color: #1e293b;
+  background-color: #1a2d1d;
 }
 
 .menu__link--active {
@@ -356,8 +362,8 @@ Computed 5-color scale:
 }
 
 [data-theme='dark'] .card {
-  background-color: #1e293b !important;
-  border-color: #334155 !important;
+  background-color: #132015 !important;
+  border-color: #1e2d1f !important;
   box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3) !important;
 }
 
@@ -412,4 +418,13 @@ Computed 5-color scale:
 
 [data-theme='dark'] .theme-doc-toc-desktop .table-of-contents__link--active {
   color: var(--ifm-color-primary);
+}
+
+/* Code block soft wrap */
+.prism-code {
+  white-space: pre-wrap !important;
+}
+
+code {
+  word-break: break-word;
 }

@@ -56,24 +56,17 @@ function CardContainer({
 function CardLayout({
   className,
   href,
-  icon,
   title,
   description,
 }: {
   className?: string;
   href: string;
-  icon: ReactNode;
   title: string;
   description?: string;
 }): ReactNode {
   return (
     <CardContainer href={href} className={className}>
       <div className={styles.cardHeader}>
-        {typeof icon === 'string' && (icon.startsWith('/') || icon.startsWith('http')) ? (
-          <img src={icon} alt={title} className={styles.cardIcon} />
-        ) : (
-          <span className={styles.cardIcon}>{icon}</span>
-        )}
         <Heading
           as="h2"
           className={clsx('text--truncate', styles.cardTitle)}
@@ -105,7 +98,6 @@ function CardCategory({item}: {item: PropSidebarItemCategory}): ReactNode {
     <CardLayout
       className={item.className}
       href={href}
-      icon={item.customProps?.icon ?? "🗃️"}
       title={item.label}
       description={item.description ?? categoryItemsPlural(item.items.length)}
     />
@@ -118,7 +110,6 @@ function CardLink({item}: {item: PropSidebarItemLink}): ReactNode {
     <CardLayout
       className={item.className}
       href={item.href}
-      icon={item.customProps?.icon ?? (isInternalUrl(item.href) ? '/img/rune/icon/2024_Rune_Icon.png' : '🔗')}
       title={item.label}
       description={item.description ?? doc?.description}
     />

@@ -15,12 +15,11 @@ export default function LayoutWrapper(props: Props): ReactNode {
     <Layout {...props}>
       {isGlossary && (
         <div className="container margin-top--lg">
-          <nav className="pagination-nav" style={{marginBottom: '0.5rem'}}>
-            <Link className="pagination-nav__link" to="/docs/resources" style={{border: '1px solid #e2e8f0'}}>
-              <div className="pagination-nav__sublabel">« Return to</div>
-              <div className="pagination-nav__label">Resources</div>
+          <div style={{marginBottom: '1rem'}}>
+            <Link className="button button--outline button--primary button--sm" to="/docs/resources">
+              « Return to Resources
             </Link>
-          </nav>
+          </div>
         </div>
       )}
       {props.children}
