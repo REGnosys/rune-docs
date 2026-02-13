@@ -345,17 +345,85 @@ Computed 5-color scale:
 .theme-doc-sidebar-menu .menu__link[href="/docs/get-started/introducing-rune"]::before {
   background-image: url('/img/rune/icon/2024_Rune_Icon.png');
 }
+/* Light theme (pink) */
 .theme-doc-sidebar-menu .menu__link[href="/docs/get-started"]::before {
-  background-image: url('/img/rune/icon/Rune-icon-Get-started.png');
+  background-image: url('/img/rune/icon/Rune-icon-get-started-pink.png');
 }
 .theme-doc-sidebar-menu .menu__link[href="/docs/modelling-components"]::before {
-  background-image: url('/img/rune/icon/Rune-icon-Components.png');
+  background-image: url('/img/rune/icon/Rune-icon-components-pink.png');
 }
 .theme-doc-sidebar-menu .menu__link[href="/docs/developers"]::before {
-  background-image: url('/img/rune/icon/Rune-icon-Developers.png');
+  background-image: url('/img/rune/icon/Rune-icon-developers-pink.png');
 }
 .theme-doc-sidebar-menu .menu__link[href="/docs/resources"]::before {
-  background-image: url('/img/rune/icon/Rune-icon-Resources.png');
+  background-image: url('/img/rune/icon/Rune-icon-resources-pink.png');
+}
+/* Dark theme (green) overrides */
+[data-theme='dark'] .theme-doc-sidebar-menu .menu__link[href="/docs/get-started"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-get-started-green.png');
+}
+[data-theme='dark'] .theme-doc-sidebar-menu .menu__link[href="/docs/modelling-components"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-components-green.png');
+}
+[data-theme='dark'] .theme-doc-sidebar-menu .menu__link[href="/docs/developers"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-developers-green.png');
+}
+[data-theme='dark'] .theme-doc-sidebar-menu .menu__link[href="/docs/resources"]::before {
+  background-image: url('/img/rune/icon/Rune-icon-resources-green.png');
+}
+
+/* -------------------
+ * Page Heading Icons
+ * ------------------- */
+.page-docs-get-started h1::before,
+.page-docs-modelling-components h1::before,
+.page-docs-developers h1::before,
+.page-docs-resources h1::before,
+.page-docs-get-started-introducing-rune h1::before {
+  content: '';
+  display: inline-block;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-right: 1rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+}
+
+/* Specific icons for Light theme (pink) */
+.page-docs-get-started h1::before {
+  background-image: url('/img/rune/icon/Rune-icon-get-started-pink.png');
+}
+.page-docs-modelling-components h1::before {
+  background-image: url('/img/rune/icon/Rune-icon-components-pink.png');
+}
+.page-docs-developers h1::before {
+  background-image: url('/img/rune/icon/Rune-icon-developers-pink.png');
+}
+.page-docs-resources h1::before {
+  background-image: url('/img/rune/icon/Rune-icon-resources-pink.png');
+}
+.page-docs-get-started-introducing-rune h1::before {
+  background-image: url('/img/rune/icon/2024_Rune_Icon.png');
+}
+
+/* Specific icons for Dark theme (green) */
+[data-theme='dark'] .page-docs-get-started h1::before {
+  background-image: url('/img/rune/icon/Rune-icon-get-started-green.png');
+}
+[data-theme='dark'] .page-docs-modelling-components h1::before {
+  background-image: url('/img/rune/icon/Rune-icon-components-green.png');
+}
+[data-theme='dark'] .page-docs-developers h1::before {
+  background-image: url('/img/rune/icon/Rune-icon-developers-green.png');
+}
+[data-theme='dark'] .page-docs-resources h1::before {
+  background-image: url('/img/rune/icon/Rune-icon-resources-green.png');
+}
+/* No green variant for introducing-rune icon mentioned, keeping same as light */
+[data-theme='dark'] .page-docs-get-started-introducing-rune h1::before {
+  background-image: url('/img/rune/icon/2024_Rune_Icon.png');
 }
 
 /* Documentation tiles - clearer with border and shadow */
