@@ -31,7 +31,7 @@ const sidebars: SidebarsConfig = {
       label: 'Get started',
       description: 'Your introduction to the Rune language.',
       customProps: {
-        icon: '/img/rune/icon/Rune-icon-Get-started.png',
+        icon: '/img/rune/icon/Rune-icon-get-started-pink.png',
       },
       link: {
         type: 'generated-index',
@@ -55,7 +55,7 @@ const sidebars: SidebarsConfig = {
       label: 'Modelling components',
       description: 'Our components and how they work, with examples.',
       customProps: {
-        icon: '/img/rune/icon/Rune-icon-Components.png',
+        icon: '/img/rune/icon/Rune-icon-components-pink.png',
       },
       link: {
         type: 'generated-index',
@@ -79,7 +79,7 @@ const sidebars: SidebarsConfig = {
       label: 'Developers',
       description: 'Advanced use of Rune and how you can contribute.',
       customProps: {
-        icon: '/img/rune/icon/Rune-icon-Developers.png',
+        icon: '/img/rune/icon/Rune-icon-developers-pink.png',
       },
       link: {
         type: 'generated-index',
@@ -107,7 +107,7 @@ const sidebars: SidebarsConfig = {
       label: 'Resources',
       description: 'Glossary of terms used in Rune DSL.',
       customProps: {
-        icon: '/img/rune/icon/Rune-icon-Resources.png',
+        icon: '/img/rune/icon/Rune-icon-resources-pink.png',
       },
       link: {
         type: 'generated-index',
