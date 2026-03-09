@@ -17,14 +17,14 @@ There are four main things to know about Rune's reporting component:
 Before defining reporting rules, the regulatory content itself must be organised.
 
 Financial regulations:
-- Span multiple jurisdictions
-- Contain thousands of pages
-- Include complex cross references
+- Span multiple jurisdictions.
+- Contain thousands of pages.
+- Include complex cross references.
 
 Rune provides syntax to reference:
-- Regulatory documents
-- Their internal structure
-- The authorities that own them
+- Regulatory documents.
+- Their internal structure.
+- The authorities that own them.
 
 These components form the **regulatory hierarchy**, which the reporting rules rely on.
 
@@ -36,8 +36,8 @@ Every report is defined using three types of rules:
 - **3. Field** – *What* data must be reported?
 
 A report is linked to:
-- An **authority** (e.g. a regulator)
-- One or more **corpus documents** (the legal sources of the rules)
+- An **authority** (e.g. a regulator).
+- One or more **corpus documents** (the legal sources of the rules).
 
 These rules correspond to the regulatory expectations of:
 - Timing
@@ -56,8 +56,8 @@ report <Authority> <Corpus1> <Corpus2> <...> in <TimingRule>
 #### Report type
 The `ReportType` is a data type whose attributes represent the reportable fields.
 Each field may include:
-- `ruleReference` – the rule that extracts or calculates the field
-- `label` – the column name used in the generated report
+- `ruleReference` – the rule that extracts or calculates the field.
+- `label` – the column name used in the generated report.
 
 ```haskell
 type <ReportType>:
@@ -114,9 +114,9 @@ But if the report attribute is a **complex type**, you may need to label or refe
 [ruleReference subattribute -> subsubattribute -> ... NestedRule]
 ```
 Supported path features:
-- `->` to navigate attributes
-- `item` to refer to the attribute the annotation is placed on
-- `->>` to access common attributes of choice types
+- `->` to navigate attributes.
+- `item` to refer to the attribute the annotation is placed on.
+- `->>` to access common attributes of choice types.
 
 **Labels for lists (multiple cardinality attributes)**
 
@@ -176,12 +176,11 @@ Rune takes a **functional approach** to regulatory reporting. A reporting rule i
 - y = reported data (output)
 
 Using this idea, reported data is simply a **projection** of business data.
-[^1]
-[^1]: Do we need this formula - or can we remove this section?
+
 
 ### 3.1 Types of rules
-- **Field rules** – output is the data to be reported
-- **Eligibility rules** – output is a boolean that indicates `True` when something must be reported
+- **Field rules** – output is the data to be reported.
+- **Eligibility rules** – output is a boolean that indicates `True` when something must be reported.
 
 Rune reporting rules are important because they’re:
 - **Human readable** – so they’re clear for regulatory analysts.
@@ -202,7 +201,7 @@ A rule is defined as:
   <FunctionalExpression>
 ```
 
-The `ruleType` can be either `reporting` (returns a value) or `eligibility` (returns a boolean).
+The `ruleType` can be either `reporting` (returns a value) or `eligibility` (returns a Boolean).
 
 `regulatoryReference` links the rule to the exact regulatory text that justifies it and uses the same syntax as `docReference`, as outlined in the document reference section of the [Metadata component](./metadata#2-document-reference).
 
@@ -306,17 +305,17 @@ The `repeatable` keyword (used in the full example) tells Rune that the output i
 
 ## 4. Function overriding 
 Function overriding lets you **customize** existing functions without rewriting them. It enables:
-- **Flexibility** – adapts logic for specific use cases
-- **Reusability** – keeps most of the original function
-- **Maintainability** – updates to the base function flow through unless overridden
+- **Flexibility** – adapts logic for specific use cases.
+- **Reusability** – keeps most of the original function.
+- **Maintainability** – updates to the base function flow through unless overridden.
 
 ### 4.1 Scope
 Function overriding happens inside a **scope**, which defines where extensions apply. All function extensions **must** be defined within a scoped file, which is declared using the `scope` keyword at the namespace level.
 
 #### Scope rules
-- **Scope names** must be unique within a namespace
-- **Functions** can only be extended inside scoped files
-- **Scopes** must be enabled in the project configuration
+- **Scope names** must be unique within a namespace.
+- **Functions** can only be extended inside scoped files.
+- **Scopes** must be enabled in the project configuration.
 
 **Syntax**
 ```haskell
@@ -334,9 +333,9 @@ version "1.0"
 
 ### 4.2 Function extension
 A function extension:
-- Inherits the **inputs, output**, and optionally the **implementation** of another function
-- Provides a **custom implementation**
-- Must match the original function’s signature **exactly**
+- Inherits the **inputs, output**, and optionally the **implementation** of another function.
+- Provides a **custom implementation**.
+- Must match the original function’s signature **exactly**.
 
 **Syntax**
 
@@ -350,10 +349,10 @@ func <ExtendedFunctionName> extends <OriginalFunctionName>:
   <custom implementation>
 ```
 Requirements:
-- Same input names, types and cardinalities
-- Same output name, type and cardinality
-- Defined inside a scope
-- A base function can only be extended once per scope
+- Same input names, types and cardinalities.
+- Same output name, type and cardinality.
+- Defined inside a scope.
+- A base function can only be extended once per scope.
 
 **Examples** 
 
@@ -393,8 +392,7 @@ func ExtendedCalculateNotional extends CalculateNotional:
 
 ### 4.3 Super call
 The keyword `super` allows an extending function to **call the original function** and build on its result, without the need to replace it.
-[^2]
-[^2]: Super call may require more explanation
+
 
 **Super call syntax**
 
@@ -430,13 +428,10 @@ func ExtendedProcessTransfer extends ProcessTransfer:
 
 
 ### 4.4 Calling extended functions 
-[^3]
-[^3]: Extended functions may require more explanation
-
 When a function is extended inside a **scope**, that extended version becomes available throughout the entire model – not just inside the scope where it was defined.
 This gives calling code a choice:
-- Use the original function
-- Use the extended function (the version defined in a scope)
+- Use the original function.
+- Use the extended function (the version defined in a scope).
 
 Which one is used depends on the execution context and how the model is configured.
 
