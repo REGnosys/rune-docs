@@ -50,8 +50,6 @@ const config: Config = {
         // Standard Docusaurus preset-classic options
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl:
-              'https://github.com/REGnosys/rune-docs/tree/master/website',
         },
         blog: false,
         theme: {
@@ -100,15 +98,6 @@ const config: Config = {
         height: 50,
       },
       links: [
-        {
-          title: 'Connect',
-          items: [
-            {
-              label: 'Contact us',
-              to: '/docs/resources/contact-us',
-            },
-          ],
-        },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} REGnosys and the Rune DSL community`,
     },
