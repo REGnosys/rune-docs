@@ -33,18 +33,18 @@ There are three main things to consider with functions:
 
 ## 1. Function specification
 Function specifications define the processes used in a Rune domain model. They describe:
-- What inputs a function takes
-- What output it must produce
-- The types associated with those inputs and outputs
+- What inputs a function takes.
+- What output it must produce.
+- The types associated with those inputs and outputs.
 
 **Function syntax**
 
 A function in Rune includes:
- - A **name**
- - A **plain text description**
- - **Inputs and output attributes** (mandatory for output)
- - **Inputs and output condition statements**
- - **Output construction statements**
+ - A **name**.
+ - A **plain text description**.
+ - **Inputs and output attributes** (mandatory for output).
+ - **Inputs and output condition statements**.
+ - **Output construction statements**.
 
 **Example**
 
@@ -67,16 +67,16 @@ func <FunctionName>: (optional: <"Description">)
 Descriptions help you to understand the purpose and behavior of a function. This improves clarity and communication.
 
 You can add descriptions to:
- - The function itself
- - Any input
- - The output
- - Any statement block (e.g. conditions)
+ - The function itself.
+ - Any input.
+ - The output.
+ - Any statement block (e.g. conditions).
 
 ### 1.3 Inputs and output
 Inputs and output behave like attributes in type definitions. Each has:
- - A name
- - A type
- - A cardinality (e.g. 1..1, 0..*)
+ - A name.
+ - A type.
+ - A cardinality (e.g. 1..1, 0..*).
 
 `inputs` is plural whereas `output` is singular, because a function may take several inputs but may only return one output. The minimum requirement is that a function **must** define an output. Inputs are optional.
 
@@ -151,8 +151,6 @@ However, because Rune has limited language features, not all logic can always be
 #### Partially defined function
  - Only some validation rules are satisfied in Rune.
  - You must extend the generated code (e.g. in Java) to finish building the output.
-[^1]
-[^1]: Why must you extend the generated code - is this still valid?
  - The output must still be fully valid when the function is executed.
 
 **Note:** Whether a function is fully or partially defined depends on the specific use case. 
@@ -233,14 +231,14 @@ These often use annotations to guide code generation.
 ### 2.2 Object qualification functions
 These functions classify an object based on a set of rules.
 - They return `true` if the object meets all criteria for a specific classification.
-- They use a **qualification name** (a string from that classification) to specify what type of object is being classified (e.g. `Product, BusinessEvent`) and returns a boolean.
+- They use a **qualification name** (a string from that classification) to specify what type of object is being classified (e.g. `Product, BusinessEvent`) and returns a Boolean.
 
 **Example**
 ```haskell
 annotation qualification: <"Annotation that describes a func that is used for event and product Qualification">
   [prefix Qualify]
-  Product boolean (0..1)
-  BusinessEvent boolean (0..1)
+  Product Boolean (0..1)
+  BusinessEvent Boolean (0..1)
 ```
 Naming convention: `Qualify_(QualificationName` uses PascalCase; spaces/colons become underscores.
 
