@@ -49,9 +49,7 @@ Once defined, you can apply an annotation to any model component using its name 
 
 ### 1.2 `codeimplementation`
 The `codeImplementation` annotation tells users that a function’s logic is implemented elsewhere in the codebase – for example, in a static, handwritten Java class. 
-Functions marked with this annotation should not include any Rune implementation – their behavior is provided by the external code.
-[^1]
-[^1]: Should we be mentioning Java here? And if we do, do we need to explain it?
+Functions marked with this annotation should not include any Rune implementation – their behaviour is provided by the external code.
 
 **Example**
 ```haskell
@@ -85,8 +83,7 @@ Each `metadata` field represents a different qualifier:
 
 ### 1.4 Using metadata in functions and expressions
 You can access metadata values through function inputs or expression outputs that have metadata annotations. 
-[^2]
-[^2]: Does this section require more explanation?
+
 
 Example: How a function can use metadata passed into it.
 ```haskell
@@ -199,13 +196,12 @@ type Report:
 ```
 
 In general, the path must start with the keyword `for`, followed by one of these:
-[^3]
-[^3]: Can we show an example that includes 'for'?
 
-- An attribute name e.g. `payerReceiver`
-- A path to an attribute e.g. `payerReceiver -> payer`
-- The keyword `item` to refer to the attribute itself
-- A deep path in a choice type e.g. `item ->> dayCountConvention`. See the [deep path operator](./expressions.mdx). 
+
+- An attribute name e.g. `payerReceiver`.
+- A path to an attribute e.g. `payerReceiver -> payer`.
+- The keyword `item` to refer to the attribute itself.
+- A deep path in a choice type e.g. `item ->> dayCountConvention`. See the [deep path operator](./expressions#22-deep-paths-for-choice-types). 
 
 
 ### 2.4 Data template
@@ -227,7 +223,7 @@ type NonTransferableProduct:
 
 
 ## 3. Cross-referencing
-**Cross referencing** lets an attribute point to an object located elsewhere in the model. The source object carries a metadata identifier, and the target attribute stores that identifier instead of a normal value.
+**Cross-referencing** lets an attribute point to an object located elsewhere in the model. The source object carries a metadata identifier, and the target attribute stores that identifier instead of a normal value.
 
 **Syntax**
 
