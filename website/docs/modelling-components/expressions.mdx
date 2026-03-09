@@ -30,13 +30,13 @@ There are two main types of expressions, and these can be amended with standard 
 ## 1. Constant expressions 
 There are three types of constant expression.
 
-### 1.1. Basic type constant
+### 1.1 Basic type constant
 Expressions can be simple literal values. These are useful for comparisons to more complex expressions:
 - number 2.0 
 - boolean `True`
 - string “USD”
 
-### 1.2. Enumeration constant
+### 1.2 Enumeration constant
 An expression can refer to an enumeration value.
 
 **Syntax**
@@ -46,7 +46,7 @@ An expression can refer to an enumeration value.
 `DayOfWeekEnum -> SAT`
 
 
-### 1.3. List constant
+### 1.3 List constant
 Or they can be declared as lists.
 
 **Syntax**
@@ -181,8 +181,7 @@ If a path refers to a missing attribute, the result is null. In this case, chain
 ```haskell 
 owner -> drivingLicence -> penaltyPoints
 ```
-[^2]
-[^2]: Fuller code example required?
+
 
 ### 2.2 Deep paths for choice types
 Use deep path operator `->>` to access common attributes across all options of a choice type. 
@@ -328,8 +327,7 @@ You must cover **all** enumeration values or provide a default:
     default "other"
 ```
 The `default` case is optional. But if no case matches and no default is provided, the result is `empty`. 
-[^4]
-[^4]: Do we need an additional example with 'empty'?
+
 
 #### Using `switch` for `choice` types
 You can use `switch` on `choice` types by matching the active option.
@@ -390,8 +388,7 @@ type Bicycle:
 
 Even though the `Vehicle` choice type does not list `PetrolCar` directly, it's included through `PoweredVehicle`, so it can be used as a case.
 As with enumerations, all cases must be covered or a default must be provided. For example, leaving out the `Bicycle` case in this example will result in the `switch` operation being highlighted in red.
-[^5]
-[^5]: Do we need an example of this red highlighting?
+
 
 ```haskell
 func ComputeMileage:
@@ -641,8 +638,7 @@ vehicles
 
 For `join`, the operator can specify a delimiter expression in-between each string element. This example concatenates a list of strings, separating each element with the given delimiter:
 ` strings join ";"`
-[^5]
-[^5]: Do we need an example of code here?
+
 
 ```haskell
 vehicles
