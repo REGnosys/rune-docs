@@ -11,8 +11,7 @@ This is done using **synonyms**, which are annotations placed on:
 - Values of enum types
 
 All synonyms across the model work together to map the structure of the input document into the final Rune document. These mappings can be used to generate an **Ingestion Environment** – a Java library that reads an input document and produces the corresponding Rune document.
-[^1]
-[^1]: Are we still offering guidance on synonyms? Or should we explain mapping in a different way?
+
 
 There are two types of mapping:
 1. [Basic mapping](#1-basic-mapping)
@@ -27,16 +26,16 @@ A **synonym source** defines a set of synonyms used for a specific type of input
 Example: `synonym source FpML_5_10 extends FpML`
 
 This means:
-- `FpML_5_10` inherits all synonyms from FpML
-- It can add new synonyms or remove existing ones
+- `FpML_5_10` inherits all synonyms from FpML.
+- It can add new synonyms or remove existing ones.
 
 ### 1.2. Extending a synonym source
 A synonym source can extend another one. The new source:
-- Inherits all synonyms from the parent
-- Can add or remove synonyms
+- Inherits all synonyms from the parent.
+- Can add or remove synonyms.
 
 ### 1.3. Basic synonyms
-Synonyms can be written in two ways. The location does not affect behavior.
+Synonyms can be written in two ways. The location does not affect behaviour.
 
 #### Inline (next to the attribute) 
 `[synonym <SynonymSource> <SynonymBody>]`
@@ -72,10 +71,10 @@ A synonym body defines how the input value maps to the Rune attribute.
 The simplest form: `[value "combustible"]`
 
 Meaning:
-- Input value `combustible` maps to this Rune attribute
-- If both sides are basic types (string, number, date etc), then value is copied
-- If both sides are complex types (with child attributes of their own), then child attributes are matched using synonyms
-- If one side is basic and the other complex, this results in a mapping error
+- Input value `combustible` maps to this Rune attribute.
+- If both sides are basic types (string, number, date etc), then value is copied.
+- If both sides are complex types (with child attributes of their own), then child attributes are matched using synonyms.
+- If one side is basic and the other complex, this results in a mapping error.
 
 #### `Path`
 A synonym can include a path: `[synonym MULTI_CARDINALITY_EXAMPLE_2 value "combustible" path "engineDetail"]` 
@@ -97,8 +96,8 @@ type EngineSpecification:
 ```
 
 This maps:
-- The input value ‘combustible’ is mapped to `fuelType`
-- The metadata ‘fuelTypeScheme’ associated to ‘combustible’ is mapped to `scheme`
+- The input value ‘combustible’ is mapped to `fuelType`.
+- The metadata ‘fuelTypeScheme’ associated to ‘combustible’ is mapped to `scheme`.
 
 ### 1.5 Enumeration mapping
 Synonyms can map input strings to Rune enum values.
@@ -123,15 +122,15 @@ enums
 
 ## 2. Advanced mapping 
 The mapping algorithm:
-1. Binds the root of the input document to a predefined Rune root type
-2. Recursively walks through the input document
+1. Binds the root of the input document to a predefined Rune root type.
+2. Recursively walks through the input document.
 
 At each step:
-- The current input attribute is linked to one or more Rune objects
+- The current input attribute is linked to one or more Rune objects.
 - For each child input attribute:
-- Rune attributes are checked for matching synonyms
-- For each match, a new Rune object is created
-- The algorithm recurses into that child
+- Rune attributes are checked for matching synonyms.
+- For each match, a new Rune object is created.
+- The algorithm recurses into that child.
 
 When an input attribute has a value, that value is assigned to all bound Rune objects
 
@@ -152,8 +151,8 @@ type EngineMetric:
         [synonym MULTI_CARDINALITY_EXAMPLE_12 value "combustible"]
 ```
 In this example:
-- `capacityDetail` maps to `engineMetric`
-- `combustible` is matched to `EngineMetric` but can also be matched against the synonyms of `EngineMetric`
+- `capacityDetail` maps to `engineMetric`.
+- `combustible` is matched to `EngineMetric` but can also be matched against the synonyms of `EngineMetric`.
 
 
 ### 2.2. Merging inputs
@@ -178,6 +177,7 @@ engineSpecification EngineSpecification (0..*)
 Conditional mappings let you create more advanced mapping rules. There are **two types**:
 
 **1. Set to** – assign a constant value
+
 **2. Set when** – assign a value from the input document only when a condition is met
 
 #### Set to 
@@ -266,20 +266,20 @@ fuelType string (1..1)
 ### 2.5. Mapper
 If Rune’s mapping syntax cannot express the required transformation, you can call a **mapper**.
 
-**Example::
+**Example:**
 ```haskell
 fuelType string (0..1)
   // value updated by mapper
   [synonym MAPPERS_EXAMPLE_1 value "combustible" path "engineDetail->metric" mapper "Example1"]
 ```
 During ingestion:
-- A class named `Example1MappingProcessor` is loaded
-- Its mapping method updates the Rune object
+- A class named `Example1MappingProcessor` is loaded.
+- Its mapping method updates the Rune object.
 
 Mappers allow full programming language flexibility.
 
 #### Format
-For date/time values, you can specify a format. The keyword `format` should be followed by a string. The string should follow a standardized [date format](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html).
+For date/time values, you can specify a format. The keyword `format` should be followed by a string. The string should follow a standardised [date format](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html).
 ```haskell
 fabricationDate date (1..1)
 	[synonym FORMAT_EXAMPLE_1 value "fabricationDate" dateFormat "MM/dd/yyyy"]
