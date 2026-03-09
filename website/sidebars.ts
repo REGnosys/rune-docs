@@ -125,6 +125,10 @@ const sidebars: SidebarsConfig = {
           href: '/docs/resources/glossary',
           label: 'Glossary',
         },
+        {
+          type: 'doc',
+          id: 'resources/contact-us',
+        },
       ],
     },
   ],

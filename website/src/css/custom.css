@@ -506,3 +506,13 @@ Computed 5-color scale:
 code {
   word-break: break-word;
 }
+
+/* Hide pagination buttons (prev/next) */
+.pagination-nav {
+  display: none !important;
+}
+
+/* Hide edit this page button */
+.theme-doc-footer-edit-meta-row {
+  display: none !important;
+}
