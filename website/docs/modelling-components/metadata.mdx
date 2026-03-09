@@ -271,11 +271,11 @@ type Identifier:
 ### 3.1 Reference types
 Rune currently supports three different reference types, each with a different scope.
 
-#### 3.1.1. Global reference
+#### 3.1.1 Global reference
 A **global reference** uses the `key` or `id` metadata annotations to generate a globally unique identifier for a type. This identifier is a hash created by the model implementation. An attribute marked with reference can then use that key, even if the referenced object is defined elsewhere.
 In Rune’s default implementation, these fields are named `globalKey` and `globalReference`. The global key is a *deep hash* built from all attribute values of the data type, including nested attributes.
 
-#### 3.1.2. External reference
+#### 3.1.2 External reference
 Objects annotated with `key` or `id` can also carry an identifier taken from an external source – for example, an FpML `id`. Attributes marked with `reference` can then store these external identifiers. A reference resolver process can link the external reference back to the correct object.
 
 In this example, the party object has both a `globalKey` (its internal unique identifier) and an `externalKey` taken from another system. It also includes a `globalReference` that would resolve to that same party.
@@ -302,7 +302,7 @@ In this example, the party object has both a `globalKey` (its internal unique id
 ```
 
 
-#### 3.1.3. Address and location reference
+#### 3.1.3 Address and location reference
 Sometimes an attribute acts as a variable while the rest of an object stays the same. This avoids duplicating large objects that differ only in a few values. Instead, you define one parameterised object, and each instance only provides the variable values rather than copying the whole structure.
 Rune supports this pattern using an `address` / `location` cross reference.
 - **address** marks the placeholder where the variable value belongs (the target).
