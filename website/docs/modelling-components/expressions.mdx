@@ -201,11 +201,11 @@ Rune provides a set of operators that let you combine expressions into more comp
 
 ### 3.1. Conditional statements
 A conditional expression consists of:
-- `if` – followed by a boolean expression
-- `then` – followed by any expression
-- `else` (optional) – followed by any expression
+- `if` – followed by a Boolean expression.
+- `then` – followed by any expression.
+- `else` (optional) – followed by any expression.
 
-#### Behavior
+#### Behaviour
 - If the `if` condition is **True**, the `then` value is returned.
 - If it’s **False**, the `else` value is returned (or `null` if no `else` is provided).
 
@@ -215,11 +215,11 @@ A conditional expression consists of:
 - You can chain multiple conditions using `else if` statements ending with a final `else`.
 
 ### 3.2. Comparison operators
-Comparison operators always return a **boolean**.
+Comparison operators always return a **Boolean**.
 
 #### Equality
-- `=` – True if both sides are equal
-- `<>` – True if both sides are not equal
+- `=` – true if both sides are equal.
+- `<>` – true if both sides are not equal.
 
 #### Equality rules
 - Built-in types compare by value.
@@ -235,8 +235,8 @@ Comparison operators always return a **boolean**.
 Both sides must be the same type.
 
 #### Existence checks
-- `exists` – True if the expression has a value
-- `is absent` – True if it does not
+- `exists` – true if the expression has a value.
+- `is absent` – true if it does not.
 
 Modifiers:
 
@@ -245,11 +245,11 @@ Modifiers:
 - `multiple` – the expression has more than one value
 
 `only exists` replaces long conditions like:
-- A exists
-- B is absent
-- C is absent
+- A exists.
+- B is absent.
+- C is absent.
 
-…and so on
+…and so on.
 
 It also stays correct even if new attributes are added later.
 
@@ -281,7 +281,7 @@ This applies even when the other value is also null. The behavior is symmetric �
 
 
 ### 3.3. Boolean operators
-- Use `and` and `or` to combine boolean expressions.
+- Use `and` and `or` to combine Boolean expressions.
 - Use parentheses `( )` to group expressions.
 
 Expressions inside parentheses are evaluated first.
@@ -290,15 +290,15 @@ Expressions inside parentheses are evaluated first.
 ### 3.4. Arithmetic operators
 Rune supports basic arithmetic:
 
-`+` adds two numbers, or concatenates two strings
+`+` adds two numbers, or concatenates two strings.
 
-`-, *, /` subtracts, multiplies, divides two numeric values and always returns a number
+`-, *, /` subtracts, multiplies, divides two numeric values and always returns a number.
 
 
 ### 3.5. `Default` operators
 The `default` operator returns the first value unless it’s empty:
-- If **left** has a value – return **left**
-- If **left** is empty – return **right**
+- If **left** has a value – return **left**.
+- If **left** is empty – return **right**.
 
 Both sides must have the **same type and cardinality**.
 
@@ -511,7 +511,7 @@ The `then` keyword takes the result of the expression on the left and passes it 
 
 You can pass the entire left-hand result (for example, a list or empty) to a function that expects it. 
 
-Here, item represents the entire list of driving licenses.
+Here, item represents the entire list of driving licences.
 ```haskell
 set updatedVehicleOwnership -> drivingLicence: <"Overwrite existing driving licences with renewed driving licences.">
     vehicleOwnership -> drivingLicence
@@ -621,10 +621,10 @@ drivingLicences
 The `reduce` keyword is an operation that takes a list and returns a **single value**.
 
 #### Built-in reduction operators
-- `sum` – sum of all numbers
-- `min, max` – smallest or largest element
-- `join` – concatenates strings (optional delimiter)
-- `reduce` – custom reduction using a merge expression
+- `sum` – sum of all numbers.
+- `min, max` – smallest or largest element.
+- `join` – concatenates strings (optional delimiter).
+- `reduce` – custom reduction using a merge expression.
 
 **Syntax**
 ```haskell
@@ -650,12 +650,12 @@ Reduction works by repeatedly combining two list elements into one until only a 
 When using `reduce`, you must provide an expression that defines how to merge two items. The earlier example that finds the vehicle with the highest engine power can be rewritten.
 
 ### 4.2. List comparison
-Rune supports comparison operators on lists. All list comparisons return a **boolean**.
+Rune supports comparison operators on lists. All list comparisons return a **Boolean**.
 
 ### 4.3 Additional list comparison keywords
-- `all / any` – compare a list to a single value
-- `contains` – True if the right side is a subset of the left
-- `disjoint` – True if the lists share no elements 
+- `all / any` – compare a list to a single value.
+- `contains` – true if the right side is a subset of the left.
+- `disjoint` – true if the lists share no elements.
 
 If a single value expression is used with `contains` or `disjoint`, Rune treats it as a list with one element (or empty if null).
 
@@ -665,28 +665,28 @@ If a single value expression is used with `contains` or `disjoint`, Rune treats 
 
 ### 4.5 Semantics
 `=`
-- List vs list – True if same length and all items match
-- List vs single (all) – all items equal the value
-- List vs single (any) – at least one item equals the value
+- List vs list – true if same length and all items match.
+- List vs single (all) – all items equal the value.
+- List vs single (any) – at least one item equals the value.
 
 `<>`
-- List vs list – True if lengths differ or any item differs
-- List vs single (any) – any item differs
-- List vs single (all) – all items differ
+- List vs list – true if lengths differ or any item differs.
+- List vs single (any) – any item differs.
+- List vs single (all) – all items differ.
 
 `<, <=, >=, >`
-- List vs list – lists must be same length; comparison must hold pairwise
-- List vs single (all) – comparison must hold for all items
-- List vs single (any) – comparison must hold for at least one item
+- List vs list – lists must be same length; comparison must hold pairwise.
+- List vs single (all) – comparison must hold for all items.
+- List vs single (any) – comparison must hold for at least one item.
 
 ### 4.6 Other list operators
 These operators all require that the expression has multiple cardinality:
-- **only-element** – returns the single element if the list has exactly one item
-- **count** – number of items
-- **first, last** – first or last element
-- **flatten** – flattens a list of lists
-- **sort** – sorts comparable elements
-- **distinct** – removes duplicates
+- **only-element** – returns the single element if the list has exactly one item.
+- **count** – number of items.
+- **first, last** – first or last element.
+- **flatten** – flattens a list of lists.
+- **sort** – sorts comparable elements.
+- **distinct** – removes duplicates.
 
 **Examples**
 
