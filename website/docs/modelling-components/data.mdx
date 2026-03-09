@@ -19,7 +19,7 @@ A Rune data component may include up to four types of data. Think of these as th
 
 Built-in types are defined at the language level and are fundamental to any model – they provide the most basic way to represent information. They help to ensure consistency across all models and provide a shared vocabulary for numbers, text, time and logic. They form the foundation on which more complex types (like data types or choice types) are built.
 
-Built-in data types come in three flavors:
+Built-in data types come in three flavours:
 
 ### 1.1 Basic types
 
@@ -31,11 +31,11 @@ These are your standard, non-composite data types and are defined as `basicType`
 - **string:** Text values
 - **time:** Simple time values (e.g. "05:00:00")
 
-### 1.2 Parameterized basic types
+### 1.2 Parameterised basic types
 
-You can customize the number and string types by adding constraints or specific formatting.
+You can customise the number and string types by adding constraints or specific formatting.
 
-**Example: Parameterized number**
+**Example: Parameterised number**
 
 This defines a positive decimal number with a maximum value of 5000. Note that the simple `int` type is just a shorthand for a number with no fractional digits, such as `number(fractionalDigits: 0)`.
 
@@ -44,7 +44,7 @@ This defines a positive decimal number with a maximum value of 5000. Note that t
 ```
 
 
-**Example: Parameterized string**
+**Example: Parameterised string**
 
 This example limits the string to between 3 and 5 characters and ensures it's alphanumeric.
 
@@ -58,7 +58,7 @@ This example limits the string to between 3 and 5 characters and ensures it's al
 
 ##### **Type aliases**
 
-You can give a name (an alias) to any parameterized type to keep your model readable and avoid long, verbose declarations. Instead of typing the complex string definition, you can just use `AlphaNumericText`.
+You can give a name (an alias) to any parameterised type to keep your model readable and avoid long, verbose declarations. Instead of typing the complex string definition, you can just use `AlphaNumericText`.
 
 ```haskell
     typeAlias PositiveInteger: number(
