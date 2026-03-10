@@ -96,15 +96,14 @@ For quick access to documentation for a Rune type, function, expression or annot
       <td style={{ verticalAlign: 'top', padding: '10px' }}><strong>Conversions</strong></td>
       <td style={{ padding: '10px' }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-          [to-date-time](../modelling-components/expressions#38-operator-precedence), 
           [to-date](../modelling-components/expressions#38-operator-precedence), 
-          [to-time](../modelling-components/expressions#38-operator-precedence), 
-          [to-zoned-date-time](../modelling-components/expressions#38-operator-precedence), 
+          [to-date-time](../modelling-components/expressions#38-operator-precedence), 
           [to-enum](../modelling-components/expressions#5-conversion-operators), 
-          [to-string](../modelling-components/expressions#38-operator-precedence), 
-          [to-number](../modelling-components/expressions#38-operator-precedence), 
           [to-int](../modelling-components/expressions#38-operator-precedence), 
-          [to-time](../modelling-components/expressions#38-operator-precedence)
+          [to-number](../modelling-components/expressions#38-operator-precedence), 
+          [to-string](../modelling-components/expressions#38-operator-precedence), 
+          [to-time](../modelling-components/expressions#38-operator-precedence), 
+          [to-zoned-date-time](../modelling-components/expressions#38-operator-precedence)
         </div>
       </td>
     </tr>
@@ -112,45 +111,44 @@ For quick access to documentation for a Rune type, function, expression or annot
       <td style={{ verticalAlign: 'top', padding: '10px' }}><strong>Operations</strong></td>
       <td style={{ padding: '10px' }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-           [one-of](../modelling-components/expressions#32-comparison-operators)
-           [reverse](../modelling-components/expressions#38-operator-precedence)
-           [flatten](../modelling-components/expressions#46-other-list-operators)
-           [filter](../modelling-components/expressions#41-list-operator-keywords)
-           [sort](../modelling-components/expressions#46-other-list-operators)
-           [count](../modelling-components/expressions#46-other-list-operators)
-           [sum](../modelling-components/expressions#38-operator-precedence)
-           [join](../modelling-components/expressions#38-operator-precedence)
-           [reduce](../modelling-components/expressions#41-list-operator-keywords)
-           [first](../modelling-components/expressions#46-other-list-operators)
-           [last](../modelling-components/expressions#46-other-list-operators)
-           [(single/multiple/only) exists](../modelling-components/expressions#32-comparison-operators)
-           [required/optional choice](../modelling-components/expressions#22-deep-paths-for-choice-types)
-           [only-element](../modelling-components/expressions#46-other-list-operators)
-           [distinct](../modelling-components/expressions#46-other-list-operators)
-           [is absent](../modelling-components/expressions#32-comparison-operators)
-           [default](../modelling-components/expressions#35-default-operators)
-           [min](../modelling-components/expressions#41-list-operator-keywords)
-           [max](../modelling-components/expressions#41-list-operator-keywords)
-           as-key
-           [disjoint](../modelling-components/expressions#43-additional-list-comparison-keywords)
-           [`+`](../modelling-components/expressions#34-arithmetic-operators)
-           [`-`](../modelling-components/expressions#34-arithmetic-operators)
-           [`*`](../modelling-components/expressions#34-arithmetic-operators)
-           [`/`](../modelling-components/expressions#34-arithmetic-operators)
-           [`->`](../modelling-components/expressions#2-path-expressions)
-           [`->>`](../modelling-components/expressions#22-deep-paths-for-choice-types)
-           [`...`](../modelling-components/expressions#2-path-expressions)
-           [with-meta](../modelling-components/expressions#37-with-meta-operator)
+          [count](../modelling-components/expressions#46-other-list-operators), 
+          [default](../modelling-components/expressions#35-default-operators), 
+          [disjoint](../modelling-components/expressions#43-additional-list-comparison-keywords), 
+          [distinct](../modelling-components/expressions#46-other-list-operators), 
+          [exists](../modelling-components/expressions#32-comparison-operators), 
+          [filter](../modelling-components/expressions#41-list-operator-keywords), 
+          [first](../modelling-components/expressions#46-other-list-operators), 
+          [flatten](../modelling-components/expressions#46-other-list-operators), 
+          [is absent](../modelling-components/expressions#32-comparison-operators), 
+          [join](../modelling-components/expressions#38-operator-precedence), 
+          [last](../modelling-components/expressions#46-other-list-operators), 
+          [min](../modelling-components/expressions#41-list-operator-keywords), 
+          [max](../modelling-components/expressions#41-list-operator-keywords), 
+          [one-of](../modelling-components/expressions#32-comparison-operators), 
+          [only-element](../modelling-components/expressions#46-other-list-operators), 
+          [reduce](../modelling-components/expressions#41-list-operator-keywords), 
+          [required/optional choice](../modelling-components/expressions#22-deep-paths-for-choice-types), 
+          [reverse](../modelling-components/expressions#38-operator-precedence), 
+          [sort](../modelling-components/expressions#46-other-list-operators), 
+          [sum](../modelling-components/expressions#38-operator-precedence), 
+          [with-meta](../modelling-components/expressions#37-with-meta-operator)
+          [`+`](../modelling-components/expressions#34-arithmetic-operators), 
+          [`-`](../modelling-components/expressions#34-arithmetic-operators), 
+          [`*`](../modelling-components/expressions#34-arithmetic-operators), 
+          [`/`](../modelling-components/expressions#34-arithmetic-operators), 
+          [`->`](../modelling-components/expressions#2-path-expressions), 
+          [`->>`](../modelling-components/expressions#22-deep-paths-for-choice-types), 
+          [`...`](../modelling-components/expressions#2-path-expressions)
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
           <strong>Comparison operations</strong>:
-           [any](../modelling-components/expressions#43-additional-list-comparison-keywords)
-           [all](../modelling-components/expressions#43-additional-list-comparison-keywords)
-           [`=`](../modelling-components/expressions#32-comparison-operators)
-           [`<`](../modelling-components/expressions#32-comparison-operators)
-           [`>`](../modelling-components/expressions#32-comparison-operators)
-           [`<=`](../modelling-components/expressions#32-comparison-operators)
-           [`>=`](../modelling-components/expressions#32-comparison-operators)
+           [all](../modelling-components/expressions#43-additional-list-comparison-keywords), 
+           [any](../modelling-components/expressions#43-additional-list-comparison-keywords), 
+           [`=`](../modelling-components/expressions#32-comparison-operators), 
+           [`<`](../modelling-components/expressions#32-comparison-operators), 
+           [`>`](../modelling-components/expressions#32-comparison-operators), 
+           [`<=`](../modelling-components/expressions#32-comparison-operators), 
+           [`>=`](../modelling-components/expressions#32-comparison-operators), 
            [`<>`](../modelling-components/expressions#32-comparison-operators)
         </div>
       </td>
@@ -160,15 +158,14 @@ For quick access to documentation for a Rune type, function, expression or annot
       <td style={{ padding: '10px' }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
           [annotation](../modelling-components/metadata#1-annotations), 
-          [regulatoryReference](../modelling-components/reporting#32-rule-syntax), 
           [docReference](../modelling-components/reporting#32-rule-syntax), 
-          [ruleReference](../modelling-components/reporting#21-report-syntax), 
+          [for](../modelling-components/metadata#23-document-reference-on-a-path), 
+          [label](../modelling-components/reporting#21-report-syntax), 
+          [provision](../modelling-components/reporting#32-rule-syntax), 
           [rationale](../modelling-components/reporting#35-repeat-instruction-repeatable-fields), 
           [rationale_author](../modelling-components/reporting#35-repeat-instruction-repeatable-fields), 
-          structured_provision, 
-          [provision](../modelling-components/reporting#32-rule-syntax), 
-          [for](../modelling-components/metadata#23-document-reference-on-a-path), 
-          [label](../modelling-components/reporting#21-report-syntax)
+          [regulatoryReference](../modelling-components/reporting#32-rule-syntax), 
+          [ruleReference](../modelling-components/reporting#21-report-syntax)
         </div>
       </td>
     </tr>
